@@ -286,7 +286,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Recommendations
             return symbols;
         }
 
-        private static ImmutableArray<ISymbol> GetSymbolsOffOfName(
+        public static ImmutableArray<ISymbol> GetSymbolsOffOfName(
             CSharpSyntaxContext context,
             NameSyntax name,
             CancellationToken cancellationToken)
@@ -368,7 +368,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Recommendations
             return ImmutableArray<ISymbol>.Empty;
         }
 
-        private static ImmutableArray<ISymbol> GetSymbolsOffOfExpression(
+        public static ImmutableArray<ISymbol> GetSymbolsOffOfExpression(
             CSharpSyntaxContext context,
             ExpressionSyntax originalExpression,
             CancellationToken cancellationToken)

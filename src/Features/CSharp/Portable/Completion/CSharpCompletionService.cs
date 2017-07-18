@@ -25,6 +25,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion
     {
         private readonly ImmutableArray<CompletionProvider> _defaultCompletionProviders =
             ImmutableArray.Create<CompletionProvider>(
+                new PythiaCompletionProvider(),
                 new AttributeNamedParameterCompletionProvider(),
                 new NamedParameterCompletionProvider(),
                 new KeywordCompletionProvider(),
