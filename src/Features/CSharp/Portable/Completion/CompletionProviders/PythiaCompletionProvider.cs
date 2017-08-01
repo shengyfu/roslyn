@@ -20,13 +20,12 @@ using System.IO;
 using System;
 using Microsoft.CodeAnalysis.CSharp.Recommendations;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 {
     internal partial class PythiaCompletionProvider : CommonCompletionProvider
     {
-
-
         // Explicitly remove ":" from the set of filter characters because (by default)
         // any character that appears in DisplayText gets treated as a filter char.
 
@@ -38,16 +37,25 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             .WithMatchPriority(MatchPriority.Default)
             .WithSelectionBehavior(CompletionItemSelectionBehavior.HardSelection);
 
+        private static readonly string MODELS_PATH = @"..\..\..\..\roslyn\models\";
+
         internal override bool IsInsertionTrigger(SourceText text, int characterPosition, OptionSet options)
         {
-            return CompletionUtilities.IsTriggerCharacter(text, characterPosition, options);
+            // return CompletionUtilities.IsTriggerCharacter(text, characterPosition, options);
+            bool isInsertionTrigger = text[characterPosition] == '.';
+            char character = text[characterPosition];
+            return isInsertionTrigger; // temp
         }
 
         public override async Task ProvideCompletionsAsync(CompletionContext context)
         {
+            // obtaining the syntax tree and the semantic model
             var document = context.Document;
             var position = context.Position;
             var cancellationToken = context.CancellationToken;
+
+            var span = new TextSpan(position, 0);
+            var semanticModelTask = document.GetSemanticModelForSpanAsync(span, cancellationToken).ConfigureAwait(false);
 
             var syntaxTree = await document.GetSyntaxTreeAsync(cancellationToken).ConfigureAwait(false);
             if (syntaxTree.IsInNonUserCode(position, cancellationToken))
@@ -55,65 +63,36 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 return;
             }
 
-            var token = syntaxTree
-                .FindTokenOnLeftOfPosition(position, cancellationToken)
-                .GetPreviousTokenIfTouchingWord(position);
+            // determine the namespace from which to recommend methods
+            var tokenLeft = syntaxTree.FindTokenOnLeftOfPosition(position, cancellationToken); // character left of current cursor position
+            tokenLeft = tokenLeft.GetPreviousTokenIfTouchingWord(position);
 
-            var tokenType = token.Kind();
+            if (tokenLeft.Kind() != SyntaxKind.DotToken) return; // for testing - only handling dot
 
-            var tokendebug = syntaxTree
-                .FindTokenOnLeftOfPosition(position, cancellationToken);
+            //SyntaxNode memberAccess = GetLeftNode(tokenLeft);
 
-            var tokendebug2 = syntaxTree.FindTokenOnRightOfPosition(position, cancellationToken);
+            SyntaxNode memberAccess = tokenLeft.Parent;
+            var memberKind = memberAccess.Kind(); // both types of imports would have the parent as a SimpleMemberAccessExpression
 
-            // Temporary, just for testing purposes, only look at "." function invocations 
-            if (!token.IsKind(SyntaxKind.DotToken))
+            if (memberKind != SyntaxKind.QualifiedName & memberKind != SyntaxKind.SimpleMemberAccessExpression)
             {
                 return;
             }
 
-            // Assuming current token is DotToken go to word token
-            // JORGE, resolve proper target token method... you are taking 2 approaches in this here code.
-            var targetToken = token.GetPreviousToken();
-            var memberAccess = targetToken.Parent;
+            var workspace = document.Project.Solution.Workspace;
 
-
-            var span = new TextSpan(position, 0);
-
-            var semanticModel = await document.GetSemanticModelForSpanAsync(span, cancellationToken).ConfigureAwait(false);
-
+            var semanticModel = await semanticModelTask;
             if (semanticModel == null)
             {
                 return;
             }
 
-
-            var memberKind = memberAccess.Parent.Kind();
-
-
-            // Note that we cannot do anything with System.xxx. as System is considered left component  of Parent... i am guessing we would need to do some string parsing here 
-            // If we want to return results for System.x then we need to figure out this issues
-            // Once we include System.x types in our methods list, we will erroneously returns these methds for System.xxx. types, leading to incorrect recommendations. 
-            // var memberName = memberAccess.Parent.ToString();
-
-            if (memberKind != SyntaxKind.QualifiedName & memberKind != SyntaxKind.SimpleMemberAccessExpression)
-            {
-                return;
-
-            }
-            var workspace = document.Project.Solution.Workspace;
-
             var syntaxContext = CSharpSyntaxContext.CreateContext(workspace, semanticModel, position, cancellationToken);
-
-            var tt = syntaxContext.TargetToken;
-            var ttp = syntaxContext.TargetToken.Parent;
 
             ImmutableArray<ISymbol> candidateMethods;
             ITypeSymbol container;
 
-            ExtractCandidateMethods(memberAccess, memberKind, syntaxContext, ttp, out candidateMethods, out container, cancellationToken);
-
-            var text = await document.GetTextAsync(cancellationToken).ConfigureAwait(false);
+            ExtractCandidateMethods(memberAccess, memberKind, syntaxContext, out candidateMethods, out container, cancellationToken);
 
             if (candidateMethods.LongCount() == 0)
             {
@@ -123,7 +102,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             // Context Evaluation
 
             // Check if target token is in IfConditional.  
-            var inIfConditional = CheckIfTokenInIfConditional(ttp);
+            var inIfConditional = CheckIfTokenInIfConditional(memberAccess);
 
             IEnumerable<ISymbol> invokingSymbs = GetCoOccuringInvocations(syntaxTree, semanticModel, container);
 
@@ -148,7 +127,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                   insertionText: null,
                   symbols: methods,
                   filterText: m.Key,
-                  contextPosition: token.SpanStart,
+                  contextPosition: tokenLeft.SpanStart,
                   rules: s_rules_top,
                   sortText: count.ToString()
                 ));
@@ -156,22 +135,22 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 count++;
             }
 
-
             context.IsExclusive = false; // Exclusive list 
-
         }
 
-        private static void ExtractCandidateMethods(SyntaxNode memberAccess, SyntaxKind memberKind, CSharpSyntaxContext syntaxContext, SyntaxNode ttp, out ImmutableArray<ISymbol> candidateMethods, out ITypeSymbol container, CancellationToken cancellationToken)
+        private static void ExtractCandidateMethods(SyntaxNode memberAccess, SyntaxKind memberKind, CSharpSyntaxContext syntaxContext, out ImmutableArray<ISymbol> candidateMethods, out ITypeSymbol container, CancellationToken cancellationToken)
         {
             candidateMethods = new ImmutableArray<ISymbol>();
             container = null;
+
+            // when would it be a QualifiedName?
             if (memberKind == SyntaxKind.QualifiedName)
             {
-                var name = ((QualifiedNameSyntax)ttp).Left;
+                var name = ((QualifiedNameSyntax)memberAccess).Left;
                 candidateMethods = CSharpRecommendationService.GetSymbolsOffOfName(syntaxContext, name, cancellationToken);
 
                 if (name.IsFoundUnder<LocalDeclarationStatementSyntax>(d => d.Declaration.Type) ||
-               name.IsFoundUnder<FieldDeclarationSyntax>(d => d.Declaration.Type))
+                    name.IsFoundUnder<FieldDeclarationSyntax>(d => d.Declaration.Type))
                 {
                     var speculativeBinding = syntaxContext.SemanticModel.GetSpeculativeSymbolInfo(
                         name.SpanStart, name, SpeculativeBindingOption.BindAsExpression);
@@ -182,14 +161,13 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                     var containerNamespace = container.ContainingNamespace;
                     candidateMethods = candidateMethods.Where(m => m.ContainingNamespace == containerNamespace).ToImmutableArray<ISymbol>();
                 }
-
             }
             else if (memberKind == SyntaxKind.SimpleMemberAccessExpression)
             {
-                var expression = ((MemberAccessExpressionSyntax)memberAccess.Parent).Expression;
+                var expression = ((MemberAccessExpressionSyntax)memberAccess).Expression; // expression = File, 
 
                 candidateMethods = CSharpRecommendationService.GetSymbolsOffOfExpression(syntaxContext, expression, cancellationToken);
-                container = syntaxContext.SemanticModel.GetTypeInfo(expression, cancellationToken).Type;
+                container = syntaxContext.SemanticModel.GetTypeInfo(expression, cancellationToken).Type; // NamedType System.IO.File
                 //container = CSharpRecommendationService.GetSymbolTypeOffOfExpression(syntaxContext, expression, cancellationToken);
                 //var tmp = container.ContainingNamespace.ToString();
                 //var tmp2 = container.OriginalDefinition.ToString();
@@ -208,21 +186,18 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
         private static Dictionary<string, double> MergeScoringModelCompletionsWithCandidates(ImmutableArray<ISymbol> candidateMethods, IEnumerable<KeyValuePair<string, double>> scoringModelCompletions)
         {
-
             // merge scoring model completions with candidate completions           
-            Dictionary<string, double> completionSet = new Dictionary<string, double>();
+            var completionSet = new Dictionary<string, double>();
 
             foreach (var compCandidate in scoringModelCompletions)
             {
                 var name = compCandidate.Key;
 
-
                 string regex = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))";
 
                 var c = candidateMethods
                     .Where(i => compCandidate.Key.StartsWith(Regex.Replace(i.ToString(), regex, "")))
-                    .First()
-                    ;
+                    .First();
 
                 completionSet[c.Name] = compCandidate.Value;
             }
@@ -265,50 +240,53 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         private static IEnumerable<ISymbol> GetCoOccuringInvocations(SyntaxTree syntaxTree, SemanticModel semanticModel, ITypeSymbol container)
         {
             // Check for co-occuring functions from the same namespace
-            var root = (CompilationUnitSyntax)syntaxTree.GetRoot();
-            var Invocations = root
+            var root = (CompilationUnitSyntax)syntaxTree.GetRoot(); // TODO need to check if (token.Parent == null) to make sure root is found correctly
+            var invocations = root
                               .DescendantNodes()
                               .OfType<MemberAccessExpressionSyntax>();
 
-            Invocations = Invocations.Reverse();
+            invocations = invocations.Reverse(); // make most recent on top
 
-            List<ISymbol> invokingSymbs = new List<ISymbol>();
+            var invokingSymbs = new List<ISymbol>();
             if (container != null)
             {
-
-                var s = Invocations.Select(i => semanticModel.GetSymbolInfo(i));
-                var symbs = Invocations.Select(i => semanticModel.GetSymbolInfo(i).Symbol);
-                var candsymbs = Invocations.Select(i => semanticModel.GetSymbolInfo(i).CandidateSymbols);
+                // var s = invocations.Select(i => semanticModel.GetSymbolInfo(i));
+                //var symbs = invocations.Select(i => semanticModel.GetSymbolInfo(i).Symbol);
+                //var candsymbs = invocations.Select(i => semanticModel.GetSymbolInfo(i).CandidateSymbols);
 
                 // Possible null pointer here
                 // Include values from CandidateSymbol symbol resolution as well.
 
-                //Assuming access to symbol, but only candidates may be available if there is overload resolution issue, or is a local variable
+                // Assuming access to symbol, but only candidates may be available if there is overload resolution issue, or is a local variable
 
-                // InvokingSymbs may come invarious forms and so checking that null is not appropriate.
+                // InvokingSymbs may come in various forms and so checking that null is not appropriate.
 
-                foreach (var invocation in Invocations)
+                foreach (var invocation in invocations)
                 {
+                    Debug.WriteLine(invocation);
+                    // Debug.WriteLine(semanticModel.GetSymbolInfo(invocation)); // will go outside of root
+
                     var inv_symb = semanticModel.GetSymbolInfo(invocation).Symbol;
-                    var cand_symb_vec = semanticModel.GetSymbolInfo(invocation).CandidateSymbols;
+                    // var cand_symb_vec = semanticModel.GetSymbolInfo(invocation).CandidateSymbols;
 
-                    ISymbol cand_symb = null;
+                    // ISymbol cand_symb = null;
 
-                    if (cand_symb_vec.LongCount() > 0)
-                    {
-                        cand_symb = cand_symb_vec.First();
-                    }
+                    //if (cand_symb_vec.LongCount() > 0)
+                    //{
+                    //    cand_symb = cand_symb_vec.First();
+                    //}
 
-
-                    if (inv_symb == null & cand_symb != null)
-                    {
-                        if (cand_symb.ContainingSymbol == container.OriginalDefinition)
-                        {
-                            // append cand_symb to invokingSymbs
-                            invokingSymbs.Add(cand_symb);
-                        }
-                    }
-                    else if (inv_symb != null)
+                    //if (inv_symb == null & cand_symb != null)
+                    //{
+                    //    if (cand_symb.ContainingSymbol == container.OriginalDefinition)
+                    //    {
+                    //        // append cand_symb to invokingSymbs
+                    //        invokingSymbs.Add(cand_symb);
+                    //    }
+                    //}
+                    //else 
+                    
+                    if (inv_symb != null)
                     {
                         if (inv_symb.ContainingSymbol == container.OriginalDefinition)
                         {
@@ -331,16 +309,10 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             if (invokingSymbs.LongCount() > 0)
             {
                 // Read and parse model file
-
-                //var lines = File.ReadLines("c:\\users\\jobanuel\\Documents\\model-if-scores-File.txt")
-                var lines = File.ReadLines(@"C:\repos\roslyn\models\model-fileIO.csv").Where(x => !string.IsNullOrWhiteSpace(x))
-                    .Select(line => line.Split('\t'))
-                    ;
-
-                //var relLines = lines.Where();
+                var lines = File.ReadLines(MODELS_PATH + @"model-fileIO.csv").Where(x => !string.IsNullOrWhiteSpace(x))
+                    .Select(line => line.Split('\t'));
 
                 // Filter only to relevant variable types. 
-
 
                 // Need every other line filters
                 // if (counter % 5 == 0) outfile.WriteLine(line);? 
@@ -356,7 +328,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 var counter = 0;
                 foreach (var n in names)
                 {
-
                     string regex = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))";
 
                     usageVector[counter] = 0;
@@ -465,10 +436,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
 
 }
-
-
-
-
 
 
 
