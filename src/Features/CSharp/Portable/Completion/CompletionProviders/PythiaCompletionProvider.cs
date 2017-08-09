@@ -21,11 +21,55 @@ using System;
 using Microsoft.CodeAnalysis.CSharp.Recommendations;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 {
     internal partial class PythiaCompletionProvider : CommonCompletionProvider
     {
+        private static readonly string MODELS_PATH = @"..\..\..\..\roslyn\models\";
+        private static readonly string ALL_MODELS_JSON_PATH = MODELS_PATH + @"model-all.json";
+
+        private Dictionary<string, IEnumerable<string[]>> model;
+
+        private void BuildModel (IEnumerable<string[]> lines)
+        {
+            var modelTemp = new Dictionary<string, IEnumerable<string[]>>();
+            for (var i = 0; i < lines.Count(); i = i + 6)
+            {
+                Debug.WriteLineIf(i % 100 == 0, "Read line " + i);
+                var className = lines.ElementAt(i)[0];
+                var classModel = new List<string[]>();
+                classModel.Add(lines.ElementAt(i + 1));
+                for (var j = i + 2; j < i + 6; j++)
+                {
+                    classModel.Add(lines.ElementAt(j));
+                }
+                modelTemp[className] = classModel;
+            }
+            string json = JsonConvert.SerializeObject(modelTemp);
+            File.WriteAllText(ALL_MODELS_JSON_PATH, json);
+        }
+
+        private void DeserializeModel ()
+        {
+            string json = File.ReadAllText(ALL_MODELS_JSON_PATH);
+            model = JsonConvert.DeserializeObject<Dictionary<string, IEnumerable<string[]>>>(json);
+        }
+
+        public PythiaCompletionProvider ()
+        {
+            Debug.WriteLine("PythiaCompletionProvider constructor called");
+
+            // Read and parse model file
+            var lines = File.ReadLines(MODELS_PATH + @"model-all.csv")
+                            .Where(x => !string.IsNullOrWhiteSpace(x))
+                            .Select(line => line.Split('\t'));
+            // BuildModel(lines);
+            DeserializeModel();
+        }
+
         // Explicitly remove ":" from the set of filter characters because (by default)
         // any character that appears in DisplayText gets treated as a filter char.
 
@@ -36,8 +80,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         private static readonly CompletionItemRules s_rules = CompletionItemRules.Default
             .WithMatchPriority(MatchPriority.Default)
             .WithSelectionBehavior(CompletionItemSelectionBehavior.HardSelection);
-
-        private static readonly string MODELS_PATH = @"..\..\..\..\roslyn\models\";
 
         internal override bool IsInsertionTrigger(SourceText text, int characterPosition, OptionSet options)
         {
@@ -69,9 +111,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             if (tokenLeft.Kind() != SyntaxKind.DotToken) return; // for testing - only handling dot
 
-            //SyntaxNode memberAccess = GetLeftNode(tokenLeft);
-
             SyntaxNode memberAccess = tokenLeft.Parent;
+            Debug.WriteLine("MemberAccess: " + memberAccess);
             var memberKind = memberAccess.Kind(); // both types of imports would have the parent as a SimpleMemberAccessExpression
 
             if (memberKind != SyntaxKind.QualifiedName & memberKind != SyntaxKind.SimpleMemberAccessExpression)
@@ -106,15 +147,15 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             IEnumerable<ISymbol> invokingSymbs = GetCoOccuringInvocations(syntaxTree, semanticModel, container);
 
-            var scoringModelCompletions = GetScoringModelRecommendations(inIfConditional, invokingSymbs);
-
+            var scoringModelCompletions = GetScoringModelRecommendations(memberAccess, inIfConditional, invokingSymbs);
+            Debug.WriteLine("After GetScoringModelRecommendations");
             if (scoringModelCompletions.Count() == 0)
             {
                 return;
             }
 
             Dictionary<string, double> completionSet = MergeScoringModelCompletionsWithCandidates(candidateMethods, scoringModelCompletions);
-
+            Debug.WriteLine("After MergeScoringModelCompletionsWithCandidates");
             //Dictionary<string, int> completionSet = GetPopularityModelRecommendations(candidateMethods);
 
             int count = 0;
@@ -240,110 +281,102 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         private static IEnumerable<ISymbol> GetCoOccuringInvocations(SyntaxTree syntaxTree, SemanticModel semanticModel, ITypeSymbol container)
         {
             // Check for co-occuring functions from the same namespace
-            var root = (CompilationUnitSyntax)syntaxTree.GetRoot(); // TODO need to check if (token.Parent == null) to make sure root is found correctly
+            var root = (CompilationUnitSyntax)syntaxTree.GetRoot();
             var invocations = root
                               .DescendantNodes()
                               .OfType<MemberAccessExpressionSyntax>();
 
-            invocations = invocations.Reverse(); // make most recent on top
+            invocations = invocations.Reverse();
 
             var invokingSymbs = new List<ISymbol>();
             if (container != null)
             {
-                // var s = invocations.Select(i => semanticModel.GetSymbolInfo(i));
-                //var symbs = invocations.Select(i => semanticModel.GetSymbolInfo(i).Symbol);
-                //var candsymbs = invocations.Select(i => semanticModel.GetSymbolInfo(i).CandidateSymbols);
-
-                // Possible null pointer here
-                // Include values from CandidateSymbol symbol resolution as well.
-
-                // Assuming access to symbol, but only candidates may be available if there is overload resolution issue, or is a local variable
-
-                // InvokingSymbs may come in various forms and so checking that null is not appropriate.
-
                 foreach (var invocation in invocations)
                 {
                     Debug.WriteLine(invocation);
-                    // Debug.WriteLine(semanticModel.GetSymbolInfo(invocation)); // will go outside of root
-
-                    var inv_symb = semanticModel.GetSymbolInfo(invocation).Symbol;
-                    // var cand_symb_vec = semanticModel.GetSymbolInfo(invocation).CandidateSymbols;
-
-                    // ISymbol cand_symb = null;
-
-                    //if (cand_symb_vec.LongCount() > 0)
-                    //{
-                    //    cand_symb = cand_symb_vec.First();
-                    //}
-
-                    //if (inv_symb == null & cand_symb != null)
-                    //{
-                    //    if (cand_symb.ContainingSymbol == container.OriginalDefinition)
-                    //    {
-                    //        // append cand_symb to invokingSymbs
-                    //        invokingSymbs.Add(cand_symb);
-                    //    }
-                    //}
-                    //else 
-                    
-                    if (inv_symb != null)
+                    try
                     {
-                        if (inv_symb.ContainingSymbol == container.OriginalDefinition)
+                        var inv_symb = semanticModel.GetSymbolInfo(invocation).Symbol;
+                        var cand_symb_vec = semanticModel.GetSymbolInfo(invocation).CandidateSymbols;
+
+                        ISymbol cand_symb = null;
+
+                        if (cand_symb_vec.LongCount() > 0)
                         {
-                            // append inv_symb to invokingSymbs
-                            invokingSymbs.Add(inv_symb);
+                            cand_symb = cand_symb_vec.First();
                         }
+
+                        if (inv_symb == null & cand_symb != null)
+                        {
+                            if (cand_symb.ContainingSymbol == container.OriginalDefinition)
+                            {
+                                // append cand_symb to invokingSymbs
+                                invokingSymbs.Add(cand_symb);
+                            }
+                        }
+                        else if (inv_symb != null)
+                        {
+                            if (inv_symb.ContainingSymbol == container.OriginalDefinition)
+                            {
+                                // append inv_symb to invokingSymbs
+                                invokingSymbs.Add(inv_symb);
+                            }
+                        }
+                    }
+                    catch(NullReferenceException exception)
+                    {
+                        Debug.WriteLine("Invocation get symbol failed with exception: " + exception);
                     }
                 }
             }
-
             return invokingSymbs;
-
         }
 
         // TODO(jobanuel): Jorge generalize this to more common scenarios outside of File.
-        private static IEnumerable<KeyValuePair<string, double>> GetScoringModelRecommendations(bool inIfConditional, IEnumerable<ISymbol> invokingSymbs)
+        private IEnumerable<KeyValuePair<string, double>> GetScoringModelRecommendations(SyntaxNode memberAccess,
+            bool inIfConditional, IEnumerable<ISymbol> invokingSymbs)
         {
             Dictionary<string, double> ScoringRecommendations = new Dictionary<string, double>();
 
             if (invokingSymbs.LongCount() > 0)
             {
-                // Read and parse model file
-                var lines = File.ReadLines(MODELS_PATH + @"model-fileIO.csv").Where(x => !string.IsNullOrWhiteSpace(x))
-                    .Select(line => line.Split('\t'));
+                var expression = ((MemberAccessExpressionSyntax)memberAccess).Expression;
 
-                // Filter only to relevant variable types. 
+                var classModel = model[expression.ToFullString()];
 
-                // Need every other line filters
-                // if (counter % 5 == 0) outfile.WriteLine(line);? 
+                // Filter only to relevant variable types.
+                var methodsInClass = classModel.First();
+                var nameCount = methodsInClass.LongCount(); // don't think array index can be a long size? Siyu
 
-                var names = lines.First();
-                var nameCount = names.LongCount();
-                var ifWeights = lines.ElementAt(1).Select(i => Convert.ToDouble(i));
+                var ifWeights = classModel.ElementAt(1).Select(i => Convert.ToDouble(i));
 
-                var centroids = lines.Skip(2);
+                var centroids = classModel.Skip(2);
+                Debug.WriteLine("Got the centroids ");
 
-                // from invocationSet, create a co-occurance vector
+                // from invocationSet, create a co-occurrence vector
                 double[] usageVector = new double[nameCount];
                 var counter = 0;
-                foreach (var n in names)
+                foreach (var methodName in methodsInClass)
                 {
-                    string regex = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))";
+                    Debug.WriteLine("methodName: ", methodName);
+                    string regex = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))"; // matches bracketed content and brackets
 
                     usageVector[counter] = 0;
-                    var mySymbs = invokingSymbs.Select(i => Regex.Replace(i.ToString(), regex, ""));
 
+                    // replacing the regex with "", System.IO.File.Exists(string) becomes System.IO.File.ReadLines
+                    var invokingSymbsNoArgs = invokingSymbs.Select(i => Regex.Replace(i.ToString(), regex, ""));
 
-                    if (invokingSymbs.Where(i => n.StartsWith(Regex.Replace(i.ToString(), regex, ""))).LongCount() > 0)
+                    // if there are invoking symbols which starts with the current methodName, usageVector for this methodName becomes 1
+                    if (invokingSymbs.Where(i => methodName.StartsWith(Regex.Replace(i.ToString(), regex, ""))).LongCount() > 0)
                     {
                         usageVector[counter] = 1;
                     }
                     counter++;
                 }
 
-                // for each element in centroids, calculate the distance to invocationSet
-                var n_centroids = centroids.LongCount();
-                double[] cosineSimilarities = new double[n_centroids];
+                // calculate the similarity between the invocationSet to each of the centroids in the model for this class
+                var numCentroids = centroids.Count();
+                var cosineSimilarities = new double[numCentroids]; // should just record the max - Siyu
 
                 counter = 0;
                 foreach (var c in centroids)
@@ -352,34 +385,51 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                     cosineSimilarities[counter] = GetCosineSimilarity(centroid.ToList(), usageVector.ToList());
                     counter++;
                 }
+                Debug.WriteLine("Cosine distances are calculated");
+
                 // select elements in min distance point, with non-zero weights, 
                 // this should be representated as a dictionary, with "names" as key
                 var simList = cosineSimilarities.ToList();
                 var maxIndex = simList.IndexOf(simList.Max());
 
-                var key_centroid = centroids.ElementAt(maxIndex)
-                    .Select(i => Convert.ToDouble(i));
+                var keyCentroid = centroids.ElementAt(maxIndex).Select(i => Convert.ToDouble(i));
 
                 // If in IfConditional, reweight the scores
                 if (inIfConditional)
                 {
-                    key_centroid = key_centroid.Zip(ifWeights, (s, i) => s * i);
+                    keyCentroid = keyCentroid.Zip(ifWeights, (s, i) => s * i);
                 }
                 else
                 {
-                    key_centroid = key_centroid.Zip(ifWeights, (s, i) => s * (1 - i));
+                    keyCentroid = keyCentroid.Zip(ifWeights, (s, i) => s * (1 - i));
                 }
 
-                ScoringRecommendations = names.Zip(key_centroid, (k, v) => new { k, v })
+                ScoringRecommendations = methodsInClass.Zip(keyCentroid, (k, v) => new { k, v })
                    .OrderBy(i => i.v)
-                   .Reverse()
+                   .Reverse() // methods with more usage in that cluster's usage pattern is ranked on the top
                    .Where(i => i.v > 0)
-                   .ToDictionary(x => x.k, x => x.v)
-                  ;
+                   .ToDictionary(x => x.k, x => x.v);
             }
 
             return ScoringRecommendations;
         }
+
+        private static void DebugPrintSymbols(IEnumerable<ISymbol> array)
+        {
+            foreach (var symbol in array)
+            {
+                Debug.WriteLine(symbol.ToString());
+            }
+        }
+
+        private static void DebugPrintString(IEnumerable<string> array)
+        {
+            foreach (var symbol in array)
+            {
+                Debug.WriteLine(symbol);
+            }
+        }
+
 
         private static bool CheckIfTokenInIfConditional(SyntaxNode ttp)
         {
