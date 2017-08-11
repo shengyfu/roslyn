@@ -31,6 +31,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         private static readonly string MODELS_PATH = @"..\..\..\..\roslyn\models\";
         private static readonly string ALL_MODELS_JSON_PATH = MODELS_PATH + @"model-all.json";
 
+        private static readonly SymbolDisplayFormat SYMBOL_DISPLAY_FORMAT = new SymbolDisplayFormat(typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces);
+
         private Dictionary<string, IEnumerable<string[]>> model;
 
         private void BuildModel (IEnumerable<string[]> lines)
@@ -40,8 +42,10 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             {
                 Debug.WriteLineIf(i % 100 == 0, "Read line " + i);
                 var className = lines.ElementAt(i)[0];
+                var methodNames = lines.ElementAt(i + 1);
+
                 var classModel = new List<string[]>();
-                classModel.Add(lines.ElementAt(i + 1));
+                classModel.Add(methodNames);
                 for (var j = i + 2; j < i + 6; j++)
                 {
                     classModel.Add(lines.ElementAt(j));
@@ -147,7 +151,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             IEnumerable<ISymbol> invokingSymbs = GetCoOccuringInvocations(syntaxTree, semanticModel, container);
 
-            var scoringModelCompletions = GetScoringModelRecommendations(memberAccess, inIfConditional, invokingSymbs);
+            var scoringModelCompletions = GetScoringModelRecommendations(memberAccess, inIfConditional, invokingSymbs, container);
             Debug.WriteLine("After GetScoringModelRecommendations");
             if (scoringModelCompletions.Count() == 0)
             {
@@ -161,7 +165,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             int count = 0;
             foreach (var m in completionSet)
             {
-                var methods = candidateMethods.Where(entry => entry.Name == m.Key).ToList();
+                var methods = candidateMethods.Where(entry => entry.Name == m.Key).ToList(); // get all the methods
 
                 context.AddItem(SymbolCompletionItem.CreateWithSymbolId(
                   displayText: m.Key,
@@ -179,7 +183,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             context.IsExclusive = false; // Exclusive list 
         }
 
-        private static void ExtractCandidateMethods(SyntaxNode memberAccess, SyntaxKind memberKind, CSharpSyntaxContext syntaxContext, out ImmutableArray<ISymbol> candidateMethods, out ITypeSymbol container, CancellationToken cancellationToken)
+        private static void ExtractCandidateMethods(SyntaxNode memberAccess, SyntaxKind memberKind, CSharpSyntaxContext syntaxContext,
+            out ImmutableArray<ISymbol> candidateMethods, out ITypeSymbol container, CancellationToken cancellationToken)
         {
             candidateMethods = new ImmutableArray<ISymbol>();
             container = null;
@@ -225,24 +230,31 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             //}
         }
 
-        private static Dictionary<string, double> MergeScoringModelCompletionsWithCandidates(ImmutableArray<ISymbol> candidateMethods, IEnumerable<KeyValuePair<string, double>> scoringModelCompletions)
+        // merge to make sure we only include candidates that are valid candidateMethods
+        private static Dictionary<string, double> MergeScoringModelCompletionsWithCandidates(
+            ImmutableArray<ISymbol> candidateMethods, Dictionary<string, double> scoringModelCompletions)
         {
             // merge scoring model completions with candidate completions           
             var completionSet = new Dictionary<string, double>();
 
-            foreach (var compCandidate in scoringModelCompletions)
+            foreach (var candidateFromModel in scoringModelCompletions)
             {
-                var name = compCandidate.Key;
+                var candidateMethodName = candidateFromModel.Key;
+                candidateMethodName = candidateMethodName.Substring(0, candidateMethodName.IndexOf('-'));
+                Debug.WriteLine("completion candidateMethodName: " + candidateMethodName);
 
                 string regex = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))";
 
                 var c = candidateMethods
-                    .Where(i => compCandidate.Key.StartsWith(Regex.Replace(i.ToString(), regex, "")))
-                    .First();
+                    .Where(i => candidateMethodName.Equals(Regex.Replace(i.ToString(), regex, "")))
+                    .FirstOrDefault(); // only take the first if this method is overloaded
 
-                completionSet[c.Name] = compCandidate.Value;
+                if (c != null) // some methods in the model are not applicable to this situation so they will not be in candidateMethods
+                {
+                    Debug.WriteLine("candidate method: " + c.Name);
+                    completionSet[c.Name] = candidateFromModel.Value;
+                }
             }
-
             return completionSet;
         }
 
@@ -293,7 +305,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             {
                 foreach (var invocation in invocations)
                 {
-                    Debug.WriteLine(invocation);
                     try
                     {
                         var inv_symb = semanticModel.GetSymbolInfo(invocation).Symbol;
@@ -333,16 +344,26 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         }
 
         // TODO(jobanuel): Jorge generalize this to more common scenarios outside of File.
-        private IEnumerable<KeyValuePair<string, double>> GetScoringModelRecommendations(SyntaxNode memberAccess,
-            bool inIfConditional, IEnumerable<ISymbol> invokingSymbs)
+        private Dictionary<string, double> GetScoringModelRecommendations(SyntaxNode memberAccess,
+            bool inIfConditional, IEnumerable<ISymbol> invokingSymbs, ITypeSymbol container)
         {
-            Dictionary<string, double> ScoringRecommendations = new Dictionary<string, double>();
+            Dictionary<string, double> scoringRecommendations = new Dictionary<string, double>();
 
             if (invokingSymbs.LongCount() > 0)
             {
-                var expression = ((MemberAccessExpressionSyntax)memberAccess).Expression;
+                // var className = container.ToDisplayString(SYMBOL_DISPLAY_FORMAT); // will give System.String
+                var className = container.ToString(); // will give string for both System.String and string
+                Debug.WriteLine("className: " + className);
 
-                var classModel = model[expression.ToFullString()];
+                IEnumerable<string[]> classModel;
+
+                if (model.ContainsKey(className))
+                {
+                    classModel = model[className];
+                } else
+                {
+                    return scoringRecommendations;
+                }
 
                 // Filter only to relevant variable types.
                 var methodsInClass = classModel.First();
@@ -351,14 +372,12 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 var ifWeights = classModel.ElementAt(1).Select(i => Convert.ToDouble(i));
 
                 var centroids = classModel.Skip(2);
-                Debug.WriteLine("Got the centroids ");
 
                 // from invocationSet, create a co-occurrence vector
                 double[] usageVector = new double[nameCount];
                 var counter = 0;
                 foreach (var methodName in methodsInClass)
                 {
-                    Debug.WriteLine("methodName: ", methodName);
                     string regex = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))"; // matches bracketed content and brackets
 
                     usageVector[counter] = 0;
@@ -385,7 +404,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                     cosineSimilarities[counter] = GetCosineSimilarity(centroid.ToList(), usageVector.ToList());
                     counter++;
                 }
-                Debug.WriteLine("Cosine distances are calculated");
 
                 // select elements in min distance point, with non-zero weights, 
                 // this should be representated as a dictionary, with "names" as key
@@ -404,14 +422,14 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                     keyCentroid = keyCentroid.Zip(ifWeights, (s, i) => s * (1 - i));
                 }
 
-                ScoringRecommendations = methodsInClass.Zip(keyCentroid, (k, v) => new { k, v })
+                scoringRecommendations = methodsInClass.Zip(keyCentroid, (k, v) => new { k, v })
                    .OrderBy(i => i.v)
                    .Reverse() // methods with more usage in that cluster's usage pattern is ranked on the top
                    .Where(i => i.v > 0)
                    .ToDictionary(x => x.k, x => x.v);
             }
 
-            return ScoringRecommendations;
+            return scoringRecommendations;
         }
 
         private static void DebugPrintSymbols(IEnumerable<ISymbol> array)
