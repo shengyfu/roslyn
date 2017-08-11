@@ -29,14 +29,21 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
     internal partial class PythiaCompletionProvider : CommonCompletionProvider
     {
         private static readonly string MODELS_PATH = @"..\..\..\..\roslyn\models\";
-        private static readonly string ALL_MODELS_JSON_PATH = MODELS_PATH + @"model-all.json";
+        private static readonly string SCORING_MODEL_JSON_PATH = MODELS_PATH + @"model-all.json";
+        private static readonly string POPULARITY_MODEL_JSON_PATH = MODELS_PATH + @"model-frequency.json";
 
         private static readonly SymbolDisplayFormat SYMBOL_DISPLAY_FORMAT = new SymbolDisplayFormat(typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces);
 
-        private Dictionary<string, IEnumerable<string[]>> model;
+        private Dictionary<string, IEnumerable<string[]>> scoringModel; // model based on method co-occurrence in crawled repos
+        private Dictionary<string, int> popularityModel; // model based on frequency of occurrences in crawled repos
 
-        private void BuildModel (IEnumerable<string[]> lines)
+        private void BuildScoringModel ()
         {
+            // Read and parse model file
+            var lines = File.ReadLines(MODELS_PATH + @"model-all.csv")
+                            .Where(x => !string.IsNullOrWhiteSpace(x))
+                            .Select(line => line.Split('\t'));
+
             var modelTemp = new Dictionary<string, IEnumerable<string[]>>();
             for (var i = 0; i < lines.Count(); i = i + 6)
             {
@@ -53,25 +60,44 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 modelTemp[className] = classModel;
             }
             string json = JsonConvert.SerializeObject(modelTemp);
-            File.WriteAllText(ALL_MODELS_JSON_PATH, json);
+            File.WriteAllText(SCORING_MODEL_JSON_PATH, json);
         }
 
-        private void DeserializeModel ()
+        private void BuildPopularityModel()
         {
-            string json = File.ReadAllText(ALL_MODELS_JSON_PATH);
-            model = JsonConvert.DeserializeObject<Dictionary<string, IEnumerable<string[]>>>(json);
+            var modelTemp = File.ReadAllLines(MODELS_PATH + @"freqs-new2.txt")
+                                .Select(line => line.Split('\t'))
+                                .ToDictionary(line => line[1].Replace("\"", ""), line => Convert.ToInt32(line[2]));
+
+            string json = JsonConvert.SerializeObject(modelTemp);
+            File.WriteAllText(POPULARITY_MODEL_JSON_PATH, json);
+        }
+
+        private void DeserializeModels ()
+        {
+            string json = File.ReadAllText(SCORING_MODEL_JSON_PATH);
+            scoringModel = JsonConvert.DeserializeObject<Dictionary<string, IEnumerable<string[]>>>(json);
+
+            string jsonFreq = File.ReadAllText(POPULARITY_MODEL_JSON_PATH);
+            popularityModel = JsonConvert.DeserializeObject<Dictionary<string, int>>(jsonFreq);
         }
 
         public PythiaCompletionProvider ()
         {
             Debug.WriteLine("PythiaCompletionProvider constructor called");
 
-            // Read and parse model file
-            var lines = File.ReadLines(MODELS_PATH + @"model-all.csv")
-                            .Where(x => !string.IsNullOrWhiteSpace(x))
-                            .Select(line => line.Split('\t'));
-            // BuildModel(lines);
-            DeserializeModel();
+            if (!File.Exists(SCORING_MODEL_JSON_PATH))
+            {
+                Debug.WriteLine("Did not find serialized scoring model, building it from text file...");
+                BuildScoringModel();
+            }
+            if (!File.Exists(POPULARITY_MODEL_JSON_PATH))
+            {
+                Debug.WriteLine("Did not find serialized popularity model, building it from text file...");
+                BuildPopularityModel();
+            }
+
+            DeserializeModels();
         }
 
         // Explicitly remove ":" from the set of filter characters because (by default)
@@ -93,6 +119,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             return isInsertionTrigger; // temp
         }
 
+        // Is there a place to get the current document's semantic model for all completion providers? - Siyu
         public override async Task ProvideCompletionsAsync(CompletionContext context)
         {
             // obtaining the syntax tree and the semantic model
@@ -151,16 +178,26 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             IEnumerable<ISymbol> invokingSymbs = GetCoOccuringInvocations(syntaxTree, semanticModel, container);
 
-            var scoringModelCompletions = GetScoringModelRecommendations(memberAccess, inIfConditional, invokingSymbs, container);
-            Debug.WriteLine("After GetScoringModelRecommendations");
-            if (scoringModelCompletions.Count() == 0)
+            Dictionary<string, double> completionSet = new Dictionary<string, double>();
+            if (invokingSymbs.Count() > 0)
             {
+                Debug.WriteLine("Using Scoring Model to Recommend");
+                var completionModel = GetScoringModelRecommendations(memberAccess, inIfConditional, invokingSymbs, container);
+                completionSet = MergeScoringModelCompletionsWithCandidates(candidateMethods, completionModel);
+            }
+            else
+            {
+                Debug.WriteLine("Using Popularity Model to Recommend");
+                completionSet = GetPopularityModelRecommendations(candidateMethods); // already takes into consideration what are the allowed candidate methods
+            }
+
+            if (completionSet.Count == 0)
+            {
+                Debug.WriteLine("Both completion models resulted in 0 recommendations");
                 return;
             }
 
-            Dictionary<string, double> completionSet = MergeScoringModelCompletionsWithCandidates(candidateMethods, scoringModelCompletions);
-            Debug.WriteLine("After MergeScoringModelCompletionsWithCandidates");
-            //Dictionary<string, int> completionSet = GetPopularityModelRecommendations(candidateMethods);
+            Debug.Write($"There are {candidateMethods.Length} candidate methods, and {completionSet.Count} recommendations");
 
             int count = 0;
             foreach (var m in completionSet)
@@ -241,7 +278,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             {
                 var candidateMethodName = candidateFromModel.Key;
                 candidateMethodName = candidateMethodName.Substring(0, candidateMethodName.IndexOf('-'));
-                Debug.WriteLine("completion candidateMethodName: " + candidateMethodName);
 
                 string regex = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))";
 
@@ -251,43 +287,38 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
                 if (c != null) // some methods in the model are not applicable to this situation so they will not be in candidateMethods
                 {
-                    Debug.WriteLine("candidate method: " + c.Name);
                     completionSet[c.Name] = candidateFromModel.Value;
                 }
             }
             return completionSet;
         }
 
-        private static Dictionary<string, int> GetPopularityModelRecommendations(ImmutableArray<ISymbol> candidateMethods)
+        private Dictionary<string, double> GetPopularityModelRecommendations(ImmutableArray<ISymbol> candidateMethods)
         {
-            var methodDictionary = // File.ReadAllLines(@"C:\users\jobanuel\Desktop\usageFreqs.txt")
-                                  File.ReadAllLines(@"C:\repos\roslyn\models\freqs-new2.txt")
-                                      .Select(line => line.Split('\t'))
-                                      .ToDictionary(line => line[1].Replace("\"", ""), line => Convert.ToInt32(line[2]));
+            var candidateMethodsStringified = candidateMethods.Select(i => i.ToString());
 
+            // get each candidate method's popularity score if they are in our popularity model
+            var subDictionary = candidateMethodsStringified.Where(k => popularityModel.ContainsKey(k))
+                                                           .ToDictionary(k => k, k => popularityModel[k]);
 
-            var keys = candidateMethods.Select(i => i.ToString());
-
-            var subDictionary = keys.Where(k => methodDictionary.ContainsKey(k)).ToDictionary(k => k, k => methodDictionary[k]);
-
-            //Aggregate same name values
-            Dictionary<string, int> AggMethodsByName = new Dictionary<string, int>();
+            // aggregate the popularity count for all overload methods of this name
+            Dictionary<string, int> aggMethodsByName = new Dictionary<string, int>();
             foreach (var m in subDictionary)
             {
                 var matchingMethod = candidateMethods.FirstOrDefault(i => i.ToString() == m.Key);
                 var matchingName = matchingMethod.Name;
 
                 int value = 0;
-                AggMethodsByName.TryGetValue(matchingName, out value);
+                aggMethodsByName.TryGetValue(matchingName, out value);
 
-                AggMethodsByName[matchingName] = m.Value + value;
+                aggMethodsByName[matchingName] = m.Value + value;
 
             }
 
-            AggMethodsByName = AggMethodsByName.OrderByDescending(entry => entry.Value)
-                .Take(5)
-                .ToDictionary(pair => pair.Key, pair => pair.Value);
-            return AggMethodsByName;
+            Dictionary<string, double> completionModel = aggMethodsByName.OrderByDescending(entry => entry.Value)
+                                                                         .Take(5)
+                                                                         .ToDictionary(pair => pair.Key, pair => (double) pair.Value);
+            return completionModel;
         }
 
         private static IEnumerable<ISymbol> GetCoOccuringInvocations(SyntaxTree syntaxTree, SemanticModel semanticModel, ITypeSymbol container)
@@ -343,7 +374,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             return invokingSymbs;
         }
 
-        // TODO(jobanuel): Jorge generalize this to more common scenarios outside of File.
         private Dictionary<string, double> GetScoringModelRecommendations(SyntaxNode memberAccess,
             bool inIfConditional, IEnumerable<ISymbol> invokingSymbs, ITypeSymbol container)
         {
@@ -353,13 +383,13 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             {
                 // var className = container.ToDisplayString(SYMBOL_DISPLAY_FORMAT); // will give System.String
                 var className = container.ToString(); // will give string for both System.String and string
-                Debug.WriteLine("className: " + className);
+                Debug.WriteLine("GetScoringModelRecommendations, className: " + className);
 
                 IEnumerable<string[]> classModel;
 
-                if (model.ContainsKey(className))
+                if (scoringModel.ContainsKey(className))
                 {
-                    classModel = model[className];
+                    classModel = scoringModel[className];
                 } else
                 {
                     return scoringRecommendations;
@@ -448,7 +478,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             }
         }
 
-
         private static bool CheckIfTokenInIfConditional(SyntaxNode ttp)
         {
             var ancestors = ttp.Ancestors();
@@ -472,9 +501,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         protected override Task<CompletionDescription> GetDescriptionWorkerAsync(Document document, CompletionItem item, CancellationToken cancellationToken)
         => SymbolCompletionItem.GetDescriptionAsync(item, document, cancellationToken);
 
-
-
-        // Calculating difference between two vectors.
+        // Calculate the cosine similarity measure between two vectors (higher the measure, the more similar)
         public static double GetCosineSimilarity(List<double> V1, List<double> V2)
         {
             double sim = 0.0d;
@@ -497,15 +524,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             return dot / (Math.Sqrt(mag1) * Math.Sqrt(mag2));
         }
-
-
     }
-
-
-
 }
-
-
 
 
 
