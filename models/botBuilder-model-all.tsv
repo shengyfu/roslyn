@@ -1,0 +1,588 @@
+string
+string.Equals-NamedType-False	string.StartsWith-Local-False	string.IsNullOrWhiteSpace-NamedType-False	string.IsNullOrEmpty-NamedType-False	string.Equals-Local-False	string.Empty-NamedType-False	string.EndsWith-Local-False	string.Length-Local-False	string.Trim-Local-False	string.ToString-Local-True	string.ToLower-Local-False	string.Substring-Local-False	string.Split-Local-False	string.Replace-Local-False	string.LastIndexOf-Local-False	string.Join-NamedType-False	string.GetHashCode-Local-True	string.Format-NamedType-False	string.Compare-NamedType-False
+0.928571428571	0.833333333333	0.428571428571	0.375	0.25	0.238095238095	0.190476190476	0.12	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+0.23529411764705882	0.05882352941176465	0.5882352941176472	0.20588235294117646	0.08823529411764702	0.20588235294117646	0.029411764705882304	0.3235294117647059	0.14705882352941174	0.02941176470588237	0.058823529411764684	0.14705882352941174	0.17647058823529416	0.08823529411764705	0.029411764705882353	0.08823529411764704	0.29411764705882365	0.08823529411764697	0.05882352941176477
+0.0	4.0	0.0	0.0	0.0	4.0	4.0	4.0	4.0	0.0	1.0	4.0	4.0	0.0	0.0	0.0	0.0	3.0	0.0
+0.0	0.0	0.0	0.0	0.0	0.0	4.0	0.0	0.0	0.0	0.0	0.0	0.0	4.0	0.0	0.0	0.0	4.0	0.0
+System.Linq.Enumerable
+System.Collections.Generic.IEnumerable-Local-False	System.Collections.IEnumerable.OfType-Local-False	System.Collections.IEnumerable.Cast-Local-False
+0.12	0.0	0.0
+2.4285714285714284	0.0	0.0
+4.0	0.08333333333333337	0.16666666666666669
+0.9999999999999998	0.0	0.0
+Microsoft.Bot.Connector.IMessageActivity
+Microsoft.Bot.Connector.IMessageActivity.Attachments-Local-False	Microsoft.Bot.Connector.IMessageActivity.Text-Local-False	Microsoft.Bot.Connector.IMessageActivity.SuggestedActions-Local-False	Microsoft.Bot.Connector.IMessageActivity.Speak-Local-False	Microsoft.Bot.Connector.IMessageActivity.Locale-Local-False	Microsoft.Bot.Connector.IMessageActivity.InputHint-Local-False	Microsoft.Bot.Connector.IMessageActivity.GetMentions-Local-False	Microsoft.Bot.Connector.IMessageActivity.Entities-Local-False	Microsoft.Bot.Connector.IMessageActivity.AttachmentLayout-Local-False
+0.315789473684	0.0963855421687	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+0.2222222222222222	1.3333333333333335	0.0	0.0	0.1111111111111111	0.0	0.1111111111111111	0.11111111111111113	0.0
+-1.1102230246251565e-16	3.571428571428571	0.0	0.0	0.14285714285714285	0.0	0.8571428571428573	0.0	0.0
+3.333333333333333	3.3333333333333335	0.33333333333333337	0.6666666666666667	0.0	0.6666666666666667	0.0	0.0	1.6666666666666667
+object
+object.ReferenceEquals-NamedType-False	object.GetType-Local-False	object.ToString-Local-False	object.GetHashCode-Local-False	object.Equals-NamedType-False
+0.5	0.235294117647	0.0	0.0	0.0
+0.0	0.0	0.25	0.5	3.0
+0.09090909090909088	0.8181818181818181	0.6363636363636364	0.09090909090909091	-1.1102230246251565e-16
+0.0	4.0	0.33333333333333337	0.0	0.0
+System.Type
+System.Type.IsValueType-Local-False	System.Type.IsAssignableFrom-Local-False	System.Type.IsClass-Local-False	System.Type.IsEnum-Local-False	System.Type.IsSerializable-Local-False	System.Type.IsGenericType-Local-False	System.Type.GetProperty-Local-False	System.Type.GetProperties-Local-False	System.Type.GetMethods-Local-False	System.Type.GetMethod-Local-False	System.Type.GetInterfaces-Local-False	System.Type.GetInterfaceMap-Local-False	System.Type.GetGenericTypeDefinition-Local-False	System.Type.GetGenericArguments-Local-False	System.Type.GetFields-Local-False	System.Type.GetField-Local-False	System.Type.GenericTypeArguments-Local-False
+0.5	0.45	0.333333333333	0.25	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+0.1	1.1999999999999997	2.7755575615628914e-17	0.0	0.29999999999999993	0.10000000000000003	1.3877787807814457e-17	0.1	0.1	1.3877787807814457e-17	0.1	0.1	0.10000000000000003	1.3877787807814457e-17	0.30000000000000004	1.3877787807814457e-17	0.1
+0.5	0.0	1.0	3.5	0.0	0.0	0.5	0.0	0.0	0.5	0.0	0.0	0.0	0.0	0.5	0.5	0.0
+0.0	0.0	0.0	0.0	0.0	4.0	0.0	0.0	0.0	0.0	3.0	0.0	4.0	1.0	0.0	0.0	0.0
+Microsoft.Bot.Builder.Calling.ObjectModel.Misc.Utils
+Microsoft.Bot.Builder.Calling.ObjectModel.Misc.Utils.AssertArgument-NamedType-False
+0.0
+2.220446049250313e-16
+3.3333333333333335
+1.3333333333333333
+System.Array
+System.Array.Length-Local-False	System.Array.IndexOf-NamedType-False	System.Array.Exists-NamedType-False	System.Array.Empty-NamedType-False	System.Array.CreateInstance-NamedType-False
+0.571428571429	0.0	0.0	0.0	0.0
+0.0	0.25000000000000006	0.5	0.5	0.25000000000000006
+3.75	0.0	0.0	0.0	0.0
+1.2	0.0	0.0	0.0	0.0
+System.Reflection.MemberInfo
+System.Reflection.MemberInfo.Name-Local-False	System.Reflection.MemberInfo.DeclaringType-Local-False
+0.0	0.0
+1.25	0.0
+3.333333333333333	0.0
+0.0	2.0
+Microsoft.Bot.Connector.ActivityTypes
+Microsoft.Bot.Connector.ActivityTypes.Ping-NamedType-False	Microsoft.Bot.Connector.ActivityTypes.DeleteUserData-NamedType-False	Microsoft.Bot.Connector.ActivityTypes.ConversationUpdate-NamedType-False	Microsoft.Bot.Connector.ActivityTypes.ContactRelationUpdate-NamedType-False	Microsoft.Bot.Connector.ActivityTypes.Typing-NamedType-False	Microsoft.Bot.Connector.ActivityTypes.Message-NamedType-False	Microsoft.Bot.Connector.ActivityTypes.Invoke-NamedType-False	Microsoft.Bot.Connector.ActivityTypes.InstallationUpdate-NamedType-False	Microsoft.Bot.Connector.ActivityTypes.Event-NamedType-False	Microsoft.Bot.Connector.ActivityTypes.EndOfConversation-NamedType-False
+0.25	0.2	0.142857142857	0.142857142857	0.133333333333	0.105263157895	0.0	0.0	0.0	0.0
+0.0	0.0	0.0	0.0	0.19999999999999996	0.6000000000000001	0.19999999999999998	0.0	0.6	0.19999999999999998
+3.0	2.0	4.0	4.0	4.0	4.0	2.0	1.0	2.0	2.0
+0.19999999999999996	1.0	1.0	1.0	1.0	1.0	0.0	0.0	0.0	0.0
+Microsoft.Bot.Builder.Tests.DialogTestBase.Options
+Microsoft.Bot.Builder.Tests.DialogTestBase.Options.ScopedQueue-NamedType-False	Microsoft.Bot.Builder.Tests.DialogTestBase.Options.ResolveDialogFromContainer-NamedType-False	Microsoft.Bot.Builder.Tests.DialogTestBase.Options.Reflection-NamedType-False	Microsoft.Bot.Builder.Tests.DialogTestBase.Options.None-NamedType-False	Microsoft.Bot.Builder.Tests.DialogTestBase.Options.MockConnectorFactory-NamedType-False
+0.0	0.0	0.0	0.0	0.0
+0.5999999999999999	0.6000000000000001	0.4	0.0	0.19999999999999998
+0.0	3.5	1.0	1.0	0.0
+0.0	1.0	0.0	4.0	2.0
+Microsoft.Bot.Builder.Luis.Models.LuisResult
+Microsoft.Bot.Builder.Luis.Models.LuisResult.CompositeEntities-Local-False	Microsoft.Bot.Builder.Luis.Models.LuisResult.Dialog-Local-False	Microsoft.Bot.Builder.Luis.Models.LuisResult.TopScoringIntent-Local-False	Microsoft.Bot.Builder.Luis.Models.LuisResult.Entities-Local-False	Microsoft.Bot.Builder.Luis.Models.LuisResult.Intents-Local-False
+0.333333333333	0.285714285714	0.25	0.230769230769	0.153846153846
+0.2857142857142857	-1.1102230246251565e-16	0.28571428571428575	1.1428571428571428	1.0
+0.0	0.0	0.0	4.0	4.0
+0.0	4.0	1.0	0.0	1.0
+System.Threading.Tasks.Task
+System.Threading.Tasks.Task.WhenAll-NamedType-False	System.Threading.Tasks.Task.GetAwaiter-Local-False	System.Threading.Tasks.Task.FromResult-NamedType-False	System.Threading.Tasks.Task.FromException-NamedType-False	System.Threading.Tasks.Task.FromCanceled-NamedType-False	System.Threading.Tasks.Task.Factory-NamedType-False	System.Threading.Tasks.Task.ConfigureAwait-Local-False	System.Threading.Tasks.Task.CompletedTask-NamedType-False
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+0.14285714285714285	0.0	0.8571428571428572	0.8571428571428572	0.7142857142857142	0.0	-2.220446049250313e-16	0.5714285714285714
+0.0	0.0	0.0	0.0	0.0	0.0	3.4000000000000004	0.0
+0.0	3.5	0.0	0.0	0.0	3.5	4.0	0.0
+int
+int.TryParse-NamedType-False	int.ToString-Local-True	int.MinValue-NamedType-False	int.MaxValue-NamedType-False	int.GetHashCode-Local-True	int.CompareTo-Local-False
+0.6	0.0	0.0	0.0	0.0	0.0
+3.0	0.0	0.0	0.0	0.0	0.0
+0.0	0.0	0.5	1.5	0.0	0.0
+0.2	0.4	0.0	0.0	0.4	0.4
+System.Uri
+System.Uri.TryCreate-NamedType-False	System.Uri.Host-Local-False	System.Uri.ToString-Local-True	System.Uri.Scheme-Local-False	System.Uri.IsAbsoluteUri-Local-False	System.Uri.EscapeDataString-NamedType-False	System.Uri.Authority-Local-False	System.Uri.AbsoluteUri-Local-False
+0.666666666667	0.25	0.0	0.0	0.0	0.0	0.0	0.0
+0.5	0.75	0.5	0.25	0.25	0.0	0.25000000000000006	0.0
+0.0	0.0	4.0	0.0	0.0	4.0	0.0	4.0
+0.0	0.0	0.0	0.0	0.0	4.0	0.0	0.0
+Microsoft.Bot.Connector.ChannelAccount
+Microsoft.Bot.Connector.ChannelAccount.Id-Local-False	Microsoft.Bot.Connector.ChannelAccount.Name-Local-False	Microsoft.Bot.Connector.ChannelAccount.Equals-Local-False
+0.0454545454545	0.0	0.0
+4.0	2.0	0.0
+1.3333333333333333	0.33333333333333326	0.0
+3.0	3.0	1.0
+Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack
+Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Frames-Local-False	Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Reset-Local-False	Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Post-Local-False	Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Done-Local-False	Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Call-Local-False
+0.333333333333	0.0	0.0	0.0	0.0
+0.5	0.5	0.0	0.5	2.5
+0.3333333333333333	0.6666666666666666	0.33333333333333337	0.0	0.0
+0.0	0.0	0.0	1.0	0.5
+Microsoft.Bot.Builder.FormFlow.FormConfiguration
+Microsoft.Bot.Builder.FormFlow.FormConfiguration.Yes-Local-False	Microsoft.Bot.Builder.FormFlow.FormConfiguration.Template-Local-False	Microsoft.Bot.Builder.FormFlow.FormConfiguration.NoPreference-Local-False	Microsoft.Bot.Builder.FormFlow.FormConfiguration.No-Local-False	Microsoft.Bot.Builder.FormFlow.FormConfiguration.DefaultPrompt-Local-False	Microsoft.Bot.Builder.FormFlow.FormConfiguration.CurrentChoice-Local-False	Microsoft.Bot.Builder.FormFlow.FormConfiguration.Commands-Local-False
+0.0	0.0	0.0	0.0	0.0	0.0	0.0
+0.0	0.0	0.0	0.0	3.0	0.0	0.0
+0.0	0.20000000000000004	0.0	0.0	0.4	0.0	0.4
+2.0	0.0	1.0	2.0	0.0	1.0	0.0
+Microsoft.Bot.Connector.Activity
+Microsoft.Bot.Connector.Activity.Attachments-Local-False	Microsoft.Bot.Connector.Activity.Summary-Local-False	Microsoft.Bot.Connector.Activity.ChannelData-Local-False	Microsoft.Bot.Connector.Activity.ReplyToId-Local-False	Microsoft.Bot.Connector.Activity.Text-Local-False	Microsoft.Bot.Connector.Activity.Recipient-Local-False	Microsoft.Bot.Connector.Activity.Value-Local-False	Microsoft.Bot.Connector.Activity.Type-Local-False	Microsoft.Bot.Connector.Activity.Timestamp-Local-False	Microsoft.Bot.Connector.Activity.ServiceUrl-Local-False	Microsoft.Bot.Connector.Activity.Locale-Local-False	Microsoft.Bot.Connector.Activity.Id-Local-False	Microsoft.Bot.Connector.Activity.GetActivityType-NamedType-False	Microsoft.Bot.Connector.Activity.From-Local-False	Microsoft.Bot.Connector.Activity.Entities-Local-False	Microsoft.Bot.Connector.Activity.Conversation-Local-False	Microsoft.Bot.Connector.Activity.ChannelId-Local-False
+0.8	0.666666666667	0.666666666667	0.285714285714	0.25	0.125	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+0.0	0.0	0.0	0.0	1.0	0.33333333333333337	0.6666666666666666	0.6666666666666667	0.33333333333333337	0.0	0.33333333333333337	0.0	0.0	0.33333333333333337	0.0	0.0	0.0
+2.0	1.0	1.0	1.0	2.0	3.0	0.0	2.0	1.0	2.0	2.0	1.0	0.5	3.0	1.0	4.0	2.0
+0.0	0.0	0.0	4.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2.0	0.0	0.0	0.0	4.0	0.0
+Microsoft.Bot.Connector.ConversationAccount
+Microsoft.Bot.Connector.ConversationAccount.Name-Local-False	Microsoft.Bot.Connector.ConversationAccount.IsGroup-Local-False	Microsoft.Bot.Connector.ConversationAccount.Id-Local-False	Microsoft.Bot.Connector.ConversationAccount.Equals-Local-False
+0.0	0.0	0.0	0.0
+0.6666666666666667	0.6666666666666667	1.0	0.0
+2.0	2.0	2.0	1.0
+0.0	0.0	3.0	0.0
+Microsoft.Bot.Connector.IActivity
+Microsoft.Bot.Connector.IActivity.ChannelData-Local-False	Microsoft.Bot.Connector.IActivity.Type-Local-False	Microsoft.Bot.Connector.IActivity.ChannelId-Local-False	Microsoft.Bot.Connector.IActivity.ServiceUrl-Local-False	Microsoft.Bot.Connector.IActivity.ReplyToId-Local-False	Microsoft.Bot.Connector.IActivity.Recipient-Local-False	Microsoft.Bot.Connector.IActivity.From-Local-False	Microsoft.Bot.Connector.IActivity.Conversation-Local-False	Microsoft.Bot.Connector.IActivity.AsEndOfConversationActivity-Local-False
+0.571428571429	0.333333333333	0.2	0.0	0.0	0.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0	0.0	0.0	0.33333333333333337	0.0	0.3333333333333333
+3.0	1.0	1.0	1.0	0.0	2.0	0.0	0.0	0.0
+0.0	0.0	2.0	0.0	1.0	1.0	1.0	1.0	0.0
+System.Text.RegularExpressions.Regex
+System.Text.RegularExpressions.Regex.IsMatch-Local-False	System.Text.RegularExpressions.Regex.Match-Local-False	System.Text.RegularExpressions.Regex.Replace-NamedType-False	System.Text.RegularExpressions.Regex.Replace-Local-False	System.Text.RegularExpressions.Regex.Matches-Local-False
+0.5	0.285714285714	0.0	0.0	0.0
+0.33333333333333337	0.33333333333333337	0.33333333333333337	0.0	0.0
+0.0	2.5	0.0	0.0	0.5
+0.0	0.0	0.0	2.0	2.0
+System.Convert
+System.Convert.ToString-NamedType-False	System.Convert.ToBase64String-NamedType-False	System.Convert.FromBase64String-NamedType-False	System.Convert.ChangeType-NamedType-False
+0.0	0.0	0.0	0.0
+0.33333333333333337	0.33333333333333337	0.33333333333333337	0.33333333333333337
+0.0	0.0	0.0	2.5
+4.0	0.0	0.0	0.0
+Microsoft.Bot.Builder.Luis.Models.EntityRecommendation
+Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.Validate-Local-False	Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.Type-Local-False	Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.Role-Local-False	Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.Entity-Local-False
+0.0	0.0	0.0	0.0
+0.5	0.5	0.5	0.5
+0.0	0.0	0.0	2.3333333333333335
+0.0	2.0	0.0	3.0
+Microsoft.Bot.Builder.Dialogs.Internals.IBotData
+Microsoft.Bot.Builder.Dialogs.Internals.IBotData.UserData-Local-False	Microsoft.Bot.Builder.Dialogs.Internals.IBotData.PrivateConversationData-Local-False	Microsoft.Bot.Builder.Dialogs.Internals.IBotData.LoadAsync-Local-False	Microsoft.Bot.Builder.Dialogs.Internals.IBotData.FlushAsync-Local-False	Microsoft.Bot.Builder.Dialogs.Internals.IBotData.ConversationData-Local-False
+0.0	0.0	0.0	0.0	0.0
+0.33333333333333337	1.3333333333333333	0.0	0.33333333333333337	0.3333333333333333
+0.0	0.0	0.5	0.5	0.5
+2.0	2.0	0.0	0.0	2.0
+Microsoft.Bot.Builder.FormFlow.DescribeAttribute
+Microsoft.Bot.Builder.FormFlow.DescribeAttribute.Image-Local-False	Microsoft.Bot.Builder.FormFlow.DescribeAttribute.Message-Local-False	Microsoft.Bot.Builder.FormFlow.DescribeAttribute.Title-Local-False	Microsoft.Bot.Builder.FormFlow.DescribeAttribute.SubTitle-Local-False	Microsoft.Bot.Builder.FormFlow.DescribeAttribute.Description-Local-False
+0.181818181818	0.142857142857	0.111111111111	0.111111111111	0.0416666666667
+0.5	0.0	0.5	0.5	4.0
+3.5	3.0	3.5	3.5	3.5
+0.0	0.0	0.0	0.0	1.5
+Microsoft.Bot.Builder.FormFlow.Advanced.Language
+Microsoft.Bot.Builder.FormFlow.Advanced.Language.Normalize-NamedType-False	Microsoft.Bot.Builder.FormFlow.Advanced.Language.GenerateTerms-NamedType-False	Microsoft.Bot.Builder.FormFlow.Advanced.Language.CamelCase-NamedType-False	Microsoft.Bot.Builder.FormFlow.Advanced.Language.BuildList-NamedType-False	Microsoft.Bot.Builder.FormFlow.Advanced.Language.ANormalization-NamedType-False
+0.0	0.0	0.0	0.0	0.0
+0.25	0.5	0.0	1.0	0.0
+0.0	2.0	4.0	0.0	0.0
+4.0	0.0	0.0	3.0	1.0
+Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute
+Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceParens-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.AllowNumbers-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.AllowDefault-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceStyle-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ValueCase-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.Separator-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.Patterns-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.Pattern-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.LastSeparator-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.FieldCase-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.Feedback-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceSeparator-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceLastSeparator-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceFormat-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceCase-Local-False
+0.5	0.5	0.5	0.333333333333	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+0.0	0.0	0.0	0.0	0.0	0.0	0.5	0.0	0.0	0.0	0.0	0.5	0.5	0.5	0.25
+2.0	1.0	2.0	4.0	2.0	2.0	0.0	4.0	2.0	1.0	0.0	1.0	1.0	2.0	3.0
+1.0	0.0	1.0	1.0	1.0	1.0	1.0	0.0	1.0	1.0	1.0	1.0	1.0	1.0	1.0
+Microsoft.Bot.Builder.Dialogs.PromptStyle
+Microsoft.Bot.Builder.Dialogs.PromptStyle.Keyboard-NamedType-False	Microsoft.Bot.Builder.Dialogs.PromptStyle.PerLine-NamedType-False	Microsoft.Bot.Builder.Dialogs.PromptStyle.None-NamedType-False	Microsoft.Bot.Builder.Dialogs.PromptStyle.Inline-NamedType-False	Microsoft.Bot.Builder.Dialogs.PromptStyle.AutoText-NamedType-False	Microsoft.Bot.Builder.Dialogs.PromptStyle.Auto-NamedType-False
+0.333333333333	0.0	0.0	0.0	0.0	0.0
+-5.551115123125783e-17	-5.551115123125783e-17	1.3333333333333333	-5.551115123125783e-17	-2.7755575615628914e-17	0.0
+2.0	2.0	1.0	2.0	1.0	3.0
+0.0	0.0	4.0	0.0	0.0	2.0
+System.Threading.CancellationToken
+System.Threading.CancellationToken.ThrowIfCancellationRequested-Local-False	System.Threading.CancellationToken.None-NamedType-False	System.Threading.CancellationToken.CanBeCanceled-Local-False
+0.0	0.0	0.0
+0.0	0.0	1.0
+4.0	0.0	0.0
+0.0	2.5	0.0
+System.Net.Http.HttpContent
+System.Net.Http.HttpContent.ReadAsStringAsync-Local-False	System.Net.Http.HttpContent.Headers-Local-False
+0.0	0.0
+1.0	0.0
+4.0	3.5
+2.0	0.0
+Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser
+Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser.PostAsync-Local-False	Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser.MakeMessage-Local-False
+0.0	0.0
+3.0	1.0
+1.0	1.0
+0.0	2.0
+System.Runtime.Serialization.SerializationInfo
+System.Runtime.Serialization.SerializationInfo.SetType-Local-False	System.Runtime.Serialization.SerializationInfo.GetValue-Local-False	System.Runtime.Serialization.SerializationInfo.AddValue-Local-False
+0.0	0.0	0.0
+0.0	0.5	0.5
+1.0	2.0	2.0
+0.0	0.0	2.5
+System.DateTime
+System.DateTime.Subtract-Local-False	System.DateTime.TryParse-NamedType-False	System.DateTime.MaxValue-NamedType-False	System.DateTime.UtcNow-NamedType-False	System.DateTime.MinValue-NamedType-False	System.DateTime.Add-Local-False
+0.666666666667	0.5	0.333333333333	0.142857142857	0.0	0.0
+-5.551115123125783e-17	0.33333333333333337	-5.551115123125783e-17	0.3333333333333333	0.33333333333333337	-5.551115123125783e-17
+0.0	0.0	1.0	0.0	0.0	0.0
+2.0	0.0	1.0	3.0	0.0	2.0
+System.StringComparison
+System.StringComparison.OrdinalIgnoreCase-NamedType-False
+0.823529411765
+0.0
+2.0
+1.0
+Microsoft.Bot.Connector.ConnectorClient
+Microsoft.Bot.Connector.ConnectorClient.Credentials-Local-False	Microsoft.Bot.Connector.ConnectorClient.SerializationSettings-Local-False	Microsoft.Bot.Connector.ConnectorClient.DeserializationSettings-Local-False	Microsoft.Bot.Connector.ConnectorClient.Conversations-Local-False	Microsoft.Bot.Connector.ConnectorClient.BaseUri-Local-False	Microsoft.Bot.Connector.ConnectorClient.Attachments-Local-False	Microsoft.Bot.Connector.ConnectorClient.AddUserAgent-NamedType-False
+0.484848484848	0.0	0.0	0.0	0.0	0.0	0.0
+0.0	0.0	0.0	0.0	0.0	0.0	1.0
+4.0	2.0	4.0	0.0	3.0	0.0	0.0
+0.0	0.0	0.0	0.5	1.0	0.5	0.0
+Microsoft.Bot.Connector.MicrosoftAppCredentials
+Microsoft.Bot.Connector.MicrosoftAppCredentials.TrustServiceUrl-NamedType-False	Microsoft.Bot.Connector.MicrosoftAppCredentials.IsTrustedServiceUrl-NamedType-False	Microsoft.Bot.Connector.MicrosoftAppCredentials.GetTokenAsync-Local-False
+0.0	0.0	0.0
+1.0	1.0	0.0
+-5.551115123125783e-17	-2.7755575615628914e-17	1.0
+1.0	0.0	0.0
+double
+double.TryParse-NamedType-False	double.MaxValue-NamedType-False	double.MinValue-NamedType-False	double.GetHashCode-Local-True	double.CompareTo-Local-False
+0.5	0.333333333333	0.0	0.0	0.0
+0.0	0.0	0.0	0.5	0.5
+0.0	1.5	0.5	0.0	0.0
+1.0	0.0	0.0	0.0	0.0
+Microsoft.Bot.Builder.Internals.Fibers.Extensions
+System.Collections.Generic.List-Local-False	System.Collections.Generic.IReadOnlyList-Local-False	System.Collections.Generic.IDictionary-Local-False	Microsoft.Bot.Builder.Internals.Fibers.IWait.ValidateNeed-Local-False	Microsoft.Bot.Builder.Internals.Fibers.IWait-Local-False	Microsoft.Bot.Builder.Internals.Fibers.IFiber-Local-False	Microsoft.Bot.Builder.Internals.Fibers.Extensions.Equals-NamedType-False
+0.0	0.0	0.0	0.0	0.0	0.0	0.0
+0.0	0.0	0.0	3.0	0.0	0.0	0.0
+0.6666666666666667	-2.7755575615628914e-17	0.33333333333333337	-1.1102230246251565e-16	-5.551115123125783e-17	-1.1102230246251565e-16	0.33333333333333337
+0.0	1.0	0.0	1.0	2.0	4.0	0.0
+System.Delegate
+System.Delegate.Target-Local-False	System.Delegate.Method-Local-False	System.Delegate.CreateDelegate-NamedType-False
+0.0	0.0	0.0
+0.33333333333333337	0.6666666666666667	-5.551115123125783e-17
+4.0	3.0	0.0
+0.0	0.0	2.0
+Microsoft.Bot.Builder.Dialogs.Chain
+Microsoft.Bot.Builder.Dialogs.IDialog-Local-False	Microsoft.Bot.Builder.Dialogs.Chain.PostToChain-NamedType-False
+0.0	0.0
+4.0	3.5
+1.0	0.0
+2.0	0.0
+System.Enum
+System.Enum.HasFlag-Local-False	System.Enum.TryParse-NamedType-False	System.Enum.ToString-Local-True	System.Enum.Parse-NamedType-False
+0.8	0.6	0.0	0.0
+0.0	0.0	0.5	1.0
+3.0	0.0	0.0	0.0
+0.0	1.5	0.0	0.0
+Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions
+Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.IsMultiAction-NamedType-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.CompareOrder-NamedType-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.Validate-NamedType-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.RejectAction-NamedType-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.PlayPromptAction-NamedType-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.IsValidAction-NamedType-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.IsExclusiveAction-NamedType-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.AnswerAction-NamedType-False
+0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0
+-2.7755575615628914e-17	-2.7755575615628914e-17	0.3333333333333333	0.33333333333333337	0.33333333333333337	-2.7755575615628914e-17	-2.7755575615628914e-17	-2.7755575615628914e-17
+1.0	1.0	1.0	0.0	0.0	1.0	1.0	0.0
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.0
+System.Net.Http.HttpRequestMessage
+System.Net.Http.HttpRequestMessage.Headers-Local-False	System.Net.Http.HttpRequestMessage.Content-Local-False	System.Net.Http.HttpRequestMessage.RequestUri-Local-False	System.Net.Http.HttpRequestMessage.Method-Local-False	System.Net.Http.HttpRequestMessage.Dispose-Local-False
+0.333333333333	0.130434782609	0.0555555555556	0.0	0.0
+1.0	0.0	2.0	0.0	0.0
+4.0	3.5	4.0	4.0	4.0
+1.0	3.0	0.0	0.0	0.0
+System.Net.Http.HttpResponseMessage
+System.Net.Http.HttpResponseMessage.StatusCode-Local-False	System.Net.Http.HttpResponseMessage.ReasonPhrase-Local-False	System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode-Local-False	System.Net.Http.HttpResponseMessage.Dispose-Local-False	System.Net.Http.HttpResponseMessage.Content-Local-False
+0.0	0.0	0.0	0.0	0.0
+0.0	0.5	1.0	0.0	1.0
+3.0	0.0	0.0	4.0	4.0
+2.0	0.0	0.0	4.0	4.0
+Microsoft.Bot.Builder.Tests.DialogTestBase
+Microsoft.Bot.Builder.Tests.DialogTestBase.MakeTestMessage-NamedType-False
+0.0
+0.0
+1.0
+0.0
+Microsoft.Bot.Builder.Scorables.Internals.Extensions
+Microsoft.Bot.Builder.Scorables.Internals.IResolver.TryResolve-Local-False	System.Reflection.MethodBase.CachedParameters-Local-False	Microsoft.Bot.Builder.Scorables.Internals.IResolver.Resolve-Local-False	Microsoft.Bot.Builder.Scorables.Internals.IResolver.CanResolve-Local-False
+0.75	0.0	0.0	0.0
+1.5	0.0	0.0	0.0
+0.0	0.0	3.0	2.0
+0.0	1.0	0.0	0.0
+Microsoft.Bot.Sample.AlarmBot.Models.Alarm
+Microsoft.Bot.Sample.AlarmBot.Models.Alarm.When-Local-False	Microsoft.Bot.Sample.AlarmBot.Models.Alarm.Title-Local-False	Microsoft.Bot.Sample.AlarmBot.Models.Alarm.State-Local-False	Microsoft.Bot.Sample.AlarmBot.Models.Alarm.Next-Local-False	Microsoft.Bot.Sample.AlarmBot.Models.Alarm.Cookie-Local-False
+0.153846153846	0.0	0.0	0.0	0.0
+4.0	4.0	4.0	0.0	0.0
+0.0	1.0	0.5	0.0	0.5
+4.0	3.0	2.0	1.0	0.0
+Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.OperationOutcomeBase
+Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.OperationOutcomeBase.Outcome-Local-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.OperationOutcomeBase.Validate-Local-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.OperationOutcomeBase.Type-Local-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.OperationOutcomeBase.Id-Local-False
+0.833333333333	0.0	0.0	0.0
+0.5	1.0	0.0	0.0
+2.0	0.0	0.0	0.0
+0.0	0.0	1.0	1.0
+Microsoft.Bot.Connector.JwtConfig
+Microsoft.Bot.Connector.JwtConfig.ToChannelFromBotOAuthScope-NamedType-False	Microsoft.Bot.Connector.JwtConfig.ToChannelFromBotLoginUrl-NamedType-False	Microsoft.Bot.Connector.JwtConfig.ToBotFromEmulatorTokenValidationParameters-NamedType-False	Microsoft.Bot.Connector.JwtConfig.ToBotFromEmulatorOpenIdMetadataUrl-NamedType-False	Microsoft.Bot.Connector.JwtConfig.ToBotFromChannelTokenValidationParameters-NamedType-False	Microsoft.Bot.Connector.JwtConfig.ToBotFromChannelOpenIdMetadataUrl-NamedType-False	Microsoft.Bot.Connector.JwtConfig.ToBotFromChannelAllowedSigningAlgorithms-NamedType-False
+0.0	0.0	0.0	0.0	0.0	0.0	0.0
+1.0	1.0	0.0	0.0	0.0	0.0	0.0
+0.0	0.0	1.0	1.0	2.0	0.0	1.0
+0.0	0.0	0.0	0.0	0.0	1.0	0.0
+Microsoft.Bot.Builder.Scorables.Scorable
+System.Collections.Generic.IEnumerable-Local-False	Microsoft.Bot.Builder.Scorables.Scorable.Keep-NamedType-False	Microsoft.Bot.Builder.Scorables.IScorable-Local-False
+0.0	0.0	0.0
+1.5	0.0	0.0
+0.0	0.0	3.0
+1.0	1.0	0.0
+System.Text.RegularExpressions.Match
+System.Text.RegularExpressions.Match.Groups-Local-False
+0.0
+2.0
+1.0
+0.0
+System.Text.RegularExpressions.Capture
+System.Text.RegularExpressions.Capture.Index-Local-False	System.Text.RegularExpressions.Capture.Value-Local-False	System.Text.RegularExpressions.Capture.Length-Local-False
+0.166666666667	0.0	0.0
+0.0	4.0	0.0
+2.5	1.5	1.5
+0.0	1.0	0.0
+System.Text.StringBuilder
+System.Text.StringBuilder.Length-Local-False	System.Text.StringBuilder.ToString-Local-True	System.Text.StringBuilder.AppendLine-Local-False	System.Text.StringBuilder.AppendFormat-Local-False	System.Text.StringBuilder.Append-Local-False
+0.5	0.0	0.0	0.0	0.0
+0.0	3.0	3.0	1.0	4.0
+1.0	1.0	0.0	0.0	3.0
+0.0	1.5	0.5	0.5	4.0
+Microsoft.Bot.Builder.FormFlow.TemplateUsage
+Microsoft.Bot.Builder.FormFlow.TemplateUsage.Unspecified-NamedType-False	Microsoft.Bot.Builder.FormFlow.TemplateUsage.StringHelp-NamedType-False	Microsoft.Bot.Builder.FormFlow.TemplateUsage.StatusFormat-NamedType-False	Microsoft.Bot.Builder.FormFlow.TemplateUsage.NoPreference-NamedType-False	Microsoft.Bot.Builder.FormFlow.TemplateUsage.NavigationCommandHelp-NamedType-False	Microsoft.Bot.Builder.FormFlow.TemplateUsage.IntegerHelp-NamedType-False	Microsoft.Bot.Builder.FormFlow.TemplateUsage.DoubleHelp-NamedType-False	Microsoft.Bot.Builder.FormFlow.TemplateUsage.Double-NamedType-False	Microsoft.Bot.Builder.FormFlow.TemplateUsage.DateTimeHelp-NamedType-False	Microsoft.Bot.Builder.FormFlow.TemplateUsage.CurrentChoice-NamedType-False	Microsoft.Bot.Builder.FormFlow.TemplateUsage.BoolHelp-NamedType-False
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+0.0	0.0	0.0	0.0	0.5	0.0	0.0	0.5	0.0	0.0	0.0
+0.0	1.0	0.0	0.0	0.0	1.0	1.0	0.0	1.0	0.0	1.0
+1.0	0.0	1.0	1.0	0.0	0.0	0.0	0.0	0.0	1.0	0.0
+Microsoft.Bot.Builder.Dialogs.Extensions
+System.Collections.Generic.IEnumerable-Local-False	Microsoft.Bot.Connector.IMessageActivity.AddHeroCard-Local-False	Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Wait-Local-False	Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser.PostAsync-Local-False	Microsoft.Bot.Builder.Dialogs.IPromptRecognizer.RecognizeIntegerInRange-Local-False	Microsoft.Bot.Builder.Dialogs.IPromptRecognizer.RecognizeDoubleInRange-Local-False
+0.0	0.0	0.0	0.0	0.0	0.0
+4.0	1.0	2.0	0.0	4.0	2.0
+0.0	0.0	1.0	0.5	0.0	0.0
+0.0	0.0	3.0	2.0	0.0	0.0
+System.Exception
+System.Exception.ToString-Local-True	System.Exception.Message-Local-False	System.Exception.GetObjectData-Local-False
+0.0	0.0	0.0
+1.5	0.0	0.0
+0.0	0.0	1.0
+0.0	1.0	0.0
+Microsoft.Bot.Builder.Resource.Resources
+Microsoft.Bot.Builder.Resource.Resources.UserProfileDeleted-NamedType-False	Microsoft.Bot.Builder.Resource.Resources.TooManyAttempts-NamedType-False	Microsoft.Bot.Builder.Resource.Resources.ResourceManager-NamedType-False	Microsoft.Bot.Builder.Resource.Resources.PromptRetry-NamedType-False	Microsoft.Bot.Builder.Resource.Resources.MatchYes-NamedType-False	Microsoft.Bot.Builder.Resource.Resources.MatchNo-NamedType-False	Microsoft.Bot.Builder.Resource.Resources.DefaultChoiceSeparator-NamedType-False	Microsoft.Bot.Builder.Resource.Resources.DefaultChoiceLastSeparator-NamedType-False
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+0.0	0.0	0.0	0.0	0.0	0.0	1.0	1.0
+0.0	2.0	0.0	3.0	3.0	3.0	1.0	1.0
+0.5	0.0	0.5	0.0	0.0	0.0	0.0	0.0
+Microsoft.Bot.Connector.ActionTypes
+Microsoft.Bot.Connector.ActionTypes.Signin-NamedType-False	Microsoft.Bot.Connector.ActionTypes.ImBack-NamedType-False
+0.0	0.0
+0.0	1.0
+1.0	0.0
+0.0	2.0
+Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions
+Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions.Inline-NamedType-False	Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions.Auto-NamedType-False	Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions.Carousel-NamedType-False	Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions.AutoText-NamedType-False	Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions.Buttons-NamedType-False
+0.5	0.333333333333	0.25	0.25	0.0
+1.0	2.0	2.0	1.0	1.0
+0.0	0.5	0.0	1.0	0.0
+0.0	1.0	0.0	0.0	0.0
+Microsoft.Bot.Connector.ConversationReference
+Microsoft.Bot.Connector.ConversationReference.User-Local-False	Microsoft.Bot.Connector.ConversationReference.ServiceUrl-Local-False	Microsoft.Bot.Connector.ConversationReference.GetPostToBotMessage-Local-False	Microsoft.Bot.Connector.ConversationReference.Conversation-Local-False	Microsoft.Bot.Connector.ConversationReference.ChannelId-Local-False	Microsoft.Bot.Connector.ConversationReference.Bot-Local-False
+0.0	0.0	0.0	0.0	0.0	0.0
+0.0	2.0	0.0	0.0	0.0	0.0
+0.0	0.0	1.0	0.0	0.0	0.0
+1.0	1.0	0.0	1.0	1.0	1.0
+Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ActionBase
+Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ActionBase.IsStandaloneAction-Local-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ActionBase.Validate-Local-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ActionBase.Action-Local-False
+0.333333333333	0.0	0.0
+0.0	1.0	1.0
+2.0	1.0	3.0
+0.0	1.0	1.0
+Microsoft.Bot.Connector.StateClient
+Microsoft.Bot.Connector.StateClient.Credentials-Local-False	Microsoft.Bot.Connector.StateClient.SerializationSettings-Local-False	Microsoft.Bot.Connector.StateClient.DeserializationSettings-Local-False	Microsoft.Bot.Connector.StateClient.BotState-Local-False	Microsoft.Bot.Connector.StateClient.BaseUri-Local-False
+0.48275862069	0.0	0.0	0.0	0.0
+4.0	2.0	4.0	0.0	3.0
+0.0	0.0	0.0	1.0	1.0
+0.0	0.0	0.0	1.0	1.0
+System.Net.Http.Headers.HttpHeaders
+System.Net.Http.Headers.HttpHeaders.Contains-Local-False	System.Net.Http.Headers.HttpHeaders.TryGetValues-Local-False	System.Net.Http.Headers.HttpHeaders.TryAddWithoutValidation-Local-False	System.Net.Http.Headers.HttpHeaders.Remove-Local-False
+0.9375	0.5	0.0	0.0
+3.0	0.0	3.0	3.0
+0.0	1.0	0.0	0.0
+2.0	0.0	2.0	2.0
+System.Text.Encoding
+System.Text.Encoding.UTF8-NamedType-False	System.Text.Encoding.GetString-Local-False	System.Text.Encoding.GetBytes-Local-False
+0.0	0.0	0.0
+3.0	0.0	0.0
+2.0	1.0	1.0
+4.0	0.0	0.0
+Microsoft.Bot.Connector.ActivityExtensions
+Microsoft.Bot.Connector.IMessageActivity.RemoveMentionText-Local-False	Microsoft.Bot.Connector.IActivity.GetActivityType-Local-False
+0.0	0.0
+1.0	0.0
+0.0	2.0
+1.0	0.0
+System.Text.RegularExpressions.RegexOptions
+System.Text.RegularExpressions.RegexOptions.IgnorePatternWhitespace-NamedType-False	System.Text.RegularExpressions.RegexOptions.IgnoreCase-NamedType-False	System.Text.RegularExpressions.RegexOptions.Compiled-NamedType-False
+0.0	0.0	0.0
+1.0	1.0	1.0
+0.0	1.0	0.0
+1.0	1.0	1.0
+Microsoft.Bot.Connector.ClaimsIdentityEx
+System.Security.Claims.ClaimsIdentity.GetAppPasswordFromClaims-Local-False	System.Security.Claims.ClaimsIdentity.GetAppIdFromClaims-Local-False	Microsoft.Bot.Connector.ClaimsIdentityEx.AppPasswordClaim-NamedType-False	ClaimsIdentity.GetAppPasswordFromClaims-Local-False	ClaimsIdentity.GetAppIdFromClaims-Local-False
+0.0	0.0	0.0	0.0	0.0
+1.0	1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0	1.0
+0.0	0.0	1.0	0.0	0.0
+System.Net.Http.HttpClient
+System.Net.Http.HttpClient.PostAsync-Local-False	System.Net.Http.HttpClient.GetStringAsync-Local-False	System.Net.Http.HttpClient.GetAsync-Local-False
+0.0	0.0	0.0
+1.0	0.0	0.0
+0.0	1.0	0.0
+0.0	0.0	1.0
+Microsoft.Bot.Builder.Luis.Extensions
+Microsoft.Bot.Builder.Luis.ILuisService.QueryAsync-Local-False	Microsoft.Bot.Builder.Luis.ILuisService.BuildUri-Local-False
+0.0	0.0
+0.0	1.0
+1.0	0.0
+1.0	0.0
+Microsoft.Bot.Builder.Luis.ILuisService
+Microsoft.Bot.Builder.Luis.ILuisService.QueryAsync-Local-False	Microsoft.Bot.Builder.Luis.ILuisService.ModifyRequest-Local-False	Microsoft.Bot.Builder.Luis.ILuisService.BuildUri-Local-False
+0.0	0.0	0.0
+1.0	2.0	1.0
+1.0	0.0	0.0
+1.0	1.0	2.0
+Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ConversationBase
+Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ConversationBase.Validate-Local-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ConversationBase.Id-Local-False	Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ConversationBase.AppState-Local-False
+0.0	0.0	0.0
+1.0	0.0	0.0
+0.0	1.0	1.0
+0.0	2.0	0.0
+Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues
+Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.SilentPromptDuration-NamedType-False	Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.NumberOfStopTones-NamedType-False	Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.LengthOfTTSText-NamedType-False	Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.AppStateLength-NamedType-False
+0.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+1.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+System.Diagnostics.Trace
+System.Diagnostics.Trace.TraceWarning-NamedType-False	System.Diagnostics.Trace.TraceError-NamedType-False
+0.0	0.0
+2.0	0.0
+0.0	3.0
+0.0	1.0
+Microsoft.Bot.Connector.Attachment
+Microsoft.Bot.Connector.Attachment.ThumbnailUrl-Local-False	Microsoft.Bot.Connector.Attachment.Name-Local-False	Microsoft.Bot.Connector.Attachment.Equals-Local-False	Microsoft.Bot.Connector.Attachment.ContentUrl-Local-False	Microsoft.Bot.Connector.Attachment.ContentType-Local-False	Microsoft.Bot.Connector.Attachment.Content-Local-False
+0.0	0.0	0.0	0.0	0.0	0.0
+4.0	4.0	1.0	3.0	3.0	4.0
+0.0	0.0	0.0	0.0	2.0	0.0
+4.0	4.0	1.0	3.0	3.0	4.0
+Microsoft.Bot.Builder.Scorables.Internals.InheritedAttributes
+Microsoft.Bot.Builder.Scorables.Internals.InheritedAttributes.For-NamedType-False
+0.0
+1.0
+0.0
+0.0
+Microsoft.Bot.Builder.Luis.Models.IntentRecommendation
+Microsoft.Bot.Builder.Luis.Models.IntentRecommendation.Intent-Local-False	Microsoft.Bot.Builder.Luis.Models.IntentRecommendation.Score-Local-False	Microsoft.Bot.Builder.Luis.Models.IntentRecommendation.Actions-Local-False
+0.333333333333	0.0	0.0
+1.0	2.0	0.0
+0.0	0.0	1.0
+0.0	0.0	1.0
+System.OperationCanceledException
+System.OperationCanceledException.CancellationToken-Local-False
+0.0
+0.0
+1.0
+0.0
+Microsoft.Bot.Builder.Internals.Fibers.IWait
+Microsoft.Bot.Builder.Internals.Fibers.IWait.Rest-Local-False	Microsoft.Bot.Builder.Internals.Fibers.IWait.Post-Local-False	Microsoft.Bot.Builder.Internals.Fibers.IWait.NeedType-Local-False	Microsoft.Bot.Builder.Internals.Fibers.IWait.Need-Local-False	Microsoft.Bot.Builder.Internals.Fibers.IWait.ItemType-Local-False	Microsoft.Bot.Builder.Internals.Fibers.IWait.Fail-Local-False
+0.0	0.0	0.0	0.0	0.0	0.0
+0.0	0.0	1.0	1.0	1.0	1.0
+0.0	0.0	0.0	3.0	0.0	0.0
+2.0	1.0	0.0	1.0	0.0	0.0
+Microsoft.Bot.Builder.Internals.Fibers.Need
+Microsoft.Bot.Builder.Internals.Fibers.Need.Wait-NamedType-False	Microsoft.Bot.Builder.Internals.Fibers.Need.Poll-NamedType-False	Microsoft.Bot.Builder.Internals.Fibers.Need.None-NamedType-False	Microsoft.Bot.Builder.Internals.Fibers.Need.Done-NamedType-False	Microsoft.Bot.Builder.Internals.Fibers.Need.Call-NamedType-False
+0.0	0.0	0.0	0.0	0.0
+0.0	0.0	2.0	3.0	0.0
+4.0	3.0	2.0	1.0	1.0
+4.0	0.0	1.0	1.0	1.0
+System.Text.RegularExpressions.Group
+System.Text.RegularExpressions.Group.Success-Local-False
+0.0952380952381
+2.0
+0.0
+1.0
+System.Globalization.CultureInfo
+System.Globalization.CultureInfo.TwoLetterISOLanguageName-Local-False	System.Globalization.CultureInfo.DateTimeFormat-Local-False	System.Globalization.CultureInfo.NumberFormat-Local-False	System.Globalization.CultureInfo.InvariantCulture-NamedType-False	System.Globalization.CultureInfo.Calendar-Local-False
+0.5	0.333333333333	0.285714285714	0.0	0.0
+1.0	2.0	3.0	0.0	0.0
+0.0	0.0	0.0	1.0	0.0
+0.0	0.0	0.0	1.0	1.0
+System.IO.MemoryStream
+System.IO.MemoryStream.ToArray-Local-False
+0.0
+0.0
+0.0
+0.0
+Microsoft.Bot.Builder.FormFlow.FormOptions
+Microsoft.Bot.Builder.FormFlow.FormOptions.PromptFieldsWithValues-NamedType-False	Microsoft.Bot.Builder.FormFlow.FormOptions.PromptInStart-NamedType-False	Microsoft.Bot.Builder.FormFlow.FormOptions.None-NamedType-False
+0.6	0.166666666667	0.0
+3.0	1.0	2.0
+0.0	1.0	0.0
+1.0	3.0	0.0
+Microsoft.Bot.Builder.FormFlow.Advanced.Extensions
+System.Type.IsIEnumerable-Local-False	System.Type.IsIntegral-Local-False	System.Type.IsDouble-Local-False	System.Type.IsNullable-Local-False	System.Type.GetGenericElementType-Local-False	Microsoft.Bot.Builder.FormFlow.IForm-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.FormPrompt.GenerateHeroCards-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.FormPrompt.GenerateHeroCard-Local-False
+0.833333333333	0.75	0.75	0.666666666667	0.0	0.0	0.0	0.0
+0.0	0.0	0.0	0.0	0.0	4.0	0.0	0.0
+3.0	3.0	3.0	2.0	1.0	0.0	0.0	0.0
+2.0	0.0	0.0	0.0	0.0	0.0	1.0	1.0
+System.Tuple
+System.Tuple.Item3-Local-False	System.Tuple.Item2-Local-False	System.Tuple.Item1-Local-False	System.Tuple.Create-NamedType-False
+0.0	0.0	0.0	0.0
+0.0	1.0	1.0	3.0
+0.0	1.0	2.0	1.0
+1.0	1.0	1.0	2.0
+Microsoft.Bot.Builder.FormFlow.ValidateResult
+Microsoft.Bot.Builder.FormFlow.ValidateResult.Value-Local-False	Microsoft.Bot.Builder.FormFlow.ValidateResult.IsValid-Local-False	Microsoft.Bot.Builder.FormFlow.ValidateResult.FeedbackCard-Local-False	Microsoft.Bot.Builder.FormFlow.ValidateResult.Feedback-Local-False	Microsoft.Bot.Builder.FormFlow.ValidateResult.Choices-Local-False
+0.0	0.0	0.0	0.0	0.0
+0.0	2.0	1.0	2.0	1.0
+4.0	3.0	0.0	3.0	0.0
+0.0	1.0	0.0	0.0	0.0
+Microsoft.Bot.Builder.FormFlow.Advanced.IFieldDescription
+Microsoft.Bot.Builder.FormFlow.Advanced.IFieldDescription.Role-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.IFieldDescription.FieldTerms-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.IFieldDescription.FieldDescription-Local-False	Microsoft.Bot.Builder.FormFlow.Advanced.IFieldDescription.AllowsMultiple-Local-False
+0.0	0.0	0.0	0.0
+1.0	0.0	1.0	1.0
+0.0	1.0	1.0	0.0
+0.0	0.0	1.0	0.0
+Microsoft.Bot.Builder.Internals.Fibers.SetField
+Microsoft.Bot.Builder.Internals.Fibers.SetField.NotNull-NamedType-False	Microsoft.Bot.Builder.Internals.Fibers.SetField.CheckNull-NamedType-False
+0.0	0.0
+1.0	0.0
+0.0	2.0
+1.0	0.0
+System.Environment
+System.Environment.NewLine-NamedType-False	System.Environment.GetEnvironmentVariable-NamedType-False
+0.0	0.0
+1.0	0.0
+0.0	1.0
+2.0	0.0
+System.Reflection.CustomAttributeExtensions
+System.Reflection.MemberInfo.GetCustomAttributes-Local-False	System.Reflection.MemberInfo.GetCustomAttribute-Local-False
+0.0	0.0
+1.0	0.0
+2.0	3.0
+1.0	0.0
+Microsoft.Bot.Sample.AlarmBot.Models.IAlarmService
+Microsoft.Bot.Sample.AlarmBot.Models.IAlarmService.UpsertAsync-Local-False	Microsoft.Bot.Sample.AlarmBot.Models.IAlarmService.SnoozeAsync-Local-False	Microsoft.Bot.Sample.AlarmBot.Models.IAlarmService.DeleteAsync-Local-False
+0.0	0.0	0.0
+2.0	1.0	1.0
+0.0	1.0	0.0
+2.0	1.0	1.0
+Microsoft.Bot.Connector.HeroCard
+Microsoft.Bot.Connector.HeroCard.Text-Local-False	Microsoft.Bot.Connector.HeroCard.ContentType-NamedType-False
+0.0	0.0
+0.0	1.0
+1.0	0.0
+0.0	1.0
+Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm
+Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm.Title-NamedType-False	Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm.Alarm_State-NamedType-False	Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm.Start_Time-NamedType-False	Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm.Start_Date-NamedType-False
+0.5	0.5	0.0	0.0
+1.0	1.0	0.0	0.0
+1.0	1.0	1.0	1.0
+1.0	1.0	0.0	0.0
+Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn
+Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm-NamedType-False
+0.444444444444
+0.0
+1.0
+0.0
+System.Reflection.MethodBase
+System.Reflection.MethodBase.Invoke-Local-False	System.Reflection.MethodBase.GetParameters-Local-False	System.Reflection.MethodBase.GetHashCode-Local-True
+0.0	0.0	0.0
+1.0	1.0	0.0
+2.0	0.0	1.0
+1.0	0.0	0.0
+Microsoft.Bot.Builder.Dialogs.IBotDataBag
+Microsoft.Bot.Builder.Dialogs.IBotDataBag.ContainsKey-Local-False	Microsoft.Bot.Builder.Dialogs.IBotDataBag.Clear-Local-False
+0.0	0.0
+1.0	0.0
+0.0	2.0
+0.0	2.0
+Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder
+Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.Sauces-NamedType-False	Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.Length-Local-False	Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.DeliveryTime-NamedType-False	Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.DeliveryAddress-NamedType-False	Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.BuildLocalizedForm-NamedType-False	Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.BuildJsonForm-NamedType-False
+0.0	0.0	0.0	0.0	0.0	0.0
+0.0	0.0	0.0	0.0	1.0	1.0
+2.0	2.0	2.0	2.0	0.0	0.0
+0.0	0.0	0.0	0.0	1.0	1.0
+Microsoft.Bot.Builder.FormFlow.FormDialog
+Microsoft.Bot.Builder.FormFlow.FormDialog._options-Local-False	Microsoft.Bot.Builder.FormFlow.FormDialog._entities-Local-False	Microsoft.Bot.Builder.FormFlow.FormDialog._state-Local-False	Microsoft.Bot.Builder.FormFlow.FormDialog._formState-Local-False	Microsoft.Bot.Builder.FormFlow.FormDialog._form-Local-False	Microsoft.Bot.Builder.FormFlow.FormDialog._buildForm-Local-False	Microsoft.Bot.Builder.FormFlow.FormDialog.FromForm-NamedType-False
+0.25	0.2	0.0	0.0	0.0	0.0	0.0
+3.0	4.0	2.0	2.0	1.0	2.0	0.0
+0.0	0.0	0.0	0.0	0.0	0.0	2.0
+0.0	0.0	0.0	0.0	0.0	0.0	1.0

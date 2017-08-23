@@ -22,25 +22,39 @@ using Microsoft.CodeAnalysis.CSharp.Recommendations;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 {
     internal partial class PythiaCompletionProvider : CommonCompletionProvider
     {
-        private static readonly string MODELS_PATH = @"..\..\..\..\roslyn\models\";
+        private static readonly string MODELS_PATH = @"C:\Users\yasiyu\Source\Repos\roslyn\models\"; // @"..\..\..\..\roslyn\models\";
+
+        // global models
+        private static readonly string SCORING_MODEL_CSV_PATH = MODELS_PATH + @"model-all.tsv";
         private static readonly string SCORING_MODEL_JSON_PATH = MODELS_PATH + @"model-all.json";
+
+        private static readonly string POPULARITY_MODEL_CSV_PATH = MODELS_PATH + @"freqs-new2.txt";
         private static readonly string POPULARITY_MODEL_JSON_PATH = MODELS_PATH + @"model-frequency.json";
+
+        // personalized models (hardcoded for the botBuilder project currently)
+        private static readonly string PROJECT_SCORING_MODEL_CSV_PATH = MODELS_PATH + @"botBuilder-model-all.tsv";
+        private static readonly string PROJECT_SCORING_MODEL_JSON_PATH = MODELS_PATH + @"botBuilder-model-all.json";
+
+        private static readonly string PROJECT_POPULARITY_MODEL_CSV_PATH = MODELS_PATH + @"botBuilder-model-frequency.txt";
+        private static readonly string PROJECT_POPULARITY_MODEL_JSON_PATH = MODELS_PATH + @"botBuilder-model-frequency.json";
 
         private static readonly SymbolDisplayFormat SYMBOL_DISPLAY_FORMAT = new SymbolDisplayFormat(typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces);
 
         private Dictionary<string, IEnumerable<string[]>> scoringModel; // model based on method co-occurrence in crawled repos
         private Dictionary<string, int> popularityModel; // model based on frequency of occurrences in crawled repos
 
-        private void BuildScoringModel ()
+        private Dictionary<string, IEnumerable<string[]>> projectScoringModel;
+
+
+        private void BuildScoringModel(string inPath, string outPath)
         {
             // Read and parse model file
-            var lines = File.ReadLines(MODELS_PATH + @"model-all.csv")
+            var lines = File.ReadLines(inPath)
                             .Where(x => !string.IsNullOrWhiteSpace(x))
                             .Select(line => line.Split('\t'));
 
@@ -60,42 +74,75 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 modelTemp[className] = classModel;
             }
             string json = JsonConvert.SerializeObject(modelTemp);
-            File.WriteAllText(SCORING_MODEL_JSON_PATH, json);
+            File.WriteAllText(outPath, json);
         }
 
-        private void BuildPopularityModel()
+        private void BuildPopularityModel(string inPath, string outPath)
         {
-            var modelTemp = File.ReadAllLines(MODELS_PATH + @"freqs-new2.txt")
+            var modelTemp = File.ReadAllLines(inPath)
                                 .Select(line => line.Split('\t'))
                                 .ToDictionary(line => line[1].Replace("\"", ""), line => Convert.ToInt32(line[2]));
 
             string json = JsonConvert.SerializeObject(modelTemp);
-            File.WriteAllText(POPULARITY_MODEL_JSON_PATH, json);
+            File.WriteAllText(outPath, json);
         }
 
-        private void DeserializeModels ()
+        private void BuildGlobalScoringModel()
+        {
+            BuildScoringModel(SCORING_MODEL_CSV_PATH, SCORING_MODEL_JSON_PATH);
+        }
+
+        private void BuildProjectScoringModel()
+        {
+            BuildScoringModel(PROJECT_SCORING_MODEL_CSV_PATH, PROJECT_SCORING_MODEL_JSON_PATH);
+        }
+
+        private void BuildGlobalPopularityModel()
+        {
+            BuildPopularityModel(POPULARITY_MODEL_CSV_PATH, POPULARITY_MODEL_JSON_PATH);
+        }
+
+        private void BuildProjectPopularityModel()
+        {
+            BuildPopularityModel(PROJECT_POPULARITY_MODEL_CSV_PATH, PROJECT_POPULARITY_MODEL_JSON_PATH);
+        }
+
+        private void DeserializeModels()
         {
             string json = File.ReadAllText(SCORING_MODEL_JSON_PATH);
             scoringModel = JsonConvert.DeserializeObject<Dictionary<string, IEnumerable<string[]>>>(json);
 
             string jsonFreq = File.ReadAllText(POPULARITY_MODEL_JSON_PATH);
             popularityModel = JsonConvert.DeserializeObject<Dictionary<string, int>>(jsonFreq);
+
+            string jsonProject = File.ReadAllText(PROJECT_SCORING_MODEL_JSON_PATH);
+            projectScoringModel = JsonConvert.DeserializeObject<Dictionary<string, IEnumerable<string[]>>>(jsonProject);
         }
 
-        public PythiaCompletionProvider ()
+        public PythiaCompletionProvider()
         {
             Debug.WriteLine("PythiaCompletionProvider constructor called");
 
             if (!File.Exists(SCORING_MODEL_JSON_PATH))
             {
                 Debug.WriteLine("Did not find serialized scoring model, building it from text file...");
-                BuildScoringModel();
+                BuildGlobalScoringModel();
             }
             if (!File.Exists(POPULARITY_MODEL_JSON_PATH))
             {
                 Debug.WriteLine("Did not find serialized popularity model, building it from text file...");
-                BuildPopularityModel();
+                BuildGlobalPopularityModel();
             }
+            if (!File.Exists(PROJECT_SCORING_MODEL_JSON_PATH))
+            {
+                Debug.WriteLine("Did not find serialized project scoring model, building it from text file...");
+                BuildProjectScoringModel();
+            }
+            //if (!File.Exists(PROJECT_POPULARITY_MODEL_JSON_PATH))
+            //{
+            //    Debug.WriteLine("Did not find serialized project popularity model, building it from text file...");
+            //    BuildProjectPopularityModel();
+            //}
 
             DeserializeModels();
         }
@@ -128,9 +175,11 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             var cancellationToken = context.CancellationToken;
 
             var span = new TextSpan(position, 0);
-            var semanticModelTask = document.GetSemanticModelForSpanAsync(span, cancellationToken).ConfigureAwait(false);
+            var semanticModel = await document.GetSemanticModelForSpanAsync(span, cancellationToken).ConfigureAwait(false);
 
-            var syntaxTree = await document.GetSyntaxTreeAsync(cancellationToken).ConfigureAwait(false);
+            var syntaxTree = semanticModel.SyntaxTree;
+
+            //var syntaxTree = await document.GetSyntaxTreeAsync(cancellationToken).ConfigureAwait(false);
             if (syntaxTree.IsInNonUserCode(position, cancellationToken))
             {
                 return;
@@ -153,7 +202,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             var workspace = document.Project.Solution.Workspace;
 
-            var semanticModel = await semanticModelTask;
             if (semanticModel == null)
             {
                 return;
@@ -317,7 +365,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             Dictionary<string, double> completionModel = aggMethodsByName.OrderByDescending(entry => entry.Value)
                                                                          .Take(5)
-                                                                         .ToDictionary(pair => pair.Key, pair => (double) pair.Value);
+                                                                         .ToDictionary(pair => pair.Key, pair => (double)pair.Value);
             return completionModel;
         }
 
@@ -365,7 +413,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                             }
                         }
                     }
-                    catch(NullReferenceException exception)
+                    catch (NullReferenceException exception)
                     {
                         Debug.WriteLine("Invocation get symbol failed with exception: " + exception);
                     }
@@ -390,7 +438,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 if (scoringModel.ContainsKey(className))
                 {
                     classModel = scoringModel[className];
-                } else
+                }
+                else
                 {
                     return scoringRecommendations;
                 }
@@ -580,3 +629,4 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 //                                            // .Where(s => s.Kind == SymbolKind.Method)
 //                                            // .Cast<IMethodSymbol>()
 //                                            ;
+
