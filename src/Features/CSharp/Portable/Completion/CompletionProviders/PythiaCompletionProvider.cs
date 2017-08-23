@@ -27,21 +27,21 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 {
     internal partial class PythiaCompletionProvider : CommonCompletionProvider
     {
-        private static readonly string MODELS_PATH = @"C:\Users\yasiyu\Source\Repos\roslyn\models\"; // @"..\..\..\..\roslyn\models\";
+        private const string MODELS_PATH = @"C:\Users\yasiyu\Source\Repos\roslyn\models\"; // @"..\..\..\..\roslyn\models\";
 
         // global models
-        private static readonly string SCORING_MODEL_CSV_PATH = MODELS_PATH + @"model-all.tsv";
-        private static readonly string SCORING_MODEL_JSON_PATH = MODELS_PATH + @"model-all.json";
+        private const string SCORING_MODEL_CSV_PATH = MODELS_PATH + @"model-all.tsv";
+        private const string SCORING_MODEL_JSON_PATH = MODELS_PATH + @"model-all.json";
 
-        private static readonly string POPULARITY_MODEL_CSV_PATH = MODELS_PATH + @"freqs-new2.txt";
-        private static readonly string POPULARITY_MODEL_JSON_PATH = MODELS_PATH + @"model-frequency.json";
+        private const string POPULARITY_MODEL_CSV_PATH = MODELS_PATH + @"freqs-new2.txt";
+        private const string POPULARITY_MODEL_JSON_PATH = MODELS_PATH + @"model-frequency.json";
 
         // personalized models (hardcoded for the botBuilder project currently)
-        private static readonly string PROJECT_SCORING_MODEL_CSV_PATH = MODELS_PATH + @"botBuilder-model-all.tsv";
-        private static readonly string PROJECT_SCORING_MODEL_JSON_PATH = MODELS_PATH + @"botBuilder-model-all.json";
+        private const string PROJECT_SCORING_MODEL_CSV_PATH = MODELS_PATH + @"botBuilder-model-all.tsv";
+        private const string PROJECT_SCORING_MODEL_JSON_PATH = MODELS_PATH + @"botBuilder-model-all.json";
 
-        private static readonly string PROJECT_POPULARITY_MODEL_CSV_PATH = MODELS_PATH + @"botBuilder-model-frequency.txt";
-        private static readonly string PROJECT_POPULARITY_MODEL_JSON_PATH = MODELS_PATH + @"botBuilder-model-frequency.json";
+        private const string PROJECT_POPULARITY_MODEL_CSV_PATH = MODELS_PATH + @"botBuilder-model-frequency.txt";
+        private const string PROJECT_POPULARITY_MODEL_JSON_PATH = MODELS_PATH + @"botBuilder-model-frequency.json";
 
         private static readonly SymbolDisplayFormat SYMBOL_DISPLAY_FORMAT = new SymbolDisplayFormat(typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces);
 
@@ -553,7 +553,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         // Calculate the cosine similarity measure between two vectors (higher the measure, the more similar)
         public static double GetCosineSimilarity(List<double> V1, List<double> V2)
         {
-            double sim = 0.0d;
+            //double sim = 0.0d;
             int N = 0;
             N = ((V2.Count < V1.Count) ? V2.Count : V1.Count);
             double dot = 0.0d;
@@ -577,56 +577,4 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 }
 
 
-
-/// JUNK CODE I'M NOT READY TO GET RID OFF YET
-
-//var tokenSymbol = semanticModel.GetSymbolInfo(memberAccess).Symbol;
-
-//if (tokenSymbol == null)
-//{
-//    var candidateSymbols = semanticModel.GetSymbolInfo(memberAccess).CandidateSymbols;
-//    if (candidateSymbols.Length == 0)
-//    {
-//        return;
-//    }
-//    tokenSymbol = candidateSymbols.ElementAt(0);
-
-//}
-
-//// Find Token Type
-
-//var symbol_kind = tokenSymbol.Kind.ToString();
-
-//ITypeSymbol tokenType = null;
-
-
-//if (symbol_kind == "NamedType")
-//{
-//     tokenType = (INamedTypeSymbol)tokenSymbol;
-
-//} else if (symbol_kind == "Local")
-//{
-//     var local_tokenSymbol = (ILocalSymbol)tokenSymbol;
-
-//    if (local_tokenSymbol == null)
-//    {
-//        return;
-//    }
-
-//    tokenType = local_tokenSymbol.Type;
-//} else
-//{
-//    return;
-//}
-
-
-//var ovld = tokenType.GetMembers();
-
-//IEnumerable<ISymbol> candidateMethods = tokenType
-//                                             .GetMembers()
-//                                             .ToList()
-//                                             .Cast<ISymbol>()
-//                                            // .Where(s => s.Kind == SymbolKind.Method)
-//                                            // .Cast<IMethodSymbol>()
-//                                            ;
 
