@@ -1286,7 +1286,7 @@ namespace Microsoft.CodeAnalysis.CSharp
 
             for (CSharpSyntaxNode current = node; current != this.Root; current = current.ParentOrStructuredTriviaParent)
             {
-                Debug.Assert(current != null, "How did we get outside the root?");
+                //Debug.Assert(current != null, "How did we get outside the root?");
 
                 if (enclosingStatement == null)
                 {
