@@ -220,6 +220,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             ITypeSymbol container;
 
             ExtractCandidateMethods(memberAccess, memberKind, syntaxContext, out candidateMethods, out container, cancellationToken);
+            string targetTypeName = (container == null) ? null : container.OriginalDefinition.ToString().Split('<')[0];
 
             if (candidateMethods.LongCount() == 0)
             {
@@ -231,14 +232,14 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             // Check if target token is in IfConditional.  
             var inIfConditional = CheckIfTokenInIfConditional(memberAccess);
 
-            IEnumerable<ISymbol> invokingSymbs = await GetCoOccuringInvocations(syntaxTree, semanticModel, container, document, cancellationToken).ConfigureAwait(false);
+            IEnumerable<ISymbol> invokingSymbs = await GetCoOccuringInvocations(syntaxTree, semanticModel, targetTypeName, document, cancellationToken).ConfigureAwait(false);
 
             Dictionary<string, double> completionSet = new Dictionary<string, double>();
             if (invokingSymbs.Count() > 0)
             {
                 Debug.WriteLine("Using Scoring Model to Recommend");
-                var completionModelGlobal = GetScoringModelRecommendations(scoringModel, memberAccess, inIfConditional, invokingSymbs, container);
-                var completionModelProject = GetScoringModelRecommendations(projectScoringModel, memberAccess, inIfConditional, invokingSymbs, container);
+                var completionModelGlobal = GetScoringModelRecommendations(scoringModel, memberAccess, inIfConditional, invokingSymbs, targetTypeName);
+                var completionModelProject = GetScoringModelRecommendations(projectScoringModel, memberAccess, inIfConditional, invokingSymbs, targetTypeName);
                 completionSet = MergeScoringModelCompletionsWithCandidates(candidateMethods, completionModelGlobal, completionModelProject);
             }
             else
@@ -411,7 +412,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         }
 
         private async Task<IEnumerable<ISymbol>> GetCoOccuringInvocations(SyntaxTree syntaxTree, SemanticModel semanticModel,
-            ITypeSymbol container, Document document, CancellationToken cancellationToken)
+            string targetTypeName, Document document, CancellationToken cancellationToken)
         {
             // Check for co-occuring functions from the same namespace
             var root = (CompilationUnitSyntax)syntaxTree.GetRoot();
@@ -424,7 +425,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             invocations = invocations.Reverse();
 
             var invokingSymbs = new List<ISymbol>();
-            if (container != null)
+            if (targetTypeName != null)
             {
                 foreach (var invocation in invocations)
                 {
@@ -445,7 +446,9 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
                         if (inv_symb == null & cand_symb != null)
                         {
-                            if (cand_symb.ContainingSymbol == container.OriginalDefinition)
+                            string candidateTypeCleaned = cand_symb.ContainingType.ToString().Split('<')[0];
+                            // if (cand_symb.ContainingSymbol == targetTypeName)
+                            if (candidateTypeCleaned == targetTypeName)
                             {
                                 // append cand_symb to invokingSymbs
                                 invokingSymbs.Add(cand_symb);
@@ -453,7 +456,10 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                         }
                         else if (inv_symb != null)
                         {
-                            if (inv_symb.ContainingSymbol == container.OriginalDefinition)
+                            // get rid of the generics information
+                            string invocationTypeCleaned = inv_symb.ContainingSymbol.ToString().Split('<')[0];
+
+                            if (invocationTypeCleaned == targetTypeName)
                             {
                                 // append inv_symb to invokingSymbs
                                 invokingSymbs.Add(inv_symb);
@@ -472,21 +478,19 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
         // Takes a scoring model (either global and project-based) and produce the recommendation scores for each method
         private Dictionary<string, double> GetScoringModelRecommendations(Dictionary<string, IEnumerable<string[]>> model,
-            SyntaxNode memberAccess, bool inIfConditional, IEnumerable<ISymbol> invokingSymbs, ITypeSymbol container)
+            SyntaxNode memberAccess, bool inIfConditional, IEnumerable<ISymbol> invokingSymbs, string targetTypeName)
         {
             Dictionary<string, double> scoringRecommendations = new Dictionary<string, double>();
 
             if (invokingSymbs.LongCount() > 0)
             {
-                // var className = container.ToDisplayString(SYMBOL_DISPLAY_FORMAT); // will give System.String
-                var className = container.ToString(); // will give string for both System.String and string
-                Debug.WriteLine("GetScoringModelRecommendations, className: " + className);
+                Debug.WriteLine("GetScoringModelRecommendations, className: " + targetTypeName);
 
                 IEnumerable<string[]> classModel;
 
-                if (model.ContainsKey(className))
+                if (model.ContainsKey(targetTypeName))
                 {
-                    classModel = model[className];
+                    classModel = model[targetTypeName];
                 }
                 else
                 {
@@ -553,6 +557,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 }
 
                 // sort later when combined with project specific scores
+                // only when the score for that method is > 0 (has some usage in the model)
                 scoringRecommendations = methodsInClass.Zip(keyCentroid, (k, v) => new { k, v })
                    .Where(i => i.v > 0)
                    .ToDictionary(x => x.k, x => x.v);
@@ -625,6 +630,3 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         }
     }
 }
-
-
-
