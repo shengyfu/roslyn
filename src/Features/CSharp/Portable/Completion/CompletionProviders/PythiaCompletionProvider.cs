@@ -27,7 +27,9 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 {
     internal partial class PythiaCompletionProvider : CommonCompletionProvider
     {
-        private const string MODELS_PATH = @"C:\Users\yasiyu\Source\Repos\roslyn\models\"; // @"..\..\..\..\roslyn\models\";
+        private const string TEMP_FILE_PATH = @"..\..\..\..\roslyn\SiyuTemp\";
+
+        private const string MODELS_PATH = @"..\..\..\..\roslyn\models\"; // @"C:\Users\yasiyu\Source\Repos\roslyn\models\";
 
         // global models
         private const string SCORING_MODEL_CSV_PATH = MODELS_PATH + @"model-all.tsv";
@@ -37,8 +39,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         private const string POPULARITY_MODEL_JSON_PATH = MODELS_PATH + @"model-frequency.json";
 
         // personalized models (hardcoded for the botBuilder project currently)
-        private const string PROJECT_SCORING_MODEL_CSV_PATH = MODELS_PATH + @"botBuilder-model-all.tsv";
-        private const string PROJECT_SCORING_MODEL_JSON_PATH = MODELS_PATH + @"botBuilder-model-all.json";
+        private const string PROJECT_SCORING_MODEL_CSV_PATH = MODELS_PATH + @"botBuilder-model-all-nmf-all-docs.tsv"; // @"botBuilder-model-all.tsv";
+        private const string PROJECT_SCORING_MODEL_JSON_PATH = MODELS_PATH + @"botBuilder-model-all-nmf-all-docs.json"; // @"botBuilder-model-all.json";
 
         private const string PROJECT_POPULARITY_MODEL_CSV_PATH = MODELS_PATH + @"botBuilder-model-frequency.txt";
         private const string PROJECT_POPULARITY_MODEL_JSON_PATH = MODELS_PATH + @"botBuilder-model-frequency.json";
@@ -49,6 +51,9 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         private Dictionary<string, int> popularityModel; // model based on frequency of occurrences in crawled repos
 
         private Dictionary<string, IEnumerable<string[]>> projectScoringModel;
+
+        // a tunable parameter that indicate how much weight we give to projectScoringModel in comparison to global scoringModel
+        private const double PROJECT_WEIGHT = 1.0;
 
 
         private void BuildScoringModel(string inPath, string outPath)
@@ -117,6 +122,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             string jsonProject = File.ReadAllText(PROJECT_SCORING_MODEL_JSON_PATH);
             projectScoringModel = JsonConvert.DeserializeObject<Dictionary<string, IEnumerable<string[]>>>(jsonProject);
+
+            Debug.WriteLine("Deserialized the 3 models");
         }
 
         public PythiaCompletionProvider()
@@ -176,6 +183,11 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             var span = new TextSpan(position, 0);
             var semanticModel = await document.GetSemanticModelForSpanAsync(span, cancellationToken).ConfigureAwait(false);
+            if (semanticModel == null)
+            {
+                Debug.WriteLine("Returning because semanticModel is null");
+                return;
+            }
 
             var syntaxTree = semanticModel.SyntaxTree;
 
@@ -202,11 +214,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             var workspace = document.Project.Solution.Workspace;
 
-            if (semanticModel == null)
-            {
-                return;
-            }
-
             var syntaxContext = CSharpSyntaxContext.CreateContext(workspace, semanticModel, position, cancellationToken);
 
             ImmutableArray<ISymbol> candidateMethods;
@@ -224,14 +231,15 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             // Check if target token is in IfConditional.  
             var inIfConditional = CheckIfTokenInIfConditional(memberAccess);
 
-            IEnumerable<ISymbol> invokingSymbs = GetCoOccuringInvocations(syntaxTree, semanticModel, container);
+            IEnumerable<ISymbol> invokingSymbs = await GetCoOccuringInvocations(syntaxTree, semanticModel, container, document, cancellationToken).ConfigureAwait(false);
 
             Dictionary<string, double> completionSet = new Dictionary<string, double>();
             if (invokingSymbs.Count() > 0)
             {
                 Debug.WriteLine("Using Scoring Model to Recommend");
-                var completionModel = GetScoringModelRecommendations(memberAccess, inIfConditional, invokingSymbs, container);
-                completionSet = MergeScoringModelCompletionsWithCandidates(candidateMethods, completionModel);
+                var completionModelGlobal = GetScoringModelRecommendations(scoringModel, memberAccess, inIfConditional, invokingSymbs, container);
+                var completionModelProject = GetScoringModelRecommendations(projectScoringModel, memberAccess, inIfConditional, invokingSymbs, container);
+                completionSet = MergeScoringModelCompletionsWithCandidates(candidateMethods, completionModelGlobal, completionModelProject);
             }
             else
             {
@@ -241,14 +249,17 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             if (completionSet.Count == 0)
             {
-                Debug.WriteLine("Both completion models resulted in 0 recommendations");
+                Debug.WriteLine("Completion model used resulted in 0 recommendations");
                 return;
             }
 
-            Debug.Write($"There are {candidateMethods.Length} candidate methods, and {completionSet.Count} recommendations");
+            Debug.WriteLine($"There are {candidateMethods.Length} candidate methods, and {completionSet.Count} recommendations");
+
+            // sort completionSet according to each method's score
+            var sortedCompletionSet = from entry in completionSet orderby entry.Value descending select entry;
 
             int count = 0;
-            foreach (var m in completionSet)
+            foreach (var m in sortedCompletionSet)
             {
                 var methods = candidateMethods.Where(entry => entry.Name == m.Key).ToList(); // get all the methods
 
@@ -315,29 +326,60 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             //}
         }
 
+
+        private static ISymbol LookUpCandidateMethod(string candidateMethodName, ImmutableArray<ISymbol> candidateMethods)
+        {
+            candidateMethodName = candidateMethodName.Substring(0, candidateMethodName.IndexOf('-'));
+
+            string regex = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))";
+
+            var c = candidateMethods
+                .Where(i => candidateMethodName.Equals(Regex.Replace(i.ToString(), regex, "")))
+                .FirstOrDefault(); // only take the first if this method is overloaded
+            return c;
+        }
+
         // merge to make sure we only include candidates that are valid candidateMethods
-        private static Dictionary<string, double> MergeScoringModelCompletionsWithCandidates(
-            ImmutableArray<ISymbol> candidateMethods, Dictionary<string, double> scoringModelCompletions)
+        // also uses a mechanism to merge the recommendations based on the global scoring model and the project scoring model
+        private static Dictionary<string, double> MergeScoringModelCompletionsWithCandidates(ImmutableArray<ISymbol> candidateMethods,
+            Dictionary<string, double> completions, Dictionary<string, double> projectCompletions)
         {
             // merge scoring model completions with candidate completions           
             var completionSet = new Dictionary<string, double>();
 
-            foreach (var candidateFromModel in scoringModelCompletions)
+            // first get scores from the global scoring model
+            foreach (var candidateFromModel in completions)
             {
-                var candidateMethodName = candidateFromModel.Key;
-                candidateMethodName = candidateMethodName.Substring(0, candidateMethodName.IndexOf('-'));
-
-                string regex = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))";
-
-                var c = candidateMethods
-                    .Where(i => candidateMethodName.Equals(Regex.Replace(i.ToString(), regex, "")))
-                    .FirstOrDefault(); // only take the first if this method is overloaded
-
+                var c = LookUpCandidateMethod(candidateFromModel.Key, candidateMethods);
                 if (c != null) // some methods in the model are not applicable to this situation so they will not be in candidateMethods
                 {
                     completionSet[c.Name] = candidateFromModel.Value;
                 }
             }
+
+            string json = JsonConvert.SerializeObject(completionSet);
+            File.WriteAllText(TEMP_FILE_PATH + @"completionSet1.json", json);
+
+            // complement by a weighted score from project scoring model
+            foreach (var candidateFromModel in projectCompletions)
+            {
+                var c = LookUpCandidateMethod(candidateFromModel.Key, candidateMethods);
+                if (c != null)
+                {
+                    if (completionSet.ContainsKey(c.Name))
+                    {
+                        completionSet[c.Name] = completionSet[c.Name] + PROJECT_WEIGHT * candidateFromModel.Value;
+                    }
+                    else
+                    {
+                        completionSet[c.Name] = PROJECT_WEIGHT * candidateFromModel.Value;
+                    }
+                }
+            }
+
+            json = JsonConvert.SerializeObject(completionSet);
+            File.WriteAllText(TEMP_FILE_PATH + @"completionSet2.json", json);
+
             return completionSet;
         }
 
@@ -363,19 +405,21 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             }
 
-            Dictionary<string, double> completionModel = aggMethodsByName.OrderByDescending(entry => entry.Value)
-                                                                         .Take(5)
+            Dictionary<string, double> completionModel = aggMethodsByName.Take(10)
                                                                          .ToDictionary(pair => pair.Key, pair => (double)pair.Value);
             return completionModel;
         }
 
-        private static IEnumerable<ISymbol> GetCoOccuringInvocations(SyntaxTree syntaxTree, SemanticModel semanticModel, ITypeSymbol container)
+        private async Task<IEnumerable<ISymbol>> GetCoOccuringInvocations(SyntaxTree syntaxTree, SemanticModel semanticModel,
+            ITypeSymbol container, Document document, CancellationToken cancellationToken)
         {
             // Check for co-occuring functions from the same namespace
             var root = (CompilationUnitSyntax)syntaxTree.GetRoot();
             var invocations = root
                               .DescendantNodes()
                               .OfType<MemberAccessExpressionSyntax>();
+
+            var invocations2 = root.DescendantNodes().OfType<InvocationExpressionSyntax>();
 
             invocations = invocations.Reverse();
 
@@ -386,8 +430,11 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 {
                     try
                     {
-                        var inv_symb = semanticModel.GetSymbolInfo(invocation).Symbol;
-                        var cand_symb_vec = semanticModel.GetSymbolInfo(invocation).CandidateSymbols;
+                        var semanticModel1 = await document.GetSemanticModelForNodeAsync(invocation, cancellationToken).ConfigureAwait(false);
+
+                        var inv = semanticModel1.GetSymbolInfo(invocation, cancellationToken);
+                        var inv_symb = inv.Symbol;
+                        var cand_symb_vec = inv.CandidateSymbols;
 
                         ISymbol cand_symb = null;
 
@@ -415,15 +462,17 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                     }
                     catch (NullReferenceException exception)
                     {
-                        Debug.WriteLine("Invocation get symbol failed with exception: " + exception);
+                        Debug.WriteLine("Invocation get symbol failed with exception. Invocation: " + invocation);
                     }
                 }
             }
+            Debug.WriteLine("Count of invoking symbols: " + invokingSymbs.Count);
             return invokingSymbs;
         }
 
-        private Dictionary<string, double> GetScoringModelRecommendations(SyntaxNode memberAccess,
-            bool inIfConditional, IEnumerable<ISymbol> invokingSymbs, ITypeSymbol container)
+        // Takes a scoring model (either global and project-based) and produce the recommendation scores for each method
+        private Dictionary<string, double> GetScoringModelRecommendations(Dictionary<string, IEnumerable<string[]>> model,
+            SyntaxNode memberAccess, bool inIfConditional, IEnumerable<ISymbol> invokingSymbs, ITypeSymbol container)
         {
             Dictionary<string, double> scoringRecommendations = new Dictionary<string, double>();
 
@@ -435,9 +484,9 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
                 IEnumerable<string[]> classModel;
 
-                if (scoringModel.ContainsKey(className))
+                if (model.ContainsKey(className))
                 {
-                    classModel = scoringModel[className];
+                    classModel = model[className];
                 }
                 else
                 {
@@ -487,23 +536,24 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 // select elements in min distance point, with non-zero weights, 
                 // this should be representated as a dictionary, with "names" as key
                 var simList = cosineSimilarities.ToList();
-                var maxIndex = simList.IndexOf(simList.Max());
+                var maxIndex = simList.IndexOf(simList.Max()); // max in similarity measure
 
                 var keyCentroid = centroids.ElementAt(maxIndex).Select(i => Convert.ToDouble(i));
 
                 // If in IfConditional, reweight the scores
                 if (inIfConditional)
                 {
+                    Debug.WriteLine("Statement is in if conditional and weights are adjusted");
                     keyCentroid = keyCentroid.Zip(ifWeights, (s, i) => s * i);
+                    var keyCentroidNoIf = keyCentroid.Zip(ifWeights, (s, i) => s * (1 - i));
                 }
                 else
                 {
                     keyCentroid = keyCentroid.Zip(ifWeights, (s, i) => s * (1 - i));
                 }
 
+                // sort later when combined with project specific scores
                 scoringRecommendations = methodsInClass.Zip(keyCentroid, (k, v) => new { k, v })
-                   .OrderBy(i => i.v)
-                   .Reverse() // methods with more usage in that cluster's usage pattern is ranked on the top
                    .Where(i => i.v > 0)
                    .ToDictionary(x => x.k, x => x.v);
             }
