@@ -32,18 +32,12 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         private const string MODELS_PATH = @"..\..\..\..\roslyn\models\"; // @"C:\Users\yasiyu\Source\Repos\roslyn\models\";
 
         // global models
-        private const string SCORING_MODEL_CSV_PATH = MODELS_PATH + @"model-all.tsv";
-        private const string SCORING_MODEL_JSON_PATH = MODELS_PATH + @"model-all.json";
-
-        private const string POPULARITY_MODEL_CSV_PATH = MODELS_PATH + @"freqs-new2.txt";
-        private const string POPULARITY_MODEL_JSON_PATH = MODELS_PATH + @"model-frequency.json";
+        private const string SCORING_MODEL_PATH = MODELS_PATH + @"model-all.json";
+        private const string POPULARITY_MODEL_PATH = MODELS_PATH + @"model-frequency.json";
 
         // personalized models (hardcoded for the botBuilder project currently)
-        private const string PROJECT_SCORING_MODEL_CSV_PATH = MODELS_PATH + @"botBuilder-model-all-nmf-all-docs.tsv"; // @"botBuilder-model-all.tsv";
-        private const string PROJECT_SCORING_MODEL_JSON_PATH = MODELS_PATH + @"botBuilder-model-all-nmf-all-docs.json"; // @"botBuilder-model-all.json";
-
-        private const string PROJECT_POPULARITY_MODEL_CSV_PATH = MODELS_PATH + @"botBuilder-model-frequency.txt";
-        private const string PROJECT_POPULARITY_MODEL_JSON_PATH = MODELS_PATH + @"botBuilder-model-frequency.json";
+        private const string PROJECT_SCORING_MODEL_PATH = MODELS_PATH + @"botBuilder-model-all-Aug29-kmeans.json";
+        private const string PROJECT_POPULARITY_MODEL_PATH = MODELS_PATH + @"botBuilder-model-frequency.json"; // not yet exant
 
         private static readonly SymbolDisplayFormat SYMBOL_DISPLAY_FORMAT = new SymbolDisplayFormat(typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces);
 
@@ -55,72 +49,15 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         // a tunable parameter that indicate how much weight we give to projectScoringModel in comparison to global scoringModel
         private const double PROJECT_WEIGHT = 1.0;
 
-
-        private void BuildScoringModel(string inPath, string outPath)
-        {
-            // Read and parse model file
-            var lines = File.ReadLines(inPath)
-                            .Where(x => !string.IsNullOrWhiteSpace(x))
-                            .Select(line => line.Split('\t'));
-
-            var modelTemp = new Dictionary<string, IEnumerable<string[]>>();
-            for (var i = 0; i < lines.Count(); i = i + 6)
-            {
-                Debug.WriteLineIf(i % 100 == 0, "Read line " + i);
-                var className = lines.ElementAt(i)[0];
-                var methodNames = lines.ElementAt(i + 1);
-
-                var classModel = new List<string[]>();
-                classModel.Add(methodNames);
-                for (var j = i + 2; j < i + 6; j++)
-                {
-                    classModel.Add(lines.ElementAt(j));
-                }
-                modelTemp[className] = classModel;
-            }
-            string json = JsonConvert.SerializeObject(modelTemp);
-            File.WriteAllText(outPath, json);
-        }
-
-        private void BuildPopularityModel(string inPath, string outPath)
-        {
-            var modelTemp = File.ReadAllLines(inPath)
-                                .Select(line => line.Split('\t'))
-                                .ToDictionary(line => line[1].Replace("\"", ""), line => Convert.ToInt32(line[2]));
-
-            string json = JsonConvert.SerializeObject(modelTemp);
-            File.WriteAllText(outPath, json);
-        }
-
-        private void BuildGlobalScoringModel()
-        {
-            BuildScoringModel(SCORING_MODEL_CSV_PATH, SCORING_MODEL_JSON_PATH);
-        }
-
-        private void BuildProjectScoringModel()
-        {
-            BuildScoringModel(PROJECT_SCORING_MODEL_CSV_PATH, PROJECT_SCORING_MODEL_JSON_PATH);
-        }
-
-        private void BuildGlobalPopularityModel()
-        {
-            BuildPopularityModel(POPULARITY_MODEL_CSV_PATH, POPULARITY_MODEL_JSON_PATH);
-        }
-
-        private void BuildProjectPopularityModel()
-        {
-            BuildPopularityModel(PROJECT_POPULARITY_MODEL_CSV_PATH, PROJECT_POPULARITY_MODEL_JSON_PATH);
-        }
-
         private void DeserializeModels()
         {
-            string json = File.ReadAllText(SCORING_MODEL_JSON_PATH);
+            string json = File.ReadAllText(SCORING_MODEL_PATH);
             scoringModel = JsonConvert.DeserializeObject<Dictionary<string, IEnumerable<string[]>>>(json);
 
-            string jsonFreq = File.ReadAllText(POPULARITY_MODEL_JSON_PATH);
+            string jsonFreq = File.ReadAllText(POPULARITY_MODEL_PATH);
             popularityModel = JsonConvert.DeserializeObject<Dictionary<string, int>>(jsonFreq);
 
-            string jsonProject = File.ReadAllText(PROJECT_SCORING_MODEL_JSON_PATH);
+            string jsonProject = File.ReadAllText(PROJECT_SCORING_MODEL_PATH);
             projectScoringModel = JsonConvert.DeserializeObject<Dictionary<string, IEnumerable<string[]>>>(jsonProject);
 
             Debug.WriteLine("Deserialized the 3 models");
@@ -128,29 +65,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
         public PythiaCompletionProvider()
         {
-            Debug.WriteLine("PythiaCompletionProvider constructor called");
-
-            if (!File.Exists(SCORING_MODEL_JSON_PATH))
-            {
-                Debug.WriteLine("Did not find serialized scoring model, building it from text file...");
-                BuildGlobalScoringModel();
-            }
-            if (!File.Exists(POPULARITY_MODEL_JSON_PATH))
-            {
-                Debug.WriteLine("Did not find serialized popularity model, building it from text file...");
-                BuildGlobalPopularityModel();
-            }
-            if (!File.Exists(PROJECT_SCORING_MODEL_JSON_PATH))
-            {
-                Debug.WriteLine("Did not find serialized project scoring model, building it from text file...");
-                BuildProjectScoringModel();
-            }
-            //if (!File.Exists(PROJECT_POPULARITY_MODEL_JSON_PATH))
-            //{
-            //    Debug.WriteLine("Did not find serialized project popularity model, building it from text file...");
-            //    BuildProjectPopularityModel();
-            //}
-
             DeserializeModels();
         }
 
@@ -204,8 +118,10 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             if (tokenLeft.Kind() != SyntaxKind.DotToken) return; // for testing - only handling dot
 
             SyntaxNode memberAccess = tokenLeft.Parent;
-            Debug.WriteLine("MemberAccess: " + memberAccess);
             var memberKind = memberAccess.Kind(); // both types of imports would have the parent as a SimpleMemberAccessExpression
+
+            Debug.WriteLine("MemberAccess: " + memberAccess);
+            Debug.WriteLine("MemberAccess kind: " + memberKind);
 
             if (memberKind != SyntaxKind.QualifiedName & memberKind != SyntaxKind.SimpleMemberAccessExpression)
             {
@@ -221,6 +137,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
             ExtractCandidateMethods(memberAccess, memberKind, syntaxContext, out candidateMethods, out container, cancellationToken);
             string targetTypeName = (container == null) ? null : container.OriginalDefinition.ToString().Split('<')[0];
+
+            Debug.WriteLine("Target type name: " + targetTypeName);
 
             if (candidateMethods.LongCount() == 0)
             {
@@ -238,7 +156,9 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             if (invokingSymbs.Count() > 0)
             {
                 Debug.WriteLine("Using Scoring Model to Recommend");
+                Debug.WriteLine("Global model:");
                 var completionModelGlobal = GetScoringModelRecommendations(scoringModel, memberAccess, inIfConditional, invokingSymbs, targetTypeName);
+                Debug.WriteLine("Project based model:");
                 var completionModelProject = GetScoringModelRecommendations(projectScoringModel, memberAccess, inIfConditional, invokingSymbs, targetTypeName);
                 completionSet = MergeScoringModelCompletionsWithCandidates(candidateMethods, completionModelGlobal, completionModelProject);
             }
@@ -332,7 +252,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         {
             candidateMethodName = candidateMethodName.Substring(0, candidateMethodName.IndexOf('-'));
 
-            string regex = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))";
+            string regex = @"\<(.*?)\>|\((.*?)\)";
 
             var c = candidateMethods
                 .Where(i => candidateMethodName.Equals(Regex.Replace(i.ToString(), regex, "")))
@@ -476,16 +396,19 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             return invokingSymbs;
         }
 
+        private string GetMethodNameFromSignature ()
+        {
+            return ""; // not yet implemented
+        }
+
         // Takes a scoring model (either global and project-based) and produce the recommendation scores for each method
         private Dictionary<string, double> GetScoringModelRecommendations(Dictionary<string, IEnumerable<string[]>> model,
             SyntaxNode memberAccess, bool inIfConditional, IEnumerable<ISymbol> invokingSymbs, string targetTypeName)
         {
             Dictionary<string, double> scoringRecommendations = new Dictionary<string, double>();
 
-            if (invokingSymbs.LongCount() > 0)
+            if (invokingSymbs.Count() > 0)
             {
-                Debug.WriteLine("GetScoringModelRecommendations, className: " + targetTypeName);
-
                 IEnumerable<string[]> classModel;
 
                 if (model.ContainsKey(targetTypeName))
@@ -499,42 +422,43 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
                 // Filter only to relevant variable types.
                 var methodsInClass = classModel.First();
-                var nameCount = methodsInClass.LongCount(); // don't think array index can be a long size? Siyu
+                Debug.WriteLine("There are " + methodsInClass.Length + " methods in the class in the model");
+
+                var methodCount = methodsInClass.Length; // don't think array index can be a long size? Siyu
 
                 var ifWeights = classModel.ElementAt(1).Select(i => Convert.ToDouble(i));
 
                 var centroids = classModel.Skip(2);
 
+                // replacing the regex with "", System.IO.File.Exists<T>(string) becomes System.IO.File.Exists
+                string regex = @"\<(.*?)\>|\((.*?)\)"; 
+                
+                var invokingSymbsCleaned = invokingSymbs.Select(i => Regex.Replace(i.ToString(), regex, ""));
+
                 // from invocationSet, create a co-occurrence vector
-                double[] usageVector = new double[nameCount];
-                var counter = 0;
-                foreach (var methodName in methodsInClass)
+                double[] usageVector = new double[methodCount];
+
+                for (int counter = 0; counter < methodCount; counter++)
                 {
-                    string regex = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))"; // matches bracketed content and brackets
+                    var methodName = methodsInClass[counter];
 
-                    usageVector[counter] = 0;
-
-                    // replacing the regex with "", System.IO.File.Exists(string) becomes System.IO.File.ReadLines
-                    var invokingSymbsNoArgs = invokingSymbs.Select(i => Regex.Replace(i.ToString(), regex, ""));
-
-                    // if there are invoking symbols which starts with the current methodName, usageVector for this methodName becomes 1
-                    if (invokingSymbs.Where(i => methodName.StartsWith(Regex.Replace(i.ToString(), regex, ""))).LongCount() > 0)
+                    // if there are invoking symbols which match the method name part of entries in the model, usageVector for this method becomes 1
+                    if (invokingSymbsCleaned.Where(i => methodName.Contains(i)).Count() > 0)
                     {
                         usageVector[counter] = 1;
                     }
-                    counter++;
                 }
 
                 // calculate the similarity between the invocationSet to each of the centroids in the model for this class
                 var numCentroids = centroids.Count();
                 var cosineSimilarities = new double[numCentroids]; // should just record the max - Siyu
 
-                counter = 0;
+                var centroidIndex = 0;
                 foreach (var c in centroids)
                 {
                     var centroid = c.Select(i => Convert.ToDouble(i));
-                    cosineSimilarities[counter] = GetCosineSimilarity(centroid.ToList(), usageVector.ToList());
-                    counter++;
+                    cosineSimilarities[centroidIndex] = GetCosineSimilarity(centroid.ToList(), usageVector.ToList());
+                    centroidIndex++;
                 }
 
                 // select elements in min distance point, with non-zero weights, 

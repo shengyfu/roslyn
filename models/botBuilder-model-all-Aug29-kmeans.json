@@ -1,0 +1,1486 @@
+{
+    "string": [
+        ["string.Empty-NamedType-False", "string.Compare-NamedType-False", "string.Equals-NamedType-False", "string.Substring-Local-False", "string.IsNullOrWhiteSpace-NamedType-False", "string.Split-Local-False", "string.EndsWith-Local-False", "string.Replace-Local-False", "string.Format-NamedType-False", "string.IsNullOrEmpty-NamedType-False", "string.Join-NamedType-False", "string.GetHashCode-Local-True", "string.StartsWith-Local-False", "string.ToLowerInvariant-Local-False", "string.Trim-Local-False", "string.Length-Local-False", "string.Equals-Local-False", "string.LastIndexOf-Local-False", "string.Contains-Local-False", "string.ToLower-Local-False", "string.ToUpper-Local-False", "string.PadRight-Local-False", "string.ToString-Local-True", "string.ToCharArray-Local-False", "string.Remove-Local-False"],
+        [0.17857142857142858, 0.0, 1.0, 0.04, 0.38461538461538464, 0.0, 0.16666666666666666, 0.0, 0.0, 0.7222222222222222, 0.0, 0.0, 0.8571428571428571, 0.0, 0.0, 0.1891891891891892, 0.3333333333333333, 0.0, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.6000000000000003, 0.0, 0.0, 2.2, 0.4, 2.2, 1.0, 0.2, 0.6000000000000001, 0.0, 0.5999999999999999, 0.0, 0.8, 0.6000000000000001, 2.2, 3.3999999999999995, 0.0, 0.0, 0.0, 1.4000000000000001, 0.20000000000000007, 0.4, 0.2, 0.0, 0.0],
+        [0.19298245614035092, 0.05263157894736843, 0.2105263157894736, 0.15789473684210537, 0.4210526315789474, 0.17543859649122817, 0.03508771929824536, 0.10526315789473684, 0.1228070175438595, 0.31578947368421034, 0.1929824561403508, 0.36842105263157876, 0.08771929824561409, 1.3877787807814457e-17, 0.03508771929824561, 0.1929824561403507, 0.052631578947368404, 0.01754385964912282, 0.052631578947368376, 1.1102230246251565e-16, 2.42861286636753e-17, 4.85722573273506e-17, 2.42861286636753e-17, 0.017543859649122823, 0.01754385964912283],
+        [0.0, 0.0, 0.0, 0.0, -5.551115123125783e-17, 0.0, 3.333333333333333, 3.6666666666666665, 3.333333333333333, 0.0, 0.0, 0.0, 0.0, 0.0, -2.7755575615628914e-17, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Threading.Tasks.Task": [
+        ["System.Threading.Tasks.Task.ConfigureAwait-Local-False", "System.Threading.Tasks.Task.GetAwaiter-Local-False", "System.Threading.Tasks.Task.Factory-NamedType-False", "System.Threading.Tasks.Task.FromResult-NamedType-False", "System.Threading.Tasks.Task.CompletedTask-NamedType-False", "System.Threading.Tasks.Task.WhenAll-NamedType-False", "System.Threading.Tasks.Task.FromCanceled-NamedType-False", "System.Threading.Tasks.Task.FromException-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 2.220446049250313e-16, 2.220446049250313e-16, 0.7272727272727273, 0.6363636363636364, 0.18181818181818185, 0.8181818181818181, 0.9090909090909092],
+        [3.5, 1.1102230246251565e-16, 1.1102230246251565e-16, 0.0, 0.0, 0.0, 0.0, 5.551115123125783e-17],
+        [4.0, 3.4, 3.4, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Linq.Enumerable": [
+        ["System.Collections.Generic.IEnumerable-Local-False", "System.Collections.IEnumerable.OfType-Local-False", "System.Linq.Enumerable.Empty-NamedType-False", "System.Collections.IEnumerable.Cast-Local-False"],
+        [0.15789473684210525, 0.0, 0.3333333333333333, 0.0],
+        [2.5, 0.08333333333333333, 1.3877787807814457e-17, 6.938893903907228e-18],
+        [4.000000000000001, 0.08333333333333334, 0.12500000000000003, 0.08333333333333334],
+        [1.0000000000000004, 1.3877787807814457e-17, 1.3877787807814457e-17, 6.938893903907228e-18]
+    ],
+    "Microsoft.Bot.Connector.IMessageActivity": [
+        ["Microsoft.Bot.Connector.IMessageActivity.GetMentions-Local-False", "Microsoft.Bot.Connector.IMessageActivity.Text-Local-False", "Microsoft.Bot.Connector.IMessageActivity.Attachments-Local-False", "Microsoft.Bot.Connector.IMessageActivity.InputHint-Local-False", "Microsoft.Bot.Connector.IMessageActivity.Locale-Local-False", "Microsoft.Bot.Connector.IMessageActivity.Speak-Local-False", "Microsoft.Bot.Connector.IMessageActivity.TextFormat-Local-False", "Microsoft.Bot.Connector.IMessageActivity.AttachmentLayout-Local-False", "Microsoft.Bot.Connector.IMessageActivity.Entities-Local-False", "Microsoft.Bot.Connector.IMessageActivity.SuggestedActions-Local-False"],
+        [0.0, 0.10317460317460317, 0.23333333333333334, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.4, 3.6000000000000005, 0.2666666666666667, -5.551115123125783e-17, 0.06666666666666667, 2.7755575615628914e-17, -6.938893903907228e-18, 5.551115123125783e-17, -1.3877787807814457e-17, -6.938893903907228e-18],
+        [0.047619047619047644, 1.047619047619048, 0.38095238095238093, 0.09523809523809525, 0.19047619047619047, 0.04761904761904762, 0.0476190476190476, 0.09523809523809522, 0.0952380952380952, -1.0408340855860843e-17],
+        [0.0, 2.3333333333333335, 3.6666666666666665, 1.9999999999999998, 0.0, 0.6666666666666667, -3.469446951953614e-18, 1.6666666666666667, -6.938893903907228e-18, 0.3333333333333333]
+    ],
+    "System.Collections.Generic.List": [
+        ["System.Collections.Generic.List.Add-Local-False", "System.Collections.Generic.List.ToArray-Local-False", "System.Collections.Generic.List.RemoveAt-Local-False", "System.Collections.Generic.List.Count-Local-False", "System.Collections.Generic.List.AddRange-Local-False", "System.Collections.Generic.List.FindIndex-Local-False", "System.Collections.Generic.List.AsReadOnly-Local-False", "System.Collections.Generic.List.Remove-Local-False", "System.Collections.Generic.List.Sort-Local-False"],
+        [0.0, 0.0, 0.0, 0.5294117647058824, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [3.875, 0.625, -6.938893903907228e-18, 0.625, -5.551115123125783e-17, 0.12499999999999999, 0.0, 0.6250000000000001, -6.938893903907228e-18],
+        [0.9166666666666663, 0.24999999999999994, 0.08333333333333337, 0.8333333333333333, -5.551115123125783e-17, -1.3877787807814457e-17, 0.25000000000000006, 5.551115123125783e-17, 0.08333333333333333],
+        [2.5, 0.0, 0.0, 0.5, 4.0, 0.5, 0.0, 0.0, 0.0]
+    ],
+    "object": [
+        ["object.GetType-Local-False", "object.Equals-NamedType-False", "object.GetHashCode-Local-False", "object.ToString-Local-False", "object.ReferenceEquals-NamedType-False"],
+        [0.2708333333333333, 0.03333333333333333, 0.0, 0.0, 0.6],
+        [3.8000000000000003, 0.0, 0.0, 0.6, 0.3999999999999999],
+        [0.8095238095238095, 0.09523809523809512, 0.0476190476190476, 0.4285714285714285, 0.09523809523809523],
+        [0.0, 3.2857142857142856, 0.2857142857142857, 0.1428571428571428, 0.14285714285714285]
+    ],
+    "System.Type": [
+        ["System.Type.Assembly-Local-False", "System.Type.IsArray-Local-False", "System.Type.GetElementType-Local-False", "System.Type.IsAssignableFrom-Local-False", "System.Type.IsEnum-Local-False", "System.Type.DeclaringType-Local-True", "System.Type.IsGenericType-Local-False", "System.Type.GetGenericTypeDefinition-Local-False", "System.Type.GetGenericArguments-Local-False", "System.Type.MakeGenericType-Local-False", "System.Type.GetMethods-Local-False", "System.Type.GetMethod-Local-False", "System.Type.IsValueType-Local-False", "System.Type.GetField-Local-False", "System.Type.GetProperty-Local-False", "System.Type.IsClass-Local-False", "System.Type.GetFields-Local-False", "System.Type.GetProperties-Local-False", "System.Type.IsSerializable-Local-False", "System.Type.GenericTypeArguments-Local-False", "System.Type.FullName-Local-False", "System.Type.GetInterfaces-Local-False", "System.Type.Equals-Local-False", "System.Type.GetInterfaceMap-Local-False", "System.Type.BaseType-Local-False", "System.Type.InvokeMember-Local-False"],
+        [0.0, 0.0, 0.0, 0.7317073170731707, 0.2631578947368421, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.75, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0],
+        [0.13043478260869568, 0.04347826086956522, 0.04347826086956522, 1.0869565217391304, 0.043478260869565244, 0.04347826086956522, 0.13043478260869562, 0.13043478260869562, 0.08695652173913045, 0.04347826086956522, 0.08695652173913045, 0.04347826086956522, 0.04347826086956523, 0.0, 0.0, 0.0, -2.7755575615628914e-17, 0.04347826086956522, 0.0, 0.04347826086956522, 0.0, 0.08695652173913042, 0.043478260869565216, 0.04347826086956522, 0.08695652173913043, 0.043478260869565216],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.0, 4.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.0, 0.0, 0.0, 0.0, 0.0],
+        [0.16666666666666669, 0.0, 0.0, 0.0, 2.5, 0.0, -2.7755575615628914e-17, -2.7755575615628914e-17, 1.3877787807814457e-17, 0.0, 0.0, 0.16666666666666669, 0.5, 0.16666666666666666, 0.16666666666666666, 0.6666666666666666, 1.1666666666666665, 0.3333333333333333, 0.6666666666666666, 0.0, 0.16666666666666666, 2.7755575615628914e-17, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Array": [
+        ["System.Array.CreateInstance-NamedType-False", "System.Array.Length-Local-False", "System.Array.Empty-NamedType-False", "System.Array.Exists-NamedType-False", "System.Array.IndexOf-NamedType-False"],
+        [0.0, 0.5869565217391305, 0.0, 0.0, 0.0],
+        [0.0833333333333333, 0.8333333333333336, 5.551115123125783e-17, 0.24999999999999997, 0.08333333333333333],
+        [0.0, 3.625, 0.0, 0.0, 0.0],
+        [0.0, 0.20000000000000018, 1.5999999999999999, 0.0, 0.0]
+    ],
+    "System.Collections.Generic.Dictionary": [
+        ["System.Collections.Generic.Dictionary.Add-Local-False", "System.Collections.Generic.Dictionary.TryGetValue-Local-False", "System.Collections.Generic.Dictionary.Remove-Local-False", "System.Collections.Generic.Dictionary.ContainsKey-Local-False", "System.Collections.Generic.Dictionary.Clear-Local-False", "System.Collections.Generic.Dictionary.Count-Local-False", "System.Collections.Generic.Dictionary.Keys-Local-False", "System.Collections.Generic.Dictionary.Values-Local-False"],
+        [0.0, 0.7391304347826086, 0.2, 0.5, 0.0, 0.0, 0.0, 0.0],
+        [3.0, 4.0, 3.0, 2.0, 1.0, 1.0, 2.0, 0.0],
+        [3.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.19999999999999996, 0.8, 0.39999999999999997, 0.4, 0.19999999999999998, 0.0, 0.09999999999999998, 0.09999999999999998]
+    ],
+    "Microsoft.Bot.Connector.ActivityTypes": [
+        ["Microsoft.Bot.Connector.ActivityTypes.Message-NamedType-False", "Microsoft.Bot.Connector.ActivityTypes.ContactRelationUpdate-NamedType-False", "Microsoft.Bot.Connector.ActivityTypes.ConversationUpdate-NamedType-False", "Microsoft.Bot.Connector.ActivityTypes.Typing-NamedType-False", "Microsoft.Bot.Connector.ActivityTypes.Ping-NamedType-False", "Microsoft.Bot.Connector.ActivityTypes.EndOfConversation-NamedType-False", "Microsoft.Bot.Connector.ActivityTypes.Event-NamedType-False", "Microsoft.Bot.Connector.ActivityTypes.Invoke-NamedType-False", "Microsoft.Bot.Connector.ActivityTypes.InstallationUpdate-NamedType-False", "Microsoft.Bot.Connector.ActivityTypes.DeleteUserData-NamedType-False"],
+        [0.08333333333333333, 0.17647058823529413, 0.1875, 0.15, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.21428571428571427],
+        [1.3, 0.9, 0.8, 1.1, 0.3, 5.551115123125783e-17, 5.551115123125783e-17, 2.7755575615628914e-17, -1.3877787807814457e-17, 1.0],
+        [4.0, 4.0, 4.0, 4.0, 3.0, 2.0, 2.0, 2.0, 1.0, 2.0],
+        [0.7999999999999998, 1.1102230246251565e-16, -1.1102230246251565e-16, 0.10000000000000009, 5.551115123125783e-17, 0.2, 0.49999999999999994, 0.1, -1.3877787807814457e-17, -1.1102230246251565e-16]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.Utils": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Misc.Utils.AssertArgument-NamedType-False"],
+        [0.0],
+        [0.0],
+        [3.3333333333333335],
+        [1.4]
+    ],
+    "Microsoft.Bot.Builder.Tests.DialogTestBase.Options": [
+        ["Microsoft.Bot.Builder.Tests.DialogTestBase.Options.MockConnectorFactory-NamedType-False", "Microsoft.Bot.Builder.Tests.DialogTestBase.Options.LastWriteWinsCachingBotDataStore-NamedType-False", "Microsoft.Bot.Builder.Tests.DialogTestBase.Options.ResolveDialogFromContainer-NamedType-False", "Microsoft.Bot.Builder.Tests.DialogTestBase.Options.None-NamedType-False", "Microsoft.Bot.Builder.Tests.DialogTestBase.Options.Reflection-NamedType-False", "Microsoft.Bot.Builder.Tests.DialogTestBase.Options.ScopedQueue-NamedType-False"],
+        [0.0, 0.5, 0.034482758620689655, 0.0, 0.07142857142857142, 0.2],
+        [0.0, 0.0, 3.4000000000000004, 0.8, 1.2, 0.0],
+        [0.30769230769230765, 0.15384615384615383, 0.6153846153846155, 0.15384615384615374, 0.3076923076923077, 0.3846153846153846],
+        [1.0, 0.0, 0.5, 4.0, 0.0, 0.0]
+    ],
+    "System.Collections.Generic.IReadOnlyCollection": [
+        ["System.Collections.Generic.IReadOnlyCollection.Count-Local-False"],
+        [0.3111111111111111],
+        [3.75],
+        [1.6],
+        [0.0]
+    ],
+    "System.Reflection.MemberInfo": [
+        ["System.Reflection.MemberInfo.Name-Local-False", "System.Reflection.MemberInfo.DeclaringType-Local-False"],
+        [0.0, 0.25],
+        [3.75, 0.0],
+        [1.4545454545454546, -2.7755575615628914e-17],
+        [0.0, 2.0]
+    ],
+    "System.Collections.Generic.KeyValuePair": [
+        ["System.Collections.Generic.KeyValuePair.Key-Local-False", "System.Collections.Generic.KeyValuePair.Value-Local-False"],
+        [0.2702702702702703, 0.0625],
+        [2.75, 1.5],
+        [0.6000000000000001, 1.8],
+        [4.0, 4.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser": [
+        ["Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser.MakeMessage-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser.PostAsync-Local-False"],
+        [0.0, 0.0],
+        [1.75, 2.25],
+        [1.2727272727272727, 0.5454545454545454],
+        [4.0, 4.0]
+    ],
+    "Microsoft.Bot.Connector.Activity": [
+        ["Microsoft.Bot.Connector.Activity.Type-Local-False", "Microsoft.Bot.Connector.Activity.Timestamp-Local-False", "Microsoft.Bot.Connector.Activity.From-Local-False", "Microsoft.Bot.Connector.Activity.Recipient-Local-False", "Microsoft.Bot.Connector.Activity.ReplyToId-Local-False", "Microsoft.Bot.Connector.Activity.Id-Local-False", "Microsoft.Bot.Connector.Activity.ServiceUrl-Local-False", "Microsoft.Bot.Connector.Activity.ChannelId-Local-False", "Microsoft.Bot.Connector.Activity.Conversation-Local-False", "Microsoft.Bot.Connector.Activity.Text-Local-False", "Microsoft.Bot.Connector.Activity.Locale-Local-False", "Microsoft.Bot.Connector.Activity.Summary-Local-False", "Microsoft.Bot.Connector.Activity.Attachments-Local-False", "Microsoft.Bot.Connector.Activity.ChannelData-Local-False", "Microsoft.Bot.Connector.Activity.Entities-Local-False", "Microsoft.Bot.Connector.Activity.GetActivityType-NamedType-False", "Microsoft.Bot.Connector.Activity.CreateReply-Local-False", "Microsoft.Bot.Connector.Activity.Value-Local-False"],
+        [0.20833333333333334, 0.0, 0.0, 0.09090909090909091, 0.4, 0.0, 0.0, 0.0, 0.0, 0.043478260869565216, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 0.09090909090909093, 0.4545454545454545, 0.4545454545454545, -1.1102230246251565e-16, 5.551115123125783e-17, 0.09090909090909086, 0.0, 0.0, 1.0909090909090908, 0.09090909090909091, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2727272727272727, 0.18181818181818185],
+        [2.0, 1.0, 3.0, 3.0, 1.0, 1.0, 2.0, 2.0, 4.0, 2.0, 2.0, 1.0, 2.0, 1.0, 1.0, 0.5, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 4.0, 2.0, 0.0, 0.0, 4.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Connector.ChannelAccount": [
+        ["Microsoft.Bot.Connector.ChannelAccount.Id-Local-False", "Microsoft.Bot.Connector.ChannelAccount.Name-Local-False", "Microsoft.Bot.Connector.ChannelAccount.Equals-Local-False", "Microsoft.Bot.Connector.ChannelAccount.GetHashCode-Local-True"],
+        [0.02564102564102564, 0.058823529411764705, 0.0, 0.0],
+        [1.6, 0.19999999999999996, 0.0, 0.0],
+        [3.0, 2.333333333333333, 0.33333333333333337, 5.551115123125783e-17],
+        [3.3333333333333335, 0.6666666666666666, 0.0, 1.3333333333333335]
+    ],
+    "Microsoft.Bot.Connector.IActivity": [
+        ["Microsoft.Bot.Connector.IActivity.ChannelId-Local-False", "Microsoft.Bot.Connector.IActivity.ServiceUrl-Local-False", "Microsoft.Bot.Connector.IActivity.Type-Local-False", "Microsoft.Bot.Connector.IActivity.ChannelData-Local-False", "Microsoft.Bot.Connector.IActivity.Recipient-Local-False", "Microsoft.Bot.Connector.IActivity.From-Local-False", "Microsoft.Bot.Connector.IActivity.Conversation-Local-False", "Microsoft.Bot.Connector.IActivity.LocalTimestamp-Local-False", "Microsoft.Bot.Connector.IActivity.AsEndOfConversationActivity-Local-False", "Microsoft.Bot.Connector.IActivity.ReplyToId-Local-False"],
+        [0.18181818181818182, 0.0, 0.14285714285714285, 0.5714285714285714, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0],
+        [0.28571428571428575, 0.2857142857142857, 1.0, 0.14285714285714285, 0.1428571428571429, 0.1428571428571429, 1.1102230246251565e-16, 0.2857142857142858, 0.1428571428571429, 1.3877787807814457e-17],
+        [1.0, 1.0, 1.0, 3.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.4, 0.6, 0.8, 0.0, 1.4, 1.7999999999999998, 1.6000000000000003, 0.0, 0.0, 0.2]
+    ],
+    "System.Uri": [
+        ["System.Uri.AbsoluteUri-Local-False", "System.Uri.ToString-Local-True", "System.Uri.EscapeDataString-NamedType-False", "System.Uri.DnsSafeHost-Local-False", "System.Uri.Host-Local-False", "System.Uri.TryCreate-NamedType-False", "System.Uri.Authority-Local-False", "System.Uri.GetHashCode-Local-True", "System.Uri.LocalPath-Local-False", "System.Uri.IsAbsoluteUri-Local-False", "System.Uri.Scheme-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.3333333333333333, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.44444444444444453, 0.0, 0.11111111111111113, 0.3333333333333333, 0.22222222222222227, 0.11111111111111113, 0.11111111111111113, 0.11111111111111113, 0.11111111111111113, 0.11111111111111113],
+        [4.0, 4.0, 4.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 1.0, 3.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack": [
+        ["Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Reset-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Frames-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Post-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Call-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Forward-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Done-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Fail-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Wait-Local-False"],
+        [0.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.27272727272727276, 0.6363636363636364, 0.18181818181818182, 0.18181818181818188, 0.2727272727272727, 0.45454545454545453, 0.09090909090909093, 0.18181818181818182],
+        [0.0, 2.0, 2.0, 4.0, 0.0, 4.0, 0.0, 2.0],
+        [0.5, 0.5, 0.0, 3.0, 0.0, 0.5, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Internals.IBotData": [
+        ["Microsoft.Bot.Builder.Dialogs.Internals.IBotData.UserData-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IBotData.PrivateConversationData-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IBotData.FlushAsync-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IBotData.LoadAsync-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IBotData.ConversationData-Local-False"],
+        [0.0, 0.13333333333333333, 0.0, 0.0, 0.0],
+        [0.625, 0.5, 0.5, 0.37499999999999994, 0.5],
+        [0.0, 2.25, 0.0, 0.0, 0.0],
+        [2.0, 2.0, 0.0, 0.0, 2.0]
+    ],
+    "Microsoft.Bot.Connector.ConversationAccount": [
+        ["Microsoft.Bot.Connector.ConversationAccount.IsGroup-Local-False", "Microsoft.Bot.Connector.ConversationAccount.Id-Local-False", "Microsoft.Bot.Connector.ConversationAccount.Name-Local-False", "Microsoft.Bot.Connector.ConversationAccount.Equals-Local-False", "Microsoft.Bot.Connector.ConversationAccount.GetHashCode-Local-True"],
+        [0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.625, 1.125, 0.625, 0.0, 0.25],
+        [3.0, 3.0, 3.0, 1.0, 0.0],
+        [0.0, 4.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Text.RegularExpressions.Regex": [
+        ["System.Text.RegularExpressions.Regex.Replace-NamedType-False", "System.Text.RegularExpressions.Regex.Match-Local-False", "System.Text.RegularExpressions.Regex.ToString-Local-True", "System.Text.RegularExpressions.Regex.Matches-Local-False", "System.Text.RegularExpressions.Regex.Replace-Local-False", "System.Text.RegularExpressions.Regex.IsMatch-Local-False"],
+        [0.0, 0.3, 0.0, 0.0, 0.0, 1.0],
+        [0.0, 2.5, 0.0, 0.5, 0.0, 0.0],
+        [0.14285714285714282, 0.7142857142857143, 0.14285714285714285, 0.0, 0.0, 0.14285714285714285],
+        [0.0, 0.0, 0.0, 2.3333333333333335, 0.6666666666666666, 0.0]
+    ],
+    "System.Runtime.CompilerServices.TaskAwaiter": [
+        ["System.Runtime.CompilerServices.TaskAwaiter.GetResult-Local-False"],
+        [0.0],
+        [0.5],
+        [3.5],
+        [2.0]
+    ],
+    "Microsoft.Bot.Builder.Internals.Fibers.Extensions": [
+        ["System.Collections.Generic.IReadOnlyList-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IWait-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IFiber-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IWait.ValidateNeed-Local-False", "System.Collections.Generic.IDictionary-Local-False", "System.Collections.Generic.IEnumerable-Local-False", "System.Collections.Generic.IList-Local-False", "System.Collections.Generic.List-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.Extensions.Equals-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.28571428571428575, -2.7755575615628914e-17, 0.0, 0.5714285714285714, 0.14285714285714282, 0.14285714285714285, -1.3877787807814457e-17, 0.2857142857142857, 0.14285714285714285],
+        [0.3333333333333333, 0.6666666666666666, 3.6666666666666665, 0.33333333333333337, 1.3877787807814457e-17, 1.3877787807814457e-17, 1.3877787807814457e-17, 5.551115123125783e-17, 1.3877787807814457e-17],
+        [4.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 2.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Chain": [
+        ["Microsoft.Bot.Builder.Dialogs.IDialog-Local-False", "Microsoft.Bot.Builder.Dialogs.Chain.Return-NamedType-False", "Microsoft.Bot.Builder.Dialogs.Chain.PostToChain-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [4.0, 0.0, 4.0],
+        [1.1666666666666665, 0.16666666666666663, 0.16666666666666674],
+        [1.6666666666666667, 1.3877787807814457e-17, 3.0]
+    ],
+    "int": [
+        ["int.MinValue-NamedType-False", "int.MaxValue-NamedType-False", "int.TryParse-NamedType-False", "int.ToString-Local-True", "int.GetHashCode-Local-True", "int.CompareTo-Local-False", "int.Parse-NamedType-False"],
+        [0.0, 0.0, 0.75, 0.0, 0.0, 0.0, 0.0],
+        [-1.3877787807814457e-17, -5.551115123125783e-17, 0.14285714285714288, 0.28571428571428564, 0.2857142857142857, 0.4285714285714286, 0.2857142857142857],
+        [0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0],
+        [0.3333333333333333, 1.3333333333333333, 5.551115123125783e-17, 2.7755575615628914e-17, 2.7755575615628914e-17, 0.0, 2.7755575615628914e-17]
+    ],
+    "Microsoft.Bot.Connector.ConnectorClient": [
+        ["Microsoft.Bot.Connector.ConnectorClient.BaseUri-Local-False", "Microsoft.Bot.Connector.ConnectorClient.Credentials-Local-False", "Microsoft.Bot.Connector.ConnectorClient.DeserializationSettings-Local-False", "Microsoft.Bot.Connector.ConnectorClient.Attachments-Local-False", "Microsoft.Bot.Connector.ConnectorClient.Conversations-Local-False", "Microsoft.Bot.Connector.ConnectorClient.SerializationSettings-Local-False", "Microsoft.Bot.Connector.ConnectorClient.AddUserAgent-NamedType-False"],
+        [0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.6666666666666669, -2.220446049250313e-16, 2.220446049250313e-16, 0.33333333333333337, 0.33333333333333337, 1.1102230246251565e-16, 0.33333333333333337],
+        [4.0, 4.0, 4.0, 0.0, 0.0, 4.0, 0.0],
+        [2.0, 3.0, 4.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Extensions": [
+        ["Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser.PostAsync-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack.Wait-Local-False", "System.Collections.Generic.IEnumerable-Local-False", "Microsoft.Bot.Connector.IMessageActivity.AddHeroCard-Local-False", "Microsoft.Bot.Builder.Dialogs.IPromptRecognizer.RecognizeIntegerInRange-Local-False", "Microsoft.Bot.Builder.Dialogs.IPromptRecognizer.RecognizeDoubleInRange-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.33333333333333337, 1.0, 5.551115123125783e-17, 1.3877787807814457e-17, 5.551115123125783e-17, 2.7755575615628914e-17],
+        [0.0, 2.0, 4.0, 1.0, 4.0, 2.0],
+        [2.666666666666667, 1.6666666666666667, -5.551115123125783e-17, -1.3877787807814457e-17, -5.551115123125783e-17, -2.7755575615628914e-17]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.IBotDataBag": [
+        ["Microsoft.Bot.Builder.Dialogs.IBotDataBag.TryGetValue-Local-False", "Microsoft.Bot.Builder.Dialogs.IBotDataBag.SetValue-Local-False", "Microsoft.Bot.Builder.Dialogs.IBotDataBag.Clear-Local-False", "Microsoft.Bot.Builder.Dialogs.IBotDataBag.ContainsKey-Local-False", "Microsoft.Bot.Builder.Dialogs.IBotDataBag.Count-Local-False"],
+        [0.8333333333333334, 0.0, 0.0, 0.0, 0.0],
+        [0.8571428571428571, 0.8571428571428572, 5.551115123125783e-17, 0.14285714285714288, 5.551115123125783e-17],
+        [0.0, 0.0, 0.0, 0.0, 4.0],
+        [0.0, 0.0, 2.0, 0.0, 0.0]
+    ],
+    "System.Convert": [
+        ["System.Convert.FromBase64String-NamedType-False", "System.Convert.ToBase64String-NamedType-False", "System.Convert.ToInt64-NamedType-False", "System.Convert.ToDouble-NamedType-False", "System.Convert.ChangeType-NamedType-False", "System.Convert.ToString-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.49999999999999994, 0.6666666666666667, 0.33333333333333337, 0.16666666666666669, 0.0, 0.16666666666666669],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 4.0],
+        [0.0, -5.551115123125783e-17, -2.7755575615628914e-17, -1.3877787807814457e-17, 1.9999999999999996, 0.0]
+    ],
+    "System.Text.RegularExpressions.Group": [
+        ["System.Text.RegularExpressions.Group.Success-Local-False", "System.Text.RegularExpressions.Group.Captures-Local-False"],
+        [0.16666666666666666, 0.0],
+        [0.9999999999999999, 2.7755575615628914e-17],
+        [3.5, 0.0],
+        [3.0, 2.0]
+    ],
+    "Microsoft.Bot.Builder.Luis.Models.LuisResult": [
+        ["Microsoft.Bot.Builder.Luis.Models.LuisResult.TopScoringIntent-Local-False", "Microsoft.Bot.Builder.Luis.Models.LuisResult.Intents-Local-False", "Microsoft.Bot.Builder.Luis.Models.LuisResult.Dialog-Local-False", "Microsoft.Bot.Builder.Luis.Models.LuisResult.Entities-Local-False", "Microsoft.Bot.Builder.Luis.Models.LuisResult.CompositeEntities-Local-False"],
+        [0.3333333333333333, 0.16666666666666666, 0.3333333333333333, 0.23076923076923078, 0.5],
+        [0.24999999999999997, 0.875, 5.551115123125783e-17, 1.125, 0.25],
+        [1.0, 1.0, 4.0, 0.0, 0.0],
+        [0.0, 4.0, 0.0, 4.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.Language": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.Language.CamelCase-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Language.GenerateTerms-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Language.BuildList-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Language.WordBreak-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Language.NonWord-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Language.Normalize-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Language.NonNoiseWords-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Language.ANormalization-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0],
+        [5.551115123125783e-17, 0.375, 0.5, 0.25, 0.25, 0.125, 0.125, 1.3877787807814457e-17],
+        [4.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 3.0, 0.0, 0.0, 4.0, 0.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.Patterns-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ApplyDefaults-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.AllowDefault-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.AllowNumbers-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceSeparator-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceLastSeparator-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceFormat-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceCase-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.Feedback-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceParens-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ChoiceStyle-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.FieldCase-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.LastSeparator-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.Separator-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.ValueCase-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute.Pattern-Local-False"],
+        [0.0, 0.0, 0.4, 0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.142857142857143, 0.28571428571428575, 0.14285714285714285, 0.14285714285714288, 0.2857142857142857, 0.2857142857142857, 0.42857142857142866, 0.1428571428571428, 0.28571428571428575, 5.551115123125783e-17, 0.0, 0.0, 5.551115123125783e-17, 5.551115123125783e-17, 5.551115123125783e-17, 5.551115123125783e-17],
+        [0.0, 0.0, 2.0, 1.0, 1.0, 1.0, 2.0, 3.0, 0.0, 2.0, 4.0, 1.0, 2.0, 2.0, 2.0, 4.0],
+        [0.5, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.FormConfiguration": [
+        ["Microsoft.Bot.Builder.FormFlow.FormConfiguration.DefaultPrompt-Local-False", "Microsoft.Bot.Builder.FormFlow.FormConfiguration.Templates-Local-False", "Microsoft.Bot.Builder.FormFlow.FormConfiguration.Commands-Local-False", "Microsoft.Bot.Builder.FormFlow.FormConfiguration.Template-Local-False", "Microsoft.Bot.Builder.FormFlow.FormConfiguration.CurrentChoice-Local-False", "Microsoft.Bot.Builder.FormFlow.FormConfiguration.NoPreference-Local-False", "Microsoft.Bot.Builder.FormFlow.FormConfiguration.Yes-Local-False", "Microsoft.Bot.Builder.FormFlow.FormConfiguration.No-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [2.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.42857142857142866, 1.3877787807814457e-17, 0.28571428571428575, 0.42857142857142855, 1.3877787807814457e-17, 1.3877787807814457e-17, 2.7755575615628914e-17, 2.7755575615628914e-17],
+        [0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 2.0, 2.0]
+    ],
+    "Microsoft.Bot.Connector.MicrosoftAppCredentials": [
+        ["Microsoft.Bot.Connector.MicrosoftAppCredentials.TrustServiceUrl-NamedType-False", "Microsoft.Bot.Connector.MicrosoftAppCredentials.GetTokenAsync-Local-False", "Microsoft.Bot.Connector.MicrosoftAppCredentials.ProcessHttpRequestAsync-Local-True", "Microsoft.Bot.Connector.MicrosoftAppCredentials.MicrosoftAppId-Local-False", "Microsoft.Bot.Connector.MicrosoftAppCredentials.IsTrustedServiceUrl-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 0.33333333333333326],
+        [0.0, 1.0, 1.0, 1.0, 0.0]
+    ],
+    "System.Threading.CancellationToken": [
+        ["System.Threading.CancellationToken.ThrowIfCancellationRequested-Local-False", "System.Threading.CancellationToken.None-NamedType-False", "System.Threading.CancellationToken.CanBeCanceled-Local-False"],
+        [0.0, 0.0, 0.0],
+        [4.0, 2.220446049250313e-16, 0.0],
+        [0.0, 3.4, -1.3877787807814457e-17],
+        [0.0, 0.0, 1.0]
+    ],
+    "System.Collections.Concurrent.ConcurrentDictionary": [
+        ["System.Collections.Concurrent.ConcurrentDictionary.AddOrUpdate-Local-False", "System.Collections.Concurrent.ConcurrentDictionary.TryGetValue-Local-False", "System.Collections.Concurrent.ConcurrentDictionary.TryRemove-Local-False", "System.Collections.Concurrent.ConcurrentDictionary.GetOrAdd-Local-False"],
+        [0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0],
+        [2.0, 2.0, 0.5, 0.0],
+        [0.0, 4.0, 0.0, 4.0]
+    ],
+    "System.Collections.Generic.ICollection": [
+        ["System.Collections.Generic.ICollection.Add-Local-False", "System.Collections.Generic.ICollection.Remove-Local-False", "System.Collections.Generic.ICollection.Count-Local-False"],
+        [0.0, 0.0, 0.6666666666666666],
+        [0.5, 0.5, 1.0],
+        [2.0, 0.0, 0.3333333333333333],
+        [1.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.TemplateUsage": [
+        ["Microsoft.Bot.Builder.FormFlow.TemplateUsage.NotUnderstood-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.None-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.EnumSelectMany-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.EnumSelectOne-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.String-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.Integer-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.Bool-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.Double-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.DateTime-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.Help-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.NavigationCommandHelp-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.Confirmation-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.BoolHelp-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.StringHelp-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.IntegerHelp-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.DoubleHelp-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.DateTimeHelp-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.Feedback-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.HelpClarify-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.Clarify-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.HelpConfirm-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.HelpNavigation-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.CurrentChoice-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.NoPreference-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.Unspecified-NamedType-False", "Microsoft.Bot.Builder.FormFlow.TemplateUsage.StatusFormat-NamedType-False"],
+        [0.0, 0.6666666666666666, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.28571428571428575, 0.14285714285714288, -2.7755575615628914e-17, -2.7755575615628914e-17, -2.7755575615628914e-17, -2.7755575615628914e-17, -2.7755575615628914e-17, 0.14285714285714285, -2.7755575615628914e-17, -5.551115123125783e-17, 0.14285714285714282, 0.2857142857142857, 0.14285714285714285, 0.14285714285714285, 0.14285714285714285, 0.14285714285714285, 0.14285714285714285, -5.551115123125783e-17, -2.7755575615628914e-17, -2.7755575615628914e-17, -2.7755575615628914e-17, -2.7755575615628914e-17, 0.14285714285714285, 0.14285714285714285, 0.14285714285714285, 0.14285714285714285],
+        [3.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Scorables.IScorable": [
+        ["Microsoft.Bot.Builder.Scorables.IScorable.PrepareAsync-Local-False", "Microsoft.Bot.Builder.Scorables.IScorable.HasScore-Local-False", "Microsoft.Bot.Builder.Scorables.IScorable.GetScore-Local-False", "Microsoft.Bot.Builder.Scorables.IScorable.PostAsync-Local-False", "Microsoft.Bot.Builder.Scorables.IScorable.DoneAsync-Local-False"],
+        [0.0, 0.5, 0.0, 0.0, 0.0],
+        [1.6666666666666667, 2.3333333333333335, 3.666666666666667, 0.6666666666666666, 0.6666666666666666],
+        [1.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 2.0, 1.0, 2.0, 2.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.AnswerAction-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.HangupAction-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.RejectAction-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.PlayPromptAction-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.RecordAction-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.RecognizeAction-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.IsValidAction-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.Validate-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.CompareOrder-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.IsMultiAction-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidActions.IsExclusiveAction-NamedType-False"],
+        [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.0, 0.0, 1.0, 1.0, 0.0],
+        [0.14285714285714285, 0.14285714285714285, 0.14285714285714285, 0.14285714285714285, 0.14285714285714285, 0.14285714285714285, -2.7755575615628914e-17, 0.14285714285714282, -2.7755575615628914e-17, -2.7755575615628914e-17, -2.7755575615628914e-17],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Exception": [
+        ["System.Exception.ToString-Local-True", "System.Exception.Message-Local-False", "System.Exception.StackTrace-Local-False", "System.Exception.GetObjectData-Local-False"],
+        [0.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.25, 0.0],
+        [1.3333333333333335, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0]
+    ],
+    "System.Net.Http.HttpRequestMessage": [
+        ["System.Net.Http.HttpRequestMessage.RequestUri-Local-False", "System.Net.Http.HttpRequestMessage.Headers-Local-False", "System.Net.Http.HttpRequestMessage.Method-Local-False", "System.Net.Http.HttpRequestMessage.Dispose-Local-False", "System.Net.Http.HttpRequestMessage.Content-Local-False"],
+        [0.045454545454545456, 0.3333333333333333, 0.0, 0.0, 0.13636363636363635],
+        [4.0, 4.0, 4.0, 4.0, 4.0],
+        [1.0, 1.2, 0.0, 0.0, 0.8],
+        [2.0, 4.0, 2.0, 4.0, 0.0]
+    ],
+    "System.Net.HttpStatusCode": [
+        ["System.Net.HttpStatusCode.Unauthorized-NamedType-False", "System.Net.HttpStatusCode.Forbidden-NamedType-False", "System.Net.HttpStatusCode.RedirectKeepVerb-NamedType-False", "System.Net.HttpStatusCode.PreconditionFailed-NamedType-False", "System.Net.HttpStatusCode.OK-NamedType-False", "System.Net.HttpStatusCode.BadRequest-NamedType-False", "System.Net.HttpStatusCode.InternalServerError-NamedType-False", "System.Net.HttpStatusCode.Accepted-NamedType-False"],
+        [0.6666666666666666, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 3.0, 4.0, 2.0, 0.0],
+        [0.16666666666666666, 0.0, 0.0, 0.16666666666666666, 0.3333333333333333, 0.16666666666666669, 0.16666666666666666, 0.16666666666666666],
+        [2.0, 2.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Diagnostics.Trace": [
+        ["System.Diagnostics.Trace.TraceWarning-NamedType-False", "System.Diagnostics.Trace.TraceError-NamedType-False", "System.Diagnostics.Trace.TraceInformation-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [1.0, 0.75, 0.0],
+        [0.0, 4.0, 0.0],
+        [0.0, 0.0, 1.6666666666666667]
+    ],
+    "Microsoft.Bot.Connector.ConversationReference": [
+        ["Microsoft.Bot.Connector.ConversationReference.Bot-Local-False", "Microsoft.Bot.Connector.ConversationReference.ChannelId-Local-False", "Microsoft.Bot.Connector.ConversationReference.ServiceUrl-Local-False", "Microsoft.Bot.Connector.ConversationReference.Conversation-Local-False", "Microsoft.Bot.Connector.ConversationReference.User-Local-False", "Microsoft.Bot.Connector.ConversationReference.GetPostToBotMessage-Local-False", "Microsoft.Bot.Connector.ConversationReference.Equals-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0],
+        [4.0, 3.0, 3.0, 4.0, 4.0, 1.0, 1.0],
+        [0.5, 0.5, 1.5, 0.5, 0.5, 0.0, 0.0]
+    ],
+    "System.Enum": [
+        ["System.Enum.IsDefined-NamedType-False", "System.Enum.Parse-NamedType-False", "System.Enum.ToString-Local-True", "System.Enum.GetHashCode-Local-True", "System.Enum.TryParse-NamedType-False", "System.Enum.HasFlag-Local-False", "System.Enum.GetValues-NamedType-False"],
+        [1.0, 0.0, 0.0, 0.0, 0.75, 1.0, 0.0],
+        [0.2, 0.6, 0.2, 0.2, 0.0, 0.0, 0.2],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 1.5, 0.0, 0.0]
+    ],
+    "System.Text.RegularExpressions.Capture": [
+        ["System.Text.RegularExpressions.Capture.Value-Local-False", "System.Text.RegularExpressions.Capture.Index-Local-False", "System.Text.RegularExpressions.Capture.Length-Local-False"],
+        [0.0, 0.14285714285714285, 0.0],
+        [3.5, 0.0, 0.0],
+        [1.3333333333333333, 2.333333333333333, 1.3333333333333335],
+        [1.0, 0.0, 0.0]
+    ],
+    "System.Text.StringBuilder": [
+        ["System.Text.StringBuilder.AppendLine-Local-False", "System.Text.StringBuilder.ToString-Local-True", "System.Text.StringBuilder.Length-Local-False", "System.Text.StringBuilder.Append-Local-False", "System.Text.StringBuilder.AppendFormat-Local-False"],
+        [0.0, 0.0, 1.0, 0.0, 0.0],
+        [3.5, 1.0, 0.0, 1.0, 0.0],
+        [0.19999999999999996, 1.6, 0.2, 4.0, 0.2],
+        [4.0, 4.0, 0.0, 4.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Scorables.Scorable": [
+        ["Microsoft.Bot.Builder.Scorables.IScorable-Local-False", "Microsoft.Bot.Builder.Scorables.Scorable.Keep-NamedType-False", "System.Collections.Generic.IEnumerable-Local-False"],
+        [0.25, 0.0, 0.0],
+        [0.0, 0.25, 1.5],
+        [3.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.DescribeAttribute": [
+        ["Microsoft.Bot.Builder.FormFlow.DescribeAttribute.Description-Local-False", "Microsoft.Bot.Builder.FormFlow.DescribeAttribute.Image-Local-False", "Microsoft.Bot.Builder.FormFlow.DescribeAttribute.Title-Local-False", "Microsoft.Bot.Builder.FormFlow.DescribeAttribute.SubTitle-Local-False", "Microsoft.Bot.Builder.FormFlow.DescribeAttribute.Message-Local-False"],
+        [0.037037037037037035, 0.1875, 0.16666666666666666, 0.16666666666666666, 0.18181818181818182],
+        [4.0, 0.5, 0.5, 0.5, 0.0],
+        [3.0, 3.666666666666667, 3.6666666666666665, 3.6666666666666665, 3.333333333333333],
+        [1.6666666666666667, 0.6666666666666667, 0.0, 0.0, 0.33333333333333326]
+    ],
+    "Microsoft.Bot.Builder.Luis.Models.EntityRecommendation": [
+        ["Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.Type-Local-False", "Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.Resolution-Local-False", "Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.Role-Local-False", "Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.Entity-Local-False", "Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.Validate-Local-False"],
+        [0.0, 1.0, 0.0, 0.0, 0.0],
+        [0.5, 0.25, 0.25, 0.5, 0.25],
+        [2.0, 0.0, 0.0, 3.0, 0.0],
+        [0.0, 0.0, 0.0, 2.3333333333333335, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.FormBuilderBase": [
+        ["Microsoft.Bot.Builder.FormFlow.FormBuilderBase.Form._prompter-Local-False", "Microsoft.Bot.Builder.FormFlow.FormBuilderBase.Form.Localize-Local-True", "Microsoft.Bot.Builder.FormFlow.FormBuilderBase.Form.Fields-Local-True", "Microsoft.Bot.Builder.FormFlow.FormBuilderBase.Form._steps-Local-False", "Microsoft.Bot.Builder.FormFlow.FormBuilderBase.Form.Steps-Local-True", "Microsoft.Bot.Builder.FormFlow.FormBuilderBase.Form._fields-Local-False", "Microsoft.Bot.Builder.FormFlow.FormBuilderBase.Form._completion-Local-False", "Microsoft.Bot.Builder.FormFlow.FormBuilderBase.Form.Configuration-Local-True", "Microsoft.Bot.Builder.FormFlow.FormBuilderBase._form-Local-False", "Microsoft.Bot.Builder.FormFlow.FormBuilderBase.Build-Local-False", "Microsoft.Bot.Builder.FormFlow.FormBuilderBase.Configuration-Local-False", "Microsoft.Bot.Builder.FormFlow.FormBuilderBase.Field-Local-False"],
+        [0.3333333333333333, 0.0, 0.25, 0.1, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0],
+        [0.0, -2.7755575615628914e-17, 0.3333333333333333, -1.1102230246251565e-16, -5.551115123125783e-17, 0.0, -2.7755575615628914e-17, 0.0, -1.1102230246251565e-16, 0.3333333333333333, 0.33333333333333337, 0.6666666666666667],
+        [3.0, 1.0, 3.0, 4.0, 2.0, 3.0, 1.0, 3.0, 4.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Internals.Fibers.FiberModule": [
+        ["Microsoft.Bot.Builder.Internals.Fibers.FiberModule.Key_DoNotSerialize-NamedType-False", "Microsoft.Bot.Builder.Internals.Fibers.FiberModule.Load-Local-True", "Microsoft.Bot.Builder.Internals.Fibers.FiberModule.Key_SurrogateProvider-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [2.5, 0.0, 0.0],
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ActionBase": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ActionBase.OperationId-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ActionBase.Validate-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ActionBase.Action-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ActionBase.IsStandaloneAction-Local-False"],
+        [0.0, 0.0, 0.15789473684210525, 0.5],
+        [0.0, 1.0, 1.0, 0.0],
+        [0.0, 1.0, 3.0, 2.0],
+        [1.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Net.Http.HttpResponseMessage": [
+        ["System.Net.Http.HttpResponseMessage.StatusCode-Local-False", "System.Net.Http.HttpResponseMessage.Content-Local-False", "System.Net.Http.HttpResponseMessage.Dispose-Local-False", "System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode-Local-False", "System.Net.Http.HttpResponseMessage.ReasonPhrase-Local-False", "System.Net.Http.HttpResponseMessage.Headers-Local-False"],
+        [0.21739130434782608, 0.0, 0.0, 0.0, 0.0, 0.5],
+        [2.220446049250313e-16, 1.0, 0.0, 1.0, 0.3333333333333333, 0.0],
+        [3.3333333333333335, 4.0, 4.0, 0.0, 0.0, 0.0],
+        [3.0, 0.0, 2.0, 1.0, 1.0, 2.0]
+    ],
+    "System.Net.Http.HttpContent": [
+        ["System.Net.Http.HttpContent.ReadAsStringAsync-Local-False", "System.Net.Http.HttpContent.Headers-Local-False"],
+        [0.0, 0.0],
+        [4.0, 3.5],
+        [1.25, 0.0],
+        [4.0, 0.0]
+    ],
+    "System.Tuple": [
+        ["System.Tuple.Item1-Local-False", "System.Tuple.Create-NamedType-False", "System.Tuple.Item2-Local-False", "System.Tuple.Item3-Local-False"],
+        [0.0, 0.0, 0.0, 0.0],
+        [2.5, 0.5, 0.5, 0.0],
+        [1.0, 4.0, 1.0, 0.0],
+        [1.0, 2.0, 1.0, 1.0]
+    ],
+    "Microsoft.Bot.Connector.ActionTypes": [
+        ["Microsoft.Bot.Connector.ActionTypes.Signin-NamedType-False", "Microsoft.Bot.Connector.ActionTypes.ImBack-NamedType-False", "Microsoft.Bot.Connector.ActionTypes.OpenUrl-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0],
+        [0.0, 1.25, 0.0],
+        [1.0, 0.0, 0.0]
+    ],
+    "System.Text.RegularExpressions.Match": [
+        ["System.Text.RegularExpressions.Match.Groups-Local-False"],
+        [0.06666666666666667],
+        [1.0],
+        [2.0],
+        [0.0]
+    ],
+    "System.Delegate": [
+        ["System.Delegate.Target-Local-False", "System.Delegate.Method-Local-False", "System.Delegate.CreateDelegate-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 0.0, 2.0],
+        [3.0, 2.5, 0.0],
+        [0.5, 0.5, 0.0]
+    ],
+    "double?": [
+        ["double?.HasValue-Local-False", "double?.Value-Local-False", "double?.GetValueOrDefault-Local-False"],
+        [0.0, 0.0, 0.0],
+        [2.5, 4.0, 0.0],
+        [0.0, 0.0, 1.5],
+        [1.0, 0.6666666666666667, 0.0]
+    ],
+    "double": [
+        ["double.Parse-NamedType-False", "double.MinValue-NamedType-False", "double.MaxValue-NamedType-False", "double.TryParse-NamedType-False", "double.ToString-Local-False", "double.GetHashCode-Local-True", "double.CompareTo-Local-False"],
+        [0.0, 0.0, 0.4, 0.5, 0.0, 0.0, 0.0],
+        [0.20000000000000004, 0.20000000000000004, 0.2, 0.2, 0.0, 0.2, 0.2],
+        [0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0, 2.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Internals.Fibers.IWait": [
+        ["Microsoft.Bot.Builder.Internals.Fibers.IWait.Need-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IWait.Rest-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IWait.Post-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IWait.Wait-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IWait.Fail-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IWait.PollAsync-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IWait.NeedType-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IWait.ItemType-Local-False"],
+        [0.09090909090909091, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 0.0, 3.0, 1.0, 1.0, 0.0, 0.0, 0.0],
+        [4.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 0.6666666666666667, 0.3333333333333333, -2.7755575615628914e-17, 0.6666666666666666, 0.33333333333333337, 0.33333333333333337, 0.33333333333333337]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.Extensions": [
+        ["System.Type.IsIEnumerable-Local-False", "System.Type.IsNullable-Local-False", "System.Type.IsIntegral-Local-False", "System.Type.IsDouble-Local-False", "System.Type.GetGenericElementType-Local-False", "Microsoft.Bot.Builder.FormFlow.IForm-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.FormPrompt.GenerateMessages-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.FormPrompt.GenerateHeroCards-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.FormPrompt.GenerateHeroCard-Local-False"],
+        [1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0],
+        [2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5],
+        [0.5, 0.5, 0.5, 0.5, 0.5, 3.0, 0.5, 0.0, 0.0],
+        [1.6666666666666667, 1.0, 2.0, 2.0, 1.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Scorables.Internals.Extensions": [
+        ["Microsoft.Bot.Builder.Scorables.Internals.IResolver.Resolve-Local-False", "Microsoft.Bot.Builder.Scorables.Internals.IResolver.CanResolve-Local-False", "System.Reflection.MethodBase.CachedParameters-Local-False", "System.Reflection.MethodBase.CachedParameterTypes-Local-False", "Microsoft.Bot.Builder.Scorables.Internals.IResolver.TryResolve-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 1.0],
+        [0.0, 0.0, 0.6666666666666666, 0.6666666666666667, 0.0],
+        [3.0, 2.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 1.3333333333333333]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.IForm": [
+        ["Microsoft.Bot.Builder.FormFlow.IForm.Resources-Local-False", "Microsoft.Bot.Builder.FormFlow.IForm.Configuration-Local-False", "Microsoft.Bot.Builder.FormFlow.IForm.Steps-Local-False", "Microsoft.Bot.Builder.FormFlow.IForm.Prompt-Local-False", "Microsoft.Bot.Builder.FormFlow.IForm.Fields-Local-False", "Microsoft.Bot.Builder.FormFlow.IForm.Completion-Local-False"],
+        [0.0, 0.0, 0.23333333333333334, 0.0, 0.0, 0.5],
+        [0.0, 1.0, 4.0, 0.5, 2.0, 1.0],
+        [1.0, 3.5, 0.0, 0.0, 0.0, 0.0],
+        [0.6666666666666666, 0.3333333333333335, 0.0, 0.0, 1.6666666666666667, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.Field": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.Field._form-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Field.Form-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Field.SetActive-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Field.SetValidate-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Field.SetPrompt-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Field.AddDescription-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Field.AddTerms-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Field.RemoveValues-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Field.ReplaceTemplate-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 2.0, 2.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.33333333333333337, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.33333333333333337, 0.33333333333333337],
+        [0.0, 0.5, 0.0, 0.0, 0.5, 2.0, 2.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.IField": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.IField.Name-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IField.Form-Local-False"],
+        [0.0, 0.0],
+        [2.3333333333333335, 0.33333333333333326],
+        [0.5, 4.0],
+        [1.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.NumberOfDtmfsExpected-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.LengthOfTTSText-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.SilentPromptDuration-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.NumberOfSpeechVariations-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.InitialSilenceTimeout-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.InterDigitTimeout-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.RecordingDuration-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.SilenceTimeout-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.NumberOfStopTones-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MaxValues.AppStateLength-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 1.0, 0.5, 0.5, 0.5, 0.0, 0.0],
+        [0.25000000000000006, 0.0, 0.0, 0.25000000000000006, 0.0, 0.0, 0.0, 0.0, 0.25, 0.25],
+        [0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "System.DateTime": [
+        ["System.DateTime.UtcNow-NamedType-False", "System.DateTime.Add-Local-False", "System.DateTime.Subtract-Local-False", "System.DateTime.MaxValue-NamedType-False", "System.DateTime.MinValue-NamedType-False", "System.DateTime.Year-Local-False", "System.DateTime.Month-Local-False", "System.DateTime.Day-Local-False", "System.DateTime.Hour-Local-False", "System.DateTime.Minute-Local-False", "System.DateTime.Second-Local-False", "System.DateTime.Kind-Local-False", "System.DateTime.AddYears-Local-False", "System.DateTime.AddMonths-Local-False", "System.DateTime.AddDays-Local-False", "System.DateTime.DayOfWeek-Local-False", "System.DateTime.AddHours-Local-False", "System.DateTime.AddMinutes-Local-False", "System.DateTime.AddSeconds-Local-False", "System.DateTime.TryParse-NamedType-False", "System.DateTime.ToString-Local-False"],
+        [0.16666666666666666, 0.0, 0.6666666666666666, 0.25, 0.0, 0.08333333333333333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0],
+        [0.25, 0.0, 0.0, 0.25, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.25],
+        [0.0, 0.0, 0.0, 2.0, 1.0, 4.0, 4.0, 4.0, 4.0, 4.0, 3.0, 4.0, 3.0, 3.0, 4.0, 2.0, 4.0, 3.0, 4.0, 0.0, 0.0],
+        [4.0, 3.0, 3.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "System.StringComparison": [
+        ["System.StringComparison.OrdinalIgnoreCase-NamedType-False"],
+        [0.8695652173913043],
+        [0.0],
+        [2.0],
+        [1.0]
+    ],
+    "System.Net.Http.HttpClient": [
+        ["System.Net.Http.HttpClient.GetStreamAsync-Local-False", "System.Net.Http.HttpClient.DefaultRequestHeaders-Local-False", "System.Net.Http.HttpClient.GetAsync-Local-False", "System.Net.Http.HttpClient.PostAsync-Local-False", "System.Net.Http.HttpClient.GetStringAsync-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.33333333333333337, 0.33333333333333337, 0.0, 0.3333333333333333, 0.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 1.0]
+    ],
+    "System.Text.Encoding": [
+        ["System.Text.Encoding.UTF8-NamedType-False", "System.Text.Encoding.GetBytes-Local-False", "System.Text.Encoding.GetString-Local-False"],
+        [0.0, 0.0, 0.0],
+        [3.5, 0.0, 0.0],
+        [1.0, 0.33333333333333337, 0.0],
+        [2.0, 1.0, 1.0]
+    ],
+    "System.Runtime.Serialization.SerializationInfo": [
+        ["System.Runtime.Serialization.SerializationInfo.GetValue-Local-False", "System.Runtime.Serialization.SerializationInfo.AddValue-Local-False", "System.Runtime.Serialization.SerializationInfo.SetType-Local-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 3.0, 0.0],
+        [1.5, 0.0, 0.0],
+        [3.0, 3.0, 2.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.IAddress": [
+        ["Microsoft.Bot.Builder.Dialogs.IAddress.BotId-Local-False", "Microsoft.Bot.Builder.Dialogs.IAddress.ChannelId-Local-False", "Microsoft.Bot.Builder.Dialogs.IAddress.UserId-Local-False", "Microsoft.Bot.Builder.Dialogs.IAddress.ConversationId-Local-False", "Microsoft.Bot.Builder.Dialogs.IAddress.ServiceUrl-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.75, 2.0, 0.75, 0.75, 0.75],
+        [3.0, 4.0, 4.0, 4.0, 0.0],
+        [4.0, 4.0, 1.0, 4.0, 4.0]
+    ],
+    "Microsoft.Bot.Builder.Resource.Resources": [
+        ["Microsoft.Bot.Builder.Resource.Resources.UserProfileDeleted-NamedType-False", "Microsoft.Bot.Builder.Resource.Resources.ResourceManager-NamedType-False", "Microsoft.Bot.Builder.Resource.Resources.TooManyAttempts-NamedType-False", "Microsoft.Bot.Builder.Resource.Resources.DefaultChoiceSeparator-NamedType-False", "Microsoft.Bot.Builder.Resource.Resources.DefaultChoiceLastSeparator-NamedType-False", "Microsoft.Bot.Builder.Resource.Resources.PromptRetry-NamedType-False", "Microsoft.Bot.Builder.Resource.Resources.MatchYes-NamedType-False", "Microsoft.Bot.Builder.Resource.Resources.MatchNo-NamedType-False", "Microsoft.Bot.Builder.Resource.Resources.ConfirmChoiceFormat-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.25, 0.25, 0.0, 0.25, 0.25, 0.0, 0.0, 0.0, 0.25],
+        [0.0, 0.0, 2.0, 1.0, 1.0, 3.0, 3.0, 3.0, 0.0],
+        [0.0, 4.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Internals.CachingBotDataStoreConsistencyPolicy": [
+        ["Microsoft.Bot.Builder.Dialogs.Internals.CachingBotDataStoreConsistencyPolicy.LastWriteWins-NamedType-False", "Microsoft.Bot.Builder.Dialogs.Internals.CachingBotDataStoreConsistencyPolicy.ETagBasedConsistency-NamedType-False"],
+        [0.0, 0.0],
+        [0.0, 1.0],
+        [1.0, 0.5],
+        [0.0, 2.0]
+    ],
+    "System.Math": [
+        ["System.Math.Floor-NamedType-False", "System.Math.Min-NamedType-False", "System.Math.Max-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 0.5, 1.0],
+        [0.0, 1.0, 0.0],
+        [1.0, 1.0, 0.0]
+    ],
+    "System.Reflection.BindingFlags": [
+        ["System.Reflection.BindingFlags.Instance-NamedType-False", "System.Reflection.BindingFlags.NonPublic-NamedType-False", "System.Reflection.BindingFlags.Public-NamedType-False", "System.Reflection.BindingFlags.Static-NamedType-False", "System.Reflection.BindingFlags.FlattenHierarchy-NamedType-False", "System.Reflection.BindingFlags.InvokeMethod-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 1.0, 1.0, 0.5, 0.0, 0.0],
+        [2.0, 0.0, 2.3333333333333335, 0.33333333333333337, 0.0, 0.0],
+        [1.0, 1.0, 2.0, 1.0, 2.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.PromptStyle": [
+        ["Microsoft.Bot.Builder.Dialogs.PromptStyle.Auto-NamedType-False", "Microsoft.Bot.Builder.Dialogs.PromptStyle.Keyboard-NamedType-False", "Microsoft.Bot.Builder.Dialogs.PromptStyle.AutoText-NamedType-False", "Microsoft.Bot.Builder.Dialogs.PromptStyle.PerLine-NamedType-False", "Microsoft.Bot.Builder.Dialogs.PromptStyle.Inline-NamedType-False", "Microsoft.Bot.Builder.Dialogs.PromptStyle.None-NamedType-False"],
+        [0.0, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0],
+        [3.0, 2.0, 1.0, 2.0, 2.0, 1.0],
+        [0.0, 0.25, 0.0, 0.0, 0.0, 1.0],
+        [2.0, 0.0, 0.0, 0.0, 0.0, 4.0]
+    ],
+    "System.Collections.Generic.HashSet": [
+        ["System.Collections.Generic.HashSet.Add-Local-False", "System.Collections.Generic.HashSet.Contains-Local-False"],
+        [0.0, 0.4],
+        [0.0, 3.5],
+        [2.0, 1.0],
+        [0.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.Prompter": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.Prompter.Prompt-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Prompter.Annotation-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Prompter.ValidatePattern-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.Prompter.Recognizer-Local-False"],
+        [0.0, 0.0, 1.0, 0.0],
+        [0.6666666666666665, 0.0, 0.33333333333333337, 0.0],
+        [3.5, 0.0, 0.0, 0.5],
+        [2.0, 2.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions": [
+        ["Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions.Default-NamedType-False", "Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions.Auto-NamedType-False", "Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions.Carousel-NamedType-False", "Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions.Buttons-NamedType-False", "Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions.AutoText-NamedType-False", "Microsoft.Bot.Builder.FormFlow.ChoiceStyleOptions.Inline-NamedType-False"],
+        [0.5, 0.3333333333333333, 0.3333333333333333, 0.0, 0.3333333333333333, 1.0],
+        [2.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 3.0, 3.0, 1.0, 1.0, 1.0],
+        [0.0, 0.75, 0.0, 0.0, 0.5, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.OperationOutcomeBase": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.OperationOutcomeBase.Type-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.OperationOutcomeBase.Id-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.OperationOutcomeBase.Validate-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.OperationOutcomeBase.Outcome-Local-False"],
+        [0.0, 0.0, 0.0, 1.0],
+        [0.0, 0.0, 1.0, 0.6666666666666666],
+        [1.5, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 2.0]
+    ],
+    "Microsoft.Bot.Builder.Tests.DialogTestBase": [
+        ["Microsoft.Bot.Builder.Tests.DialogTestBase.MakeTestMessage-NamedType-False"],
+        [0.0],
+        [0.0],
+        [2.5],
+        [1.0]
+    ],
+    "Microsoft.Bot.Sample.AlarmBot.Models.Alarm": [
+        ["Microsoft.Bot.Sample.AlarmBot.Models.Alarm.State-Local-False", "Microsoft.Bot.Sample.AlarmBot.Models.Alarm.Title-Local-False", "Microsoft.Bot.Sample.AlarmBot.Models.Alarm.When-Local-False", "Microsoft.Bot.Sample.AlarmBot.Models.Alarm.Next-Local-False", "Microsoft.Bot.Sample.AlarmBot.Models.Alarm.Cookie-Local-False"],
+        [0.0, 0.0, 0.11764705882352941, 0.0, 0.0],
+        [4.0, 4.0, 4.0, 0.5, 0.0],
+        [0.5, 1.0, 0.0, 0.0, 0.5],
+        [1.0, 0.5, 2.5, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Connector.JwtConfig": [
+        ["Microsoft.Bot.Connector.JwtConfig.ToBotFromChannelOpenIdMetadataUrl-NamedType-False", "Microsoft.Bot.Connector.JwtConfig.ToBotFromChannelTokenValidationParameters-NamedType-False", "Microsoft.Bot.Connector.JwtConfig.ToBotFromEmulatorTokenValidationParameters-NamedType-False", "Microsoft.Bot.Connector.JwtConfig.ToBotFromEmulatorOpenIdMetadataUrl-NamedType-False", "Microsoft.Bot.Connector.JwtConfig.ToBotFromChannelAllowedSigningAlgorithms-NamedType-False", "Microsoft.Bot.Connector.JwtConfig.ToChannelFromBotLoginUrl-NamedType-False", "Microsoft.Bot.Connector.JwtConfig.ToChannelFromBotOAuthScope-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 2.0, 1.0, 1.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Text.RegularExpressions.RegexOptions": [
+        ["System.Text.RegularExpressions.RegexOptions.IgnoreCase-NamedType-False", "System.Text.RegularExpressions.RegexOptions.Compiled-NamedType-False", "System.Text.RegularExpressions.RegexOptions.IgnorePatternWhitespace-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0],
+        [0.5, 1.0, 0.0],
+        [1.0, 1.0, 1.0]
+    ],
+    "System.Net.Http.Headers.HttpRequestHeaders": [
+        ["System.Net.Http.Headers.HttpRequestHeaders.Authorization-Local-False", "System.Net.Http.Headers.HttpRequestHeaders.ExpectContinue-Local-False"],
+        [0.16666666666666666, 0.0],
+        [2.0, 0.0],
+        [1.0, -2.7755575615628914e-17],
+        [0.0, 1.0]
+    ],
+    "Microsoft.Bot.Connector.HeroCard": [
+        ["Microsoft.Bot.Connector.HeroCard.ContentType-NamedType-False", "Microsoft.Bot.Connector.HeroCard.Title-Local-False", "Microsoft.Bot.Connector.HeroCard.Subtitle-Local-False", "Microsoft.Bot.Connector.HeroCard.Text-Local-False", "Microsoft.Bot.Connector.HeroCard.Buttons-Local-False"],
+        [0.0, 0.3333333333333333, 0.3333333333333333, 0.25, 0.3333333333333333],
+        [0.0, 1.0, 1.0, 1.0, 1.0],
+        [0.6666666666666667, 0.0, 0.0, 0.3333333333333333, 0.0],
+        [0.0, 2.0, 2.0, 2.0, 2.0]
+    ],
+    "System.Net.Http.Headers.HttpHeaders": [
+        ["System.Net.Http.Headers.HttpHeaders.Contains-Local-False", "System.Net.Http.Headers.HttpHeaders.Remove-Local-False", "System.Net.Http.Headers.HttpHeaders.TryAddWithoutValidation-Local-False", "System.Net.Http.Headers.HttpHeaders.TryGetValues-Local-False"],
+        [1.0, 0.0, 0.0, 1.0],
+        [0.5, 0.0, 0.0, 0.5],
+        [4.0, 4.0, 4.0, 0.0],
+        [2.5, 2.5, 2.5, 0.0]
+    ],
+    "System.Threading.Tasks.TaskExtensions": [
+        ["System.Threading.Tasks.Task-Local-False"],
+        [0.0],
+        [3.5],
+        [0.5],
+        [2.0]
+    ],
+    "System.Threading.Tasks.TaskFactory": [
+        ["System.Threading.Tasks.TaskFactory.StartNew-Local-False"],
+        [0.0],
+        [2.5],
+        [0.5],
+        [4.0]
+    ],
+    "System.Threading.Tasks.TaskCreationOptions": [
+        ["System.Threading.Tasks.TaskCreationOptions.None-NamedType-False"],
+        [0.0],
+        [2.5],
+        [0.5],
+        [4.0]
+    ],
+    "System.Threading.Tasks.TaskScheduler": [
+        ["System.Threading.Tasks.TaskScheduler.Default-NamedType-False"],
+        [0.0],
+        [3.5],
+        [0.5],
+        [2.0]
+    ],
+    "System.IO.MemoryStream": [
+        ["System.IO.MemoryStream.ToArray-Local-False", "System.IO.MemoryStream.Flush-Local-True"],
+        [0.0, 0.0],
+        [1.0, 0.0],
+        [2.0, 1.0],
+        [1.0, 0.0]
+    ],
+    "Microsoft.Bot.Connector.ConversationsExtensions": [
+        ["Microsoft.Bot.Connector.IConversations.CreateConversationAsync-Local-False", "Microsoft.Bot.Connector.IConversations.SendToConversationAsync-Local-False", "Microsoft.Bot.Connector.IConversations.UpdateActivityAsync-Local-False", "Microsoft.Bot.Connector.IConversations.ReplyToActivityAsync-Local-False", "Microsoft.Bot.Connector.IConversations.DeleteActivityAsync-Local-False", "Microsoft.Bot.Connector.IConversations.GetConversationMembersAsync-Local-False", "Microsoft.Bot.Connector.IConversations.GetActivityMembersAsync-Local-False", "Microsoft.Bot.Connector.IConversations.UploadAttachmentAsync-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [2.0, 3.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+        [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Environment": [
+        ["System.Environment.GetEnvironmentVariable-NamedType-False", "System.Environment.NewLine-NamedType-False", "System.Environment.Exit-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0],
+        [0.0, 1.5, 0.0],
+        [0.0, 0.0, 1.0]
+    ],
+    "System.IO.Compression.CompressionMode": [
+        ["System.IO.Compression.CompressionMode.Decompress-NamedType-False", "System.IO.Compression.CompressionMode.Compress-NamedType-False"],
+        [0.0, 0.0],
+        [0.0, 0.0],
+        [0.0, 0.0],
+        [0.0, 0.0]
+    ],
+    "System.Reflection.CustomAttributeExtensions": [
+        ["System.Reflection.MemberInfo.GetCustomAttributes-Local-False", "System.Reflection.MemberInfo.GetCustomAttribute-Local-False", "System.Reflection.Assembly.GetCustomAttribute-Local-False", "System.Reflection.ParameterInfo.GetCustomAttribute-Local-False"],
+        [0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.5, 0.5],
+        [3.0, 4.0, 0.0, 0.0],
+        [2.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Luis.Extensions": [
+        ["Microsoft.Bot.Builder.Luis.ILuisService.QueryAsync-Local-False", "Microsoft.Bot.Builder.Luis.IResolutionParser.ParseResolutions-Local-False", "Microsoft.Bot.Builder.Luis.BuiltIn.DateTime.DayPart.Next-Local-False", "Microsoft.Bot.Builder.Luis.ILuisOptions.Apply-Local-False", "Microsoft.Bot.Builder.Luis.ILuisService.BuildUri-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.5, 0.5],
+        [1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 1.0, 0.0, 0.0]
+    ],
+    "System.Reflection.MethodBase": [
+        ["System.Reflection.MethodBase.Invoke-Local-False", "System.Reflection.MethodBase.GetParameters-Local-False", "System.Reflection.MethodBase.IsStatic-Local-False", "System.Reflection.MethodBase.GetHashCode-Local-True"],
+        [0.0, 0.0, 0.0, 0.0],
+        [1.0, 0.6666666666666666, -2.7755575615628914e-17, -2.7755575615628914e-17],
+        [2.0, 0.0, 0.0, 1.0],
+        [0.0, 2.0, 1.0, 0.0]
+    ],
+    "System.Globalization.CultureInfo": [
+        ["System.Globalization.CultureInfo.Calendar-Local-False", "System.Globalization.CultureInfo.InvariantCulture-NamedType-False", "System.Globalization.CultureInfo.CurrentUICulture-NamedType-False", "System.Globalization.CultureInfo.TwoLetterISOLanguageName-Local-False", "System.Globalization.CultureInfo.NumberFormat-Local-False", "System.Globalization.CultureInfo.DateTimeFormat-Local-False"],
+        [0.0, 0.0, 0.0, 0.6666666666666666, 0.3333333333333333, 0.5],
+        [0.0, 0.0, 2.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0, 3.0, 2.0],
+        [0.33333333333333337, 0.6666666666666667, -5.551115123125783e-17, 0.6666666666666666, 0.0, -5.551115123125783e-17]
+    ],
+    "Microsoft.Bot.Builder.Internals.Fibers.NullWait": [
+        ["Microsoft.Bot.Builder.Internals.Fibers.NullWait.Instance-NamedType-False"],
+        [0.0],
+        [1.5],
+        [3.0],
+        [0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.ValidateResult": [
+        ["Microsoft.Bot.Builder.FormFlow.ValidateResult.IsValid-Local-False", "Microsoft.Bot.Builder.FormFlow.ValidateResult.Feedback-Local-False", "Microsoft.Bot.Builder.FormFlow.ValidateResult.FeedbackCard-Local-False", "Microsoft.Bot.Builder.FormFlow.ValidateResult.Choices-Local-False", "Microsoft.Bot.Builder.FormFlow.ValidateResult.Value-Local-False"],
+        [0.15384615384615385, 0.16666666666666666, 0.2, 0.25, 0.0],
+        [3.0, 3.0, 0.0, 0.0, 4.0],
+        [4.0, 4.0, 4.0, 3.0, 1.0],
+        [2.0, 1.0, 0.33333333333333337, 0.3333333333333333, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.FormPrompt": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.FormPrompt.Prompt-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.FormPrompt.Buttons-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.FormPrompt.Description-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.FormPrompt.Style-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.FormPrompt.Clone-Local-False"],
+        [0.0, 0.2, 0.25, 0.0, 0.0],
+        [3.0, 3.0, 0.0, 0.0, 0.0],
+        [4.0, 4.0, 4.0, 3.0, 1.0],
+        [2.3333333333333335, 2.220446049250313e-16, -1.1102230246251565e-16, 0.0, -2.7755575615628914e-17]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.BoolDefault": [
+        ["Microsoft.Bot.Builder.FormFlow.BoolDefault.False-NamedType-False", "Microsoft.Bot.Builder.FormFlow.BoolDefault.Default-NamedType-False", "Microsoft.Bot.Builder.FormFlow.BoolDefault.True-NamedType-False"],
+        [0.4, 0.5, 1.0],
+        [2.0, 0.0, 2.0],
+        [0.0, 3.0, 0.0],
+        [1.0, 0.0, -5.551115123125783e-17]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.FormDialog": [
+        ["Microsoft.Bot.Builder.FormFlow.FormDialog._state-Local-False", "Microsoft.Bot.Builder.FormFlow.FormDialog._buildForm-Local-False", "Microsoft.Bot.Builder.FormFlow.FormDialog._entities-Local-False", "Microsoft.Bot.Builder.FormFlow.FormDialog._options-Local-False", "Microsoft.Bot.Builder.FormFlow.FormDialog._formState-Local-False", "Microsoft.Bot.Builder.FormFlow.FormDialog._form-Local-False", "Microsoft.Bot.Builder.FormFlow.FormDialog.DebugRecognizers-NamedType-False", "Microsoft.Bot.Builder.FormFlow.FormDialog.FromForm-NamedType-False", "Microsoft.Bot.Builder.FormFlow.FormDialog.State-Local-False"],
+        [0.0, 0.0, 0.25, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [2.0, 2.0, 4.0, 3.0, 2.0, 1.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.5],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldPrompt": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.IFieldPrompt.Prompt-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldPrompt.Active-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldPrompt.ValidateAsync-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldPrompt.Template-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldPrompt.DefineAsync-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldPrompt.Next-Local-False"],
+        [0.12, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 1.0, 0.5, 1.0, 0.0, 0.0],
+        [4.0, 2.0, 1.0, 4.0, 2.0, 2.0],
+        [0.5, 0.5, 0.0, 3.5, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Scorables.Internals.Token": [
+        ["Microsoft.Bot.Builder.Scorables.Internals.Token.Scorable-Local-False", "Microsoft.Bot.Builder.Scorables.Internals.Token.Item-Local-False", "Microsoft.Bot.Builder.Scorables.Internals.Token.State-Local-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0],
+        [1.0, 1.0, 1.0],
+        [2.0, 2.0, 2.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Internals.DialogModule": [
+        ["Microsoft.Bot.Builder.Dialogs.Internals.DialogModule.BlobKey-NamedType-False", "Microsoft.Bot.Builder.Dialogs.Internals.DialogModule.LifetimeScopeTag-NamedType-False"],
+        [0.0, 0.0],
+        [0.0, 3.0],
+        [1.5, 0.0],
+        [1.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ConversationBase": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ConversationBase.Id-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ConversationBase.Validate-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ConversationBase.AppState-Local-False"],
+        [0.0, 0.0, 0.0],
+        [1.0, 0.0, 0.5],
+        [0.0, 1.0, 0.0],
+        [2.0, 0.0, 0.0]
+    ],
+    "System.Lazy": [
+        ["System.Lazy.Value-Local-False"],
+        [0.16666666666666666],
+        [0.0],
+        [1.0],
+        [1.0]
+    ],
+    "Microsoft.Bot.Connector.Attachments": [
+        ["Microsoft.Bot.Connector.Attachments.Client-Local-False"],
+        [0.10526315789473684],
+        [1.0],
+        [0.0],
+        [1.0]
+    ],
+    "Microsoft.Bot.Connector.ClaimsIdentityEx": [
+        ["Microsoft.Bot.Connector.ClaimsIdentityEx.AppPasswordClaim-NamedType-False", "System.Security.Claims.ClaimsIdentity.GetAppIdFromClaims-Local-False", "System.Security.Claims.ClaimsIdentity.GetAppPasswordFromClaims-Local-False", "ClaimsIdentity.GetAppIdFromClaims-Local-False", "ClaimsIdentity.GetAppPasswordFromClaims-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0, 1.0],
+        [0.0, 1.0, 1.0, 0.0, 0.0]
+    ],
+    "System.Threading.Thread": [
+        ["System.Threading.Thread.CurrentPrincipal-NamedType-False", "System.Threading.Thread.CurrentUICulture-Local-False", "System.Threading.Thread.CurrentThread-NamedType-False"],
+        [0.0, 0.4166666666666667, 0.4166666666666667],
+        [2.0, 0.0, 0.0],
+        [0.0, 2.5, 2.5],
+        [0.0, 1.0, 1.0]
+    ],
+    "Microsoft.Bot.Connector.BotData": [
+        ["Microsoft.Bot.Connector.BotData.Data-Local-False", "Microsoft.Bot.Connector.BotData.ETag-Local-False"],
+        [0.2916666666666667, 0.375],
+        [4.0, 0.0],
+        [2.0, 3.0],
+        [1.0, 0.0]
+    ],
+    "Microsoft.Bot.Connector.IConversations": [
+        ["Microsoft.Bot.Connector.IConversations.CreateConversationWithHttpMessagesAsync-Local-False", "Microsoft.Bot.Connector.IConversations.SendToConversationWithHttpMessagesAsync-Local-False", "Microsoft.Bot.Connector.IConversations.UpdateActivityWithHttpMessagesAsync-Local-False", "Microsoft.Bot.Connector.IConversations.ReplyToActivityWithHttpMessagesAsync-Local-False", "Microsoft.Bot.Connector.IConversations.DeleteActivityWithHttpMessagesAsync-Local-False", "Microsoft.Bot.Connector.IConversations.GetConversationMembersWithHttpMessagesAsync-Local-False", "Microsoft.Bot.Connector.IConversations.GetActivityMembersWithHttpMessagesAsync-Local-False", "Microsoft.Bot.Connector.IConversations.UploadAttachmentWithHttpMessagesAsync-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+        [2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Reflection.Assembly": [
+        ["System.Reflection.Assembly.GetName-Local-False", "System.Reflection.Assembly.GetManifestResourceNames-Local-False", "System.Reflection.Assembly.CodeBase-Local-False", "System.Reflection.Assembly.GetExecutingAssembly-NamedType-False", "System.Reflection.Assembly.LoadFrom-NamedType-False", "System.Reflection.Assembly.GetType-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 1.0, 1.0],
+        [0.5, 0.5, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 1.0, 0.0, 0.0]
+    ],
+    "bool?": [
+        ["bool?.GetHashCode-Local-True", "bool?.HasValue-Local-False", "bool?.Value-Local-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 0.5, 1.5],
+        [1.0, 0.0, 0.0],
+        [0.0, 2.0, 2.0]
+    ],
+    "System.TimeSpan": [
+        ["System.TimeSpan.FromDays-NamedType-False", "System.TimeSpan.FromMinutes-NamedType-False", "System.TimeSpan.FromSeconds-NamedType-False", "System.TimeSpan.TotalMilliseconds-Local-False", "System.TimeSpan.TotalSeconds-Local-False"],
+        [0.0, 1.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 3.5],
+        [1.0, 1.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 2.0, 0.0]
+    ],
+    "Microsoft.Bot.Connector.Attachment": [
+        ["Microsoft.Bot.Connector.Attachment.ContentType-Local-False", "Microsoft.Bot.Connector.Attachment.ContentUrl-Local-False", "Microsoft.Bot.Connector.Attachment.Content-Local-False", "Microsoft.Bot.Connector.Attachment.Name-Local-False", "Microsoft.Bot.Connector.Attachment.ThumbnailUrl-Local-False", "Microsoft.Bot.Connector.Attachment.Equals-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [2.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [3.0, 3.0, 4.0, 4.0, 4.0, 1.0],
+        [3.0, 0.0, 2.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Connector.StateClient": [
+        ["Microsoft.Bot.Connector.StateClient.BaseUri-Local-False", "Microsoft.Bot.Connector.StateClient.Credentials-Local-False", "Microsoft.Bot.Connector.StateClient.DeserializationSettings-Local-False", "Microsoft.Bot.Connector.StateClient.SerializationSettings-Local-False", "Microsoft.Bot.Connector.StateClient.BotState-Local-False"],
+        [0.0, 0.5, 0.0, 0.0, 0.0],
+        [3.0, 4.0, 4.0, 2.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 1.0]
+    ],
+    "System.Collections.Generic.IEnumerable": [
+        ["System.Collections.Generic.IEnumerable.GetEnumerator-Local-False"],
+        [0.0],
+        [1.0],
+        [0.0],
+        [1.0]
+    ],
+    "System.Collections.IEnumerator": [
+        ["System.Collections.IEnumerator.MoveNext-Local-False", "System.Collections.IEnumerator.Current-Local-False"],
+        [0.14285714285714285, 0.0],
+        [2.5, 0.0],
+        [1.0, 1.0],
+        [1.0, 0.0]
+    ],
+    "System.Collections.Generic.IComparer": [
+        ["System.Collections.Generic.IComparer.Compare-Local-False"],
+        [0.2],
+        [0.0],
+        [1.0],
+        [1.0]
+    ],
+    "System.Collections.Generic.IDictionary": [
+        ["System.Collections.Generic.IDictionary.TryGetValue-Local-False", "System.Collections.Generic.IDictionary.Add-Local-False", "System.Collections.Generic.IDictionary.Keys-Local-False", "System.Collections.Generic.IDictionary.Values-Local-False"],
+        [1.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 1.0],
+        [1.0, 1.0, 0.0, 0.0],
+        [2.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Resources.ResourceManager": [
+        ["System.Resources.ResourceManager.GetString-Local-False", "System.Resources.ResourceManager.GetResourceSet-Local-False"],
+        [0.0, 0.0],
+        [0.0, 1.0],
+        [1.0, 0.0],
+        [2.0, 0.0]
+    ],
+    "System.IO.Stream": [
+        ["System.IO.Stream.Close-Local-False", "System.IO.Stream.SetLength-Local-False", "System.IO.Stream.Length-Local-False", "System.IO.Stream.Position-Local-False", "System.IO.Stream.Flush-Local-False"],
+        [0.0, 0.0, 1.0, 0.0, 0.0],
+        [2.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 2.0, 1.0, 3.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Connector.InputHints": [
+        ["Microsoft.Bot.Connector.InputHints.IgnoringInput-NamedType-False", "Microsoft.Bot.Connector.InputHints.ExpectingInput-NamedType-False", "Microsoft.Bot.Connector.InputHints.AcceptingInput-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [2.0, 1.0, 1.0],
+        [0.0, 2.0, 0.0],
+        [1.0, 3.0, 1.0]
+    ],
+    "Microsoft.Bot.Connector.Extensions": [
+        ["Microsoft.Bot.Connector.HeroCard.ToAttachment-Local-False", "Microsoft.Bot.Connector.SigninCard.ToAttachment-Local-False"],
+        [0.0, 0.0],
+        [2.0, 0.0],
+        [0.0, 1.0],
+        [1.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Base.IEventLoop": [
+        ["Microsoft.Bot.Builder.Base.IEventLoop.PollAsync-Local-False"],
+        [0.0],
+        [2.0],
+        [0.0],
+        [1.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.IBotContext": [
+        ["Microsoft.Bot.Builder.Dialogs.IBotContext.CancellationToken-Local-False", "Microsoft.Bot.Builder.Dialogs.IBotContext.Activity-Local-False"],
+        [0.0, 0.0],
+        [2.5, 0.5],
+        [1.0, 0.0],
+        [0.0, 1.0]
+    ],
+    "System.Console": [
+        ["System.Console.WriteLine-NamedType-False", "System.Console.Write-NamedType-False"],
+        [0.0, 0.0],
+        [1.0, 0.0],
+        [3.0, 1.0],
+        [2.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Internals.Fibers.Need": [
+        ["Microsoft.Bot.Builder.Internals.Fibers.Need.Wait-NamedType-False", "Microsoft.Bot.Builder.Internals.Fibers.Need.Call-NamedType-False", "Microsoft.Bot.Builder.Internals.Fibers.Need.None-NamedType-False", "Microsoft.Bot.Builder.Internals.Fibers.Need.Poll-NamedType-False", "Microsoft.Bot.Builder.Internals.Fibers.Need.Done-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0],
+        [4.0, 1.0, 1.5, 1.5, 1.0],
+        [0.0, 0.0, 2.0, 0.0, 3.0],
+        [0.0, 0.0, 0.0, 1.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Luis.Models.IntentRecommendation": [
+        ["Microsoft.Bot.Builder.Luis.Models.IntentRecommendation.Score-Local-False", "Microsoft.Bot.Builder.Luis.Models.IntentRecommendation.Intent-Local-False", "Microsoft.Bot.Builder.Luis.Models.IntentRecommendation.Actions-Local-False"],
+        [0.0, 0.5, 0.0],
+        [2.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0]
+    ],
+    "System.Reflection.FieldInfo": [
+        ["System.Reflection.FieldInfo.GetValue-Local-False", "System.Reflection.FieldInfo.SetValue-Local-False", "System.Reflection.FieldInfo.FieldType-Local-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0],
+        [2.0, 2.0, 2.0],
+        [3.0, 2.0, 2.0]
+    ],
+    "System.Reflection.PropertyInfo": [
+        ["System.Reflection.PropertyInfo.GetValue-Local-False", "System.Reflection.PropertyInfo.SetValue-Local-False", "System.Reflection.PropertyInfo.PropertyType-Local-False", "System.Reflection.PropertyInfo.CanRead-Local-False", "System.Reflection.PropertyInfo.CanWrite-Local-False"],
+        [0.0, 0.0, 0.0, 1.0, 1.0],
+        [0.0, 0.0, 1.0, 1.0, 1.0],
+        [2.0, 2.0, 2.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "System.Collections.Generic.IReadOnlyDictionary": [
+        ["System.Collections.Generic.IReadOnlyDictionary.Values-Local-False", "System.Collections.Generic.IReadOnlyDictionary.TryGetValue-Local-False", "System.Collections.Generic.IReadOnlyDictionary.Keys-Local-False"],
+        [0.0, 1.0, 0.0],
+        [0.0, 1.5, 0.0],
+        [0.0, 0.0, 3.0],
+        [1.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Connector.AttachmentLayoutTypes": [
+        ["Microsoft.Bot.Connector.AttachmentLayoutTypes.List-NamedType-False", "Microsoft.Bot.Connector.AttachmentLayoutTypes.Carousel-NamedType-False"],
+        [0.0, 0.0],
+        [2.0, 0.5],
+        [0.0, 2.0],
+        [0.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.FormOptions": [
+        ["Microsoft.Bot.Builder.FormFlow.FormOptions.None-NamedType-False", "Microsoft.Bot.Builder.FormFlow.FormOptions.PromptInStart-NamedType-False", "Microsoft.Bot.Builder.FormFlow.FormOptions.PromptFieldsWithValues-NamedType-False"],
+        [0.0, 0.2, 0.75],
+        [0.0, 2.0, 0.5],
+        [4.0, 0.0, 0.0],
+        [2.0, 1.0, 3.0]
+    ],
+    "System.Linq.IGrouping": [
+        ["System.Linq.IGrouping.Key-Local-False"],
+        [0.0],
+        [1.0],
+        [0.0],
+        [0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.StepType": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.StepType.Field-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.StepType.Message-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.StepType.Confirm-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.StepType.Navigation-NamedType-False"],
+        [0.625, 0.6666666666666666, 0.0, 0.0],
+        [3.0, 3.0, 0.0, 0.0],
+        [1.5, 0.5, 0.0, 0.0],
+        [1.0, 1.0, 1.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.TermMatch": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.TermMatch.Value-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TermMatch.Start-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TermMatch.End-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TermMatch.Covers-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TermMatch.Confidence-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TermMatch.Overlaps-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TermMatch.Same-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.TermMatch.Length-Local-False"],
+        [0.3181818181818182, 0.2, 0.1111111111111111, 0.5, 0.375, 1.0, 1.0, 0.0],
+        [0.0, 4.0, 4.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [3.5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [4.0, 4.0, 4.0, 2.0, 4.0, 2.0, 2.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.IFields": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.IFields.Field-Local-False"],
+        [0.0],
+        [0.0],
+        [1.0],
+        [1.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldState": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.IFieldState.IsUnknown-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldState.IsNullable-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldState.GetValue-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldState.Limits-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldState.Optional-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldState.SetValue-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldState.SetUnknown-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldState.Dependencies-Local-False"],
+        [0.625, 1.0, 0.0, 1.0, 0.6666666666666666, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 2.0, 0.0, 0.0, 3.0, 1.0, 1.0],
+        [4.0, 0.5, 2.0, 0.5, 2.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldDescription": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.IFieldDescription.FieldDescription-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldDescription.AllowsMultiple-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldDescription.FieldTerms-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IFieldDescription.Role-Local-False"],
+        [0.0, 0.3333333333333333, 0.0, 0.0],
+        [1.0, 0.0, 0.5, 0.0],
+        [0.0, 2.0, 0.0, 0.0],
+        [1.0, 1.0, 0.0, 1.0]
+    ],
+    "System.OperationCanceledException": [
+        ["System.OperationCanceledException.CancellationToken-Local-False"],
+        [0.0],
+        [2.0],
+        [0.0],
+        [1.0]
+    ],
+    "Microsoft.Bot.Builder.Scorables.Internals.FoldStage": [
+        ["Microsoft.Bot.Builder.Scorables.Internals.FoldStage.AfterFold-NamedType-False", "Microsoft.Bot.Builder.Scorables.Internals.FoldStage.StartPost-NamedType-False", "Microsoft.Bot.Builder.Scorables.Internals.FoldStage.AfterPost-NamedType-False"],
+        [0.16666666666666666, 0.16666666666666666, 0.16666666666666666],
+        [0.0, 0.0, 0.0],
+        [1.0, 1.0, 1.0],
+        [0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Scorables.Internals.InheritedAttributes": [
+        ["Microsoft.Bot.Builder.Scorables.Internals.InheritedAttributes.For-NamedType-False"],
+        [0.0],
+        [0.0],
+        [1.0],
+        [0.0]
+    ],
+    "Microsoft.Bot.Builder.ConnectorEx.Extensions": [
+        ["Microsoft.Bot.Builder.Dialogs.ResumptionCookie.ToConversationReference-Local-False", "Microsoft.Bot.Connector.IActivity.ToConversationReference-Local-False", "Microsoft.Bot.Builder.Dialogs.IAddress.ToConversationReference-Local-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0]
+    ],
+    "Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder": [
+        ["Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.BuildLocalizedForm-NamedType-False", "Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.BuildJsonForm-NamedType-False", "Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.Sauces-NamedType-False", "Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.Length-Local-False", "Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.DeliveryAddress-NamedType-False", "Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.DeliveryTime-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 2.0, 2.0, 2.0, 2.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidOutcomes": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidOutcomes.AnswerOutcome-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidOutcomes.HangupOutcome-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidOutcomes.PlayPromptOutcome-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidOutcomes.RecognizeOutcome-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidOutcomes.RecordOutcome-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidOutcomes.RejectOutcome-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidOutcomes.WorkflowValidationOutcome-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidOutcomes.Validate-NamedType-False"],
+        [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.0],
+        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidDtmfs": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.ValidDtmfs.Validate-NamedType-False"],
+        [0.0],
+        [0.0],
+        [0.0],
+        [0.0]
+    ],
+    "Microsoft.Bot.Connector.IConversationUpdateActivity": [
+        ["Microsoft.Bot.Connector.IConversationUpdateActivity.MembersAdded-Local-False", "Microsoft.Bot.Connector.IConversationUpdateActivity.MembersRemoved-Local-False"],
+        [0.5, 0.5],
+        [1.0, 1.0],
+        [1.0, 0.0],
+        [1.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Conversation": [
+        ["Microsoft.Bot.Builder.Dialogs.Conversation.Container-NamedType-False", "Microsoft.Bot.Builder.Dialogs.Conversation.SendAsync-NamedType-False", "Microsoft.Bot.Builder.Dialogs.Conversation.ResumeAsync-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [1.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Sample.AlarmBot.Models.IAlarmService": [
+        ["Microsoft.Bot.Sample.AlarmBot.Models.IAlarmService.DeleteAsync-Local-False", "Microsoft.Bot.Sample.AlarmBot.Models.IAlarmService.UpsertAsync-Local-False", "Microsoft.Bot.Sample.AlarmBot.Models.IAlarmService.SnoozeAsync-Local-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0],
+        [1.0, 2.0, 1.0],
+        [1.0, 1.0, 1.0]
+    ],
+    "System.Activator": [
+        ["System.Activator.CreateInstance-NamedType-False"],
+        [0.0],
+        [0.0],
+        [1.0],
+        [1.0]
+    ],
+    "Microsoft.Bot.Connector.Entity": [
+        ["Microsoft.Bot.Connector.Entity.Type-Local-False", "Microsoft.Bot.Connector.Entity.Properties-Local-False"],
+        [0.0, 0.0],
+        [0.0, 0.0],
+        [0.0, 0.0],
+        [0.0, 0.0]
+    ],
+    "Microsoft.Bot.Connector.ActivityExtensions": [
+        ["Microsoft.Bot.Connector.IMessageActivity.RemoveMentionText-Local-False", "Microsoft.Bot.Connector.IActivity.GetActivityType-Local-False"],
+        [0.0, 0.0],
+        [1.0, 0.0],
+        [0.0, 2.0],
+        [1.0, 0.0]
+    ],
+    "System.Security.Claims.ClaimsIdentity": [
+        ["System.Security.Claims.ClaimsIdentity.AddClaim-Local-False", "System.Security.Claims.ClaimsIdentity.Claims-Local-False"],
+        [0.0, 0.2857142857142857],
+        [0.0, 2.0],
+        [1.0, 0.0],
+        [0.0, 3.0]
+    ],
+    "System.Security.Claims.Claim": [
+        ["System.Security.Claims.Claim.Type-Local-False", "System.Security.Claims.Claim.Value-Local-False", "System.Security.Claims.Claim.Issuer-Local-False"],
+        [0.2, 0.36363636363636365, 0.0],
+        [1.0, 3.0, 0.0],
+        [4.0, 4.0, 2.0],
+        [3.0, 2.0, 1.0]
+    ],
+    "Microsoft.Bot.Connector.SigninCard": [
+        ["Microsoft.Bot.Connector.SigninCard.ContentType-NamedType-False", "Microsoft.Bot.Connector.SigninCard.Create-NamedType-False"],
+        [0.0, 0.0],
+        [1.0, 0.0],
+        [0.0, 1.0],
+        [1.0, 0.0]
+    ],
+    "System.Guid": [
+        ["System.Guid.ToString-Local-True", "System.Guid.NewGuid-NamedType-False", "System.Guid.ToString-Local-False"],
+        [0.0, 0.0, 0.0],
+        [1.0, 1.0, 0.0],
+        [0.0, 2.0, 2.0],
+        [1.0, 1.0, 0.0]
+    ],
+    "Microsoft.Bot.Connector.BotStateExtensions": [
+        ["Microsoft.Bot.Connector.IBotState.GetUserDataAsync-Local-False", "Microsoft.Bot.Connector.IBotState.SetUserDataAsync-Local-False", "Microsoft.Bot.Connector.IBotState.DeleteStateForUserAsync-Local-False", "Microsoft.Bot.Connector.IBotState.GetConversationDataAsync-Local-False", "Microsoft.Bot.Connector.IBotState.SetConversationDataAsync-Local-False", "Microsoft.Bot.Connector.IBotState.GetPrivateConversationDataAsync-Local-False", "Microsoft.Bot.Connector.IBotState.SetPrivateConversationDataAsync-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0],
+        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    ],
+    "System.Collections.Generic.Queue": [
+        ["System.Collections.Generic.Queue.Enqueue-Local-False", "System.Collections.Generic.Queue.Count-Local-False", "System.Collections.Generic.Queue.Dequeue-Local-False"],
+        [0.0, 0.4, 0.0],
+        [0.0, 0.0, 0.0],
+        [1.0, 2.0, 1.0],
+        [2.0, 0.0, 0.0]
+    ],
+    "System.Collections.Generic.Comparer": [
+        ["System.Collections.Generic.Comparer.Default-NamedType-False"],
+        [0.0],
+        [0.0],
+        [0.0],
+        [0.0]
+    ],
+    "Microsoft.Bot.Builder.Scorables.Internals.IResolver": [
+        ["Microsoft.Bot.Builder.Scorables.Internals.IResolver.TryResolve-Local-False"],
+        [0.4444444444444444],
+        [0.0],
+        [1.0],
+        [0.0]
+    ],
+    "Microsoft.Bot.Builder.Scorables.Internals.DelegatingResolver": [
+        ["Microsoft.Bot.Builder.Scorables.Internals.DelegatingResolver.TryResolve-Local-False", "Microsoft.Bot.Builder.Scorables.Internals.DelegatingResolver.inner-Local-False"],
+        [0.0, 1.0],
+        [2.0, 2.0],
+        [1.0, 0.0],
+        [2.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.ConnectorEx.ResumptionContext": [
+        ["Microsoft.Bot.Builder.ConnectorEx.ResumptionContext.LoadDataAsync-Local-False", "Microsoft.Bot.Builder.ConnectorEx.ResumptionContext.SaveDataAsync-Local-False", "Microsoft.Bot.Builder.ConnectorEx.ResumptionContext.RESUMPTION_CONTEXT_KEY-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 0.0, 2.0],
+        [1.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Internals.IPostToBot": [
+        ["Microsoft.Bot.Builder.Dialogs.Internals.IPostToBot.PostAsync-Local-False"],
+        [0.0],
+        [2.0],
+        [0.0],
+        [1.0]
+    ],
+    "Microsoft.Bot.Builder.ConnectorEx.KeyboardCardEx": [
+        ["Microsoft.Bot.Connector.CardAction.ToFacebookQuickReply-Local-False", "Microsoft.Bot.Builder.ConnectorEx.KeyboardCard.ToFacebookMessage-Local-False", "Microsoft.Bot.Builder.ConnectorEx.KeyboardCard.ToHeroCard-Local-False", "Microsoft.Bot.Builder.ConnectorEx.KeyboardCard.ToAttachment-Local-False"],
+        [0.0, 0.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 1.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Internals.BotStoreType": [
+        ["Microsoft.Bot.Builder.Dialogs.Internals.BotStoreType.BotConversationData-NamedType-False", "Microsoft.Bot.Builder.Dialogs.Internals.BotStoreType.BotUserData-NamedType-False", "Microsoft.Bot.Builder.Dialogs.Internals.BotStoreType.BotPrivateConversationData-NamedType-False"],
+        [0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0],
+        [1.0, 1.0, 1.0],
+        [2.0, 2.0, 2.0]
+    ],
+    "Microsoft.Bot.Builder.Internals.Fibers.ITraits": [
+        ["Microsoft.Bot.Builder.Internals.Fibers.ITraits.Minimum-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.ITraits.Maximum-Local-False"],
+        [0.16666666666666666, 0.0],
+        [1.0, 1.0],
+        [3.0, 2.0],
+        [1.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Internals.IDialogTasks": [
+        ["Microsoft.Bot.Builder.Dialogs.Internals.IDialogTasks.CreateDialogTask-Local-False", "Microsoft.Bot.Builder.Dialogs.Internals.IDialogTasks.DialogTasks-Local-False"],
+        [0.0, 0.16666666666666666],
+        [0.0, 2.0],
+        [1.0, 0.0],
+        [1.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Base.IEventProducer": [
+        ["Microsoft.Bot.Builder.Base.IEventProducer.Post-Local-False"],
+        [0.0],
+        [0.0],
+        [1.0],
+        [1.0]
+    ],
+    "long": [
+        ["long.Parse-NamedType-False", "long.MinValue-NamedType-False", "long.MaxValue-NamedType-False", "long.ToString-Local-False", "long.TryParse-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 1.0],
+        [0.0, 3.0, 3.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 2.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.Internals.Extensions": [
+        ["System.Collections.Generic.IEnumerable-Local-False"],
+        [0.0],
+        [1.0],
+        [0.0],
+        [1.0]
+    ],
+    "Microsoft.Bot.Builder.Internals.Fibers.IFiber": [
+        ["Microsoft.Bot.Builder.Internals.Fibers.IFiber.Frames-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IFiber.Waits-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IFiber.Push-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IFiber.Done-Local-False"],
+        [0.1111111111111111, 0.0, 0.0, 0.0],
+        [4.0, 0.0, 0.0, 0.0],
+        [1.0, 1.0, 1.0, 3.0],
+        [0.0, 2.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Internals.Fibers.IWaiter": [
+        ["Microsoft.Bot.Builder.Internals.Fibers.IWaiter.Wait-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IWaiter.Mark-Local-False"],
+        [0.0, 0.0],
+        [4.0, 0.0],
+        [3.0, 1.0],
+        [2.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Internals.Fibers.IStore": [
+        ["Microsoft.Bot.Builder.Internals.Fibers.IStore.Reset-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IStore.Flush-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IStore.Save-Local-False", "Microsoft.Bot.Builder.Internals.Fibers.IStore.TryLoad-Local-False"],
+        [0.0, 0.0, 0.0, 0.5],
+        [2.0, 2.0, 1.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0],
+        [2.0, 2.0, 2.0, 2.0]
+    ],
+    "Microsoft.Bot.Builder.Dialogs.LuisIntentAttribute": [
+        ["Microsoft.Bot.Builder.Dialogs.LuisIntentAttribute.IntentName-Local-False"],
+        [0.0],
+        [1.0],
+        [0.0],
+        [0.0]
+    ],
+    "Microsoft.Bot.Builder.Luis.ILuisService": [
+        ["Microsoft.Bot.Builder.Luis.ILuisService.ModifyRequest-Local-False", "Microsoft.Bot.Builder.Luis.ILuisService.QueryAsync-Local-False", "Microsoft.Bot.Builder.Luis.ILuisService.BuildUri-Local-False"],
+        [0.0, 0.0, 0.0],
+        [1.0, 1.0, 2.0],
+        [0.0, 1.0, 0.0],
+        [2.0, 1.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Internals.Fibers.SetField": [
+        ["Microsoft.Bot.Builder.Internals.Fibers.SetField.NotNull-NamedType-False", "Microsoft.Bot.Builder.Internals.Fibers.SetField.CheckNull-NamedType-False"],
+        [0.0, 0.0],
+        [0.0, 2.0],
+        [1.0, 0.0],
+        [1.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.TermsAttribute": [
+        ["Microsoft.Bot.Builder.FormFlow.TermsAttribute.Alternatives-Local-False"],
+        [0.0],
+        [1.0],
+        [2.0],
+        [0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.TemplateAttribute": [
+        ["Microsoft.Bot.Builder.FormFlow.TemplateAttribute.Usage-Local-False"],
+        [0.6],
+        [1.0],
+        [0.0],
+        [0.0]
+    ],
+    "Microsoft.Bot.Builder.Luis.LuisApiVersion": [
+        ["Microsoft.Bot.Builder.Luis.LuisApiVersion.V2-NamedType-False", "Microsoft.Bot.Builder.Luis.LuisApiVersion.V1-NamedType-False"],
+        [0.0, 0.0],
+        [2.0, 0.0],
+        [4.0, 3.0],
+        [1.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Luis.ILuisModel": [
+        ["Microsoft.Bot.Builder.Luis.ILuisModel.ModelID-Local-False", "Microsoft.Bot.Builder.Luis.ILuisModel.SubscriptionKey-Local-False", "Microsoft.Bot.Builder.Luis.ILuisModel.ApiVersion-Local-False", "Microsoft.Bot.Builder.Luis.ILuisModel.UriBase-Local-False", "Microsoft.Bot.Builder.Luis.ILuisModel.ModifyRequest-Local-False"],
+        [0.6, 0.6, 0.0, 0.0, 0.0],
+        [2.0, 2.0, 2.0, 2.0, 1.0],
+        [2.0, 2.0, 0.0, 0.0, 0.0],
+        [1.0, 1.0, 1.0, 1.0, 0.0]
+    ],
+    "System.Reflection.ParameterInfo": [
+        ["System.Reflection.ParameterInfo.ParameterType-Local-False", "System.Reflection.ParameterInfo.Name-Local-False"],
+        [0.0, 1.0],
+        [1.0, 0.0],
+        [2.0, 1.0],
+        [1.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.ILocalizer": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.ILocalizer.Add-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.ILocalizer.Lookup-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.ILocalizer.LookupValues-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.ILocalizer.LookupDictionary-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.ILocalizer.LookupTemplates-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.ILocalizer.Save-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.ILocalizer.Load-Local-False"],
+        [0.0, 1.0, 0.6666666666666666, 0.0, 0.0, 0.0, 0.0],
+        [4.0, 3.0, 2.0, 2.0, 1.0, 0.0, 0.0],
+        [1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.IFormBuilder": [
+        ["Microsoft.Bot.Builder.FormFlow.IFormBuilder.Build-Local-False", "Microsoft.Bot.Builder.FormFlow.IFormBuilder.OnCompletion-Local-False", "Microsoft.Bot.Builder.FormFlow.IFormBuilder.Field-Local-False", "Microsoft.Bot.Builder.FormFlow.IFormBuilder.Configuration-Local-False"],
+        [0.0, 0.0, 0.0, 0.0],
+        [0.0, 2.0, 2.0, 1.0],
+        [0.0, 0.0, 1.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.IStep": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.IStep.Type-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.Field-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.DefineAsync-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.ProcessAsync-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.Name-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.Start-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.Match-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.NotUnderstood-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.InClarify-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.Active-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.Dependencies-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.Back-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.Help-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.Annotation-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.SaveResources-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IStep.Localize-Local-False"],
+        [0.75, 0.46153846153846156, 0.3333333333333333, 0.0, 0.18181818181818182, 0.0, 0.0, 0.0, 1.0, 0.8571428571428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [4.0, 4.0, 3.0, 1.0, 4.0, 4.0, 2.0, 1.0, 1.0, 4.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0],
+        [3.0, 1.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 4.0, 2.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.MessageActivityHelper": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.MessageActivityHelper.BuildMessageWithText-NamedType-False", "Microsoft.Bot.Builder.FormFlow.Advanced.MessageActivityHelper.GetSanitizedTextInput-NamedType-False"],
+        [0.0, 0.0],
+        [1.0, 1.0],
+        [0.0, 3.0],
+        [0.0, 2.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.IRecognize": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.IRecognize.Matches-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IRecognize.PromptArgs-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IRecognize.Help-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IRecognize.ValueDescription-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IRecognize.ValidInputs-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IRecognize.ValueDescriptions-Local-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0, 0.0, 1.0],
+        [3.0, 1.0, 2.0, 1.0, 1.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.Advanced.IPrompt": [
+        ["Microsoft.Bot.Builder.FormFlow.Advanced.IPrompt.Recognizer-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IPrompt.Prompt-Local-False", "Microsoft.Bot.Builder.FormFlow.Advanced.IPrompt.Annotation-Local-False"],
+        [0.0, 0.0, 0.6666666666666666],
+        [1.0, 0.0, 0.0],
+        [4.0, 3.0, 2.0],
+        [1.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.FormFlow.CaseNormalization": [
+        ["Microsoft.Bot.Builder.FormFlow.CaseNormalization.InitialUpper-NamedType-False", "Microsoft.Bot.Builder.FormFlow.CaseNormalization.Lower-NamedType-False", "Microsoft.Bot.Builder.FormFlow.CaseNormalization.Upper-NamedType-False", "Microsoft.Bot.Builder.FormFlow.CaseNormalization.Default-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.5],
+        [0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 2.0],
+        [1.0, 1.0, 1.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Scorables.Internals.IBinding": [
+        ["Microsoft.Bot.Builder.Scorables.Internals.IBinding.InvokeAsync-Local-False", "Microsoft.Bot.Builder.Scorables.Internals.IBinding.Method-Local-False"],
+        [0.0, 0.0],
+        [0.0, 2.0],
+        [1.0, 0.0],
+        [2.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Scorables.Internals.NoneResolver": [
+        ["Microsoft.Bot.Builder.Scorables.Internals.NoneResolver.Instance-NamedType-False"],
+        [0.0],
+        [1.0],
+        [0.0],
+        [1.0]
+    ],
+    "Microsoft.Bot.Builder.Scorables.Internals.BindingComparer": [
+        ["Microsoft.Bot.Builder.Scorables.Internals.BindingComparer.Instance-NamedType-False"],
+        [0.0],
+        [0.0],
+        [0.0],
+        [0.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.Workflow": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.Workflow.Validate-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.Workflow.Links-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.Workflow.Actions-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.Workflow.AppState-Local-False"],
+        [0.0, 0.2, 0.0, 0.0],
+        [0.0, 0.0, 4.0, 0.0],
+        [1.0, 4.0, 3.0, 1.0],
+        [2.0, 1.0, 1.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.CallRequestType": [
+        ["Microsoft.Bot.Builder.Calling.CallRequestType.IncomingCall-NamedType-False", "Microsoft.Bot.Builder.Calling.CallRequestType.CallingEvent-NamedType-False"],
+        [0.0, 0.0],
+        [0.0, 0.0],
+        [0.0, 0.0],
+        [0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MinValues": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MinValues.NumberOfDtmfsExpected-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MinValues.InitialSilenceTimeout-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MinValues.InterdigitTimeout-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MinValues.RecordingDuration-NamedType-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.MinValues.SilenceTimeout-NamedType-False"],
+        [0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 1.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 1.0, 0.0, 0.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.PlayPrompt": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.PlayPrompt.Prompts-Local-False", "Microsoft.Bot.Builder.Calling.ObjectModel.Contracts.PlayPrompt.Validate-Local-True"],
+        [0.0, 0.0],
+        [0.0, 1.0],
+        [1.0, 0.0],
+        [0.0, 1.0]
+    ],
+    "Microsoft.Bot.Builder.Calling.ObjectModel.Misc.Outcome": [
+        ["Microsoft.Bot.Builder.Calling.ObjectModel.Misc.Outcome.Success-NamedType-False"],
+        [1.0],
+        [1.0],
+        [0.0],
+        [1.0]
+    ],
+    "Microsoft.Bot.Sample.EchoBot.EchoDialog": [
+        ["Microsoft.Bot.Sample.EchoBot.EchoDialog.count-Local-False", "Microsoft.Bot.Sample.EchoBot.EchoDialog.MessageReceivedAsync-Local-False"],
+        [0.0, 0.0],
+        [0.0, 1.0],
+        [2.0, 0.0],
+        [1.0, 1.0]
+    ],
+    "Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm": [
+        ["Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm.Title-NamedType-False", "Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm.Alarm_State-NamedType-False", "Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm.Start_Date-NamedType-False", "Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm.Start_Time-NamedType-False"],
+        [0.6666666666666666, 0.6666666666666666, 0.0, 0.0],
+        [1.0, 1.0, 1.0, 1.0],
+        [1.0, 1.0, 0.0, 0.0],
+        [1.0, 1.0, 1.0, 1.0]
+    ],
+    "Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn": [
+        ["Microsoft.Bot.Sample.AlarmBot.Dialogs.BuiltIn.Alarm-NamedType-False"],
+        [0.5],
+        [0.0],
+        [1.0],
+        [1.0]
+    ],
+    "Microsoft.Bot.Sample.AlarmBot.Models.IClock": [
+        ["Microsoft.Bot.Sample.AlarmBot.Models.IClock.Now-Local-False"],
+        [0.0],
+        [0.0],
+        [1.0],
+        [1.0]
+    ]
+}
