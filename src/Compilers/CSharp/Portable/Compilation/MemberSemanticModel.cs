@@ -1754,7 +1754,7 @@ done:
             }
 
             var parent = node.Parent;
-            if (parent != null)
+            if (parent != null && node != this.Root)
             {
                 switch (node.Kind())
                 {

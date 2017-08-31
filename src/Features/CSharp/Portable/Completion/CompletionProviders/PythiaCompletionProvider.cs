@@ -27,7 +27,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 {
     internal partial class PythiaCompletionProvider : CommonCompletionProvider
     {
-        private const string TEMP_FILE_PATH = @"..\..\..\..\roslyn\SiyuTemp\";
+        private static readonly string TEMP_FILE_PATH = Path.GetTempPath();
 
         private const string MODELS_PATH = @"..\..\..\..\roslyn\models\"; // @"C:\Users\yasiyu\Source\Repos\roslyn\models\";
 
@@ -351,9 +351,9 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 {
                     try
                     {
-                        var semanticModel1 = await document.GetSemanticModelForNodeAsync(invocation, cancellationToken).ConfigureAwait(false);
+                        //var semanticModel1 = await document.GetSemanticModelForNodeAsync(invocation, cancellationToken).ConfigureAwait(false);
 
-                        var inv = semanticModel1.GetSymbolInfo(invocation, cancellationToken);
+                        var inv = semanticModel.GetSymbolInfo(invocation, cancellationToken);
                         var inv_symb = inv.Symbol;
                         var cand_symb_vec = inv.CandidateSymbols;
 
