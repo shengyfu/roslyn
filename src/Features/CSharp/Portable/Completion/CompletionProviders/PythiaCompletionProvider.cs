@@ -99,8 +99,12 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             var position = context.Position;
             var cancellationToken = context.CancellationToken;
 
-            var span = new TextSpan(position, 0);
-            var semanticModel = await document.GetSemanticModelForSpanAsync(span, cancellationToken).ConfigureAwait(false);
+            // var span = new TextSpan(position, 0);
+            // var semanticModel = await document.GetSemanticModelForSpanAsync(span, cancellationToken).ConfigureAwait(false);
+            // document.GetSemanticModelForSpanAsync with a span constructed with current cursor position
+            // will get a semantic model for that chunk of code, not the entire document, so when we look for invocations
+            // in the entire documents, we will go outside of the root
+            var semanticModel = await document.GetSemanticModelAsync(cancellationToken).ConfigureAwait(false);
             if (semanticModel == null)
             {
                 Debug.WriteLine("Returning because semanticModel is null");
@@ -154,7 +158,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             // Check if target token is in IfConditional.  
             var inIfConditional = CheckIfTokenInIfConditional(memberAccess);
 
-            IEnumerable<ISymbol> invokingSymbs = await GetCoOccuringInvocations(syntaxTree, semanticModel, targetTypeName, document, cancellationToken).ConfigureAwait(false);
+            IEnumerable<ISymbol> invokingSymbs = GetCoOccuringInvocations(syntaxTree, semanticModel, targetTypeName, document, cancellationToken);
 
             Dictionary<string, double> completionSet = new Dictionary<string, double>();
             if (invokingSymbs.Count() > 0)
@@ -335,7 +339,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             return completionModel;
         }
 
-        private async Task<IEnumerable<ISymbol>> GetCoOccuringInvocations(SyntaxTree syntaxTree, SemanticModel semanticModel,
+        private IEnumerable<ISymbol> GetCoOccuringInvocations(SyntaxTree syntaxTree, SemanticModel semanticModel,
             string targetTypeName, Document document, CancellationToken cancellationToken)
         {
             // Check for co-occuring functions from the same namespace
@@ -355,8 +359,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 {
                     try
                     {
-                        //var semanticModel1 = await document.GetSemanticModelForNodeAsync(invocation, cancellationToken).ConfigureAwait(false);
-
                         var inv = semanticModel.GetSymbolInfo(invocation, cancellationToken);
                         var inv_symb = inv.Symbol;
                         var cand_symb_vec = inv.CandidateSymbols;
