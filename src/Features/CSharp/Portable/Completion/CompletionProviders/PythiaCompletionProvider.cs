@@ -36,8 +36,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         private const string POPULARITY_MODEL_PATH = MODELS_PATH + @"model-frequency.json";
 
         // personalized models (hardcoded for the botBuilder project currently)
-        private const string PROJECT_SCORING_MODEL_PATH = MODELS_PATH + @"botBuilder-model-all-Aug29-kmeans.json";
-        private const string PROJECT_POPULARITY_MODEL_PATH = MODELS_PATH + @"botBuilder-model-frequency.json"; // not yet exant
+        private const string PROJECT_SCORING_MODEL_PATH = MODELS_PATH + @"botBuilder-model-all-Sep11-kmeans.json";
+        private const string PROJECT_POPULARITY_MODEL_PATH = MODELS_PATH + @"botBuilder-frequency.json";
 
         private static readonly SymbolDisplayFormat SYMBOL_DISPLAY_FORMAT = new SymbolDisplayFormat(typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces);
 
@@ -45,6 +45,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         private Dictionary<string, int> popularityModel; // model based on frequency of occurrences in crawled repos
 
         private Dictionary<string, IEnumerable<string[]>> projectScoringModel;
+        private Dictionary<string, int> projectPopularityModel;
 
         // a tunable parameter that indicate how much weight we give to projectScoringModel in comparison to global scoringModel
         private const double PROJECT_WEIGHT = 1.0;
@@ -60,7 +61,10 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             string jsonProject = File.ReadAllText(PROJECT_SCORING_MODEL_PATH);
             projectScoringModel = JsonConvert.DeserializeObject<Dictionary<string, IEnumerable<string[]>>>(jsonProject);
 
-            Debug.WriteLine("Deserialized the 3 models");
+            string jsonProjectFreq = File.ReadAllText(PROJECT_POPULARITY_MODEL_PATH);
+            projectPopularityModel = JsonConvert.DeserializeObject<Dictionary<string, int>>(jsonProjectFreq);
+
+            Debug.WriteLine("Deserialized the 4 models");
         }
 
         public PythiaCompletionProvider()
@@ -279,7 +283,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             }
 
             string json = JsonConvert.SerializeObject(completionSet);
-            File.WriteAllText(TEMP_FILE_PATH + @"completionSet1.json", json);
+            // File.WriteAllText(TEMP_FILE_PATH + @"completionSet1.json", json);
 
             // complement by a weighted score from project scoring model
             foreach (var candidateFromModel in projectCompletions)
@@ -299,7 +303,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             }
 
             json = JsonConvert.SerializeObject(completionSet);
-            File.WriteAllText(TEMP_FILE_PATH + @"completionSet2.json", json);
+            // File.WriteAllText(TEMP_FILE_PATH + @"completionSet2.json", json);
 
             return completionSet;
         }
