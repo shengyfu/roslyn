@@ -48,7 +48,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         private Dictionary<string, int> projectPopularityModel;
 
         // a tunable parameter that indicate how much weight we give to projectScoringModel in comparison to global scoringModel
-        private const double PROJECT_WEIGHT = 1.0;
+        private const double PROJECT_WEIGHT = 0.0; //1.0;
 
         private void DeserializeModels()
         {
@@ -75,11 +75,11 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
         // Explicitly remove ":" from the set of filter characters because (by default)
         // any character that appears in DisplayText gets treated as a filter char.
 
-        private static readonly CompletionItemRules s_rules_top = CompletionItemRules.Default
+        private static readonly CompletionItemRules TopItemRules = CompletionItemRules.Default
         .WithMatchPriority(MatchPriority.Preselect)
         .WithSelectionBehavior(CompletionItemSelectionBehavior.HardSelection);
 
-        private static readonly CompletionItemRules s_rules = CompletionItemRules.Default
+        private static readonly CompletionItemRules OtherItemRules = CompletionItemRules.Default
             .WithMatchPriority(MatchPriority.Default)
             .WithSelectionBehavior(CompletionItemSelectionBehavior.HardSelection);
 
@@ -136,6 +136,11 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
                 return;
             }
 
+            //var invocation = (MemberAccessExpressionSyntax)memberAccess;
+            //var method = semanticModel.GetSymbolInfo(invocation);
+            //var methodSymbol = method.Symbol;
+            //var stringName = methodSymbol.ToString();
+
             var workspace = document.Project.Solution.Workspace;
 
             var syntaxContext = CSharpSyntaxContext.CreateContext(workspace, semanticModel, position, cancellationToken);
@@ -187,22 +192,20 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
             // sort completionSet according to each method's score
             var sortedCompletionSet = from entry in completionSet orderby entry.Value descending select entry;
 
-            int count = 0;
-            foreach (var m in sortedCompletionSet)
+            for (int i = 0; i < sortedCompletionSet.Count(); i++)
             {
-                var methods = candidateMethods.Where(entry => entry.Name == m.Key).ToList(); // get all the methods
-
+                var recomendedMethod = sortedCompletionSet.ElementAt(i);
+                var methods = candidateMethods.Where(entry => entry.Name == recomendedMethod.Key).ToList(); // get all the methods
+                var itemRules = (i == 0) ? TopItemRules : OtherItemRules;
                 context.AddItem(SymbolCompletionItem.CreateWithSymbolId(
-                  displayText: m.Key,
+                  displayText: recomendedMethod.Key,
                   insertionText: null,
                   symbols: methods,
-                  filterText: m.Key,
+                  filterText: recomendedMethod.Key,
                   contextPosition: tokenLeft.SpanStart,
-                  rules: s_rules_top,
-                  sortText: count.ToString()
+                  rules: itemRules,
+                  sortText: i.ToString()
                 ));
-
-                count++;
             }
 
             context.IsExclusive = false; // Exclusive list 
@@ -239,11 +242,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
                 candidateMethods = CSharpRecommendationService.GetSymbolsOffOfExpression(syntaxContext, expression, cancellationToken);
                 container = syntaxContext.SemanticModel.GetTypeInfo(expression, cancellationToken).Type; // NamedType System.IO.File
+                
                 //container = CSharpRecommendationService.GetSymbolTypeOffOfExpression(syntaxContext, expression, cancellationToken);
-                //var tmp = container.ContainingNamespace.ToString();
-                //var tmp2 = container.OriginalDefinition.ToString();
-                //var tmp3 = container.ContainingSymbol.ToString();
-
 
                 //var containerOriginalDefinition = container.OriginalDefinition;
                 //candidateMethods = candidateMethods.Where(m => m.ContainingSymbol == containerOriginalDefinition).ToImmutableArray<ISymbol>();
@@ -474,7 +474,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion.Providers
 
                 var keyCentroid = centroids.ElementAt(maxIndex).Select(i => Convert.ToDouble(i));
 
-                // If in IfConditional, reweight the scores
+                // if in IfConditional, reweight the scores by multiplying by proportion in if conditional
                 if (inIfConditional)
                 {
                     Debug.WriteLine("Statement is in if conditional and weights are adjusted");
