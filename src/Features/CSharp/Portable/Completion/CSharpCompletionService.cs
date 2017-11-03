@@ -45,7 +45,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Completion
                 new PartialTypeCompletionProvider(),
                 new XmlDocCommentCompletionProvider(),
                 new TupleNameCompletionProvider(),
-                new DeclarationNameCompletionProvider()
+                new DeclarationNameCompletionProvider(),
+                new InternalsVisibleToCompletionProvider()
             );
 
         private readonly Workspace _workspace;

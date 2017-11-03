@@ -183,6 +183,12 @@ namespace Microsoft.CodeAnalysis.CSharp
             {
                 AddKeyword(SyntaxKind.RefKeyword);
                 AddSpace();
+
+                if (symbol.RefKind == RefKind.RefReadOnly)
+                {
+                    AddKeyword(SyntaxKind.ReadOnlyKeyword);
+                    AddSpace();
+                }
             }
 
             if (format.LocalOptions.IncludesOption(SymbolDisplayLocalOptions.IncludeType))
@@ -296,6 +302,10 @@ namespace Microsoft.CodeAnalysis.CSharp
                     AddKeyword(SyntaxKind.InternalKeyword);
                     break;
                 case Accessibility.ProtectedAndInternal:
+                    AddKeyword(SyntaxKind.PrivateKeyword);
+                    AddSpace();
+                    AddKeyword(SyntaxKind.ProtectedKeyword);
+                    break;
                 case Accessibility.Protected:
                     AddKeyword(SyntaxKind.ProtectedKeyword);
                     break;
